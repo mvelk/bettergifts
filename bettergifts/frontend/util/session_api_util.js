@@ -1,18 +1,20 @@
 export const signup = (user, success, error) => {
+  console.log(user);
   $.ajax({
     method: 'POST',
     url: '/api/users',
-    data: user,
+    data: {user: user},
     success,
     error
   });
 };
 
 export const login = (user, success, error) => {
+  console.log(user);
   $.ajax({
     method: 'POST',
     url: '/api/session',
-    data: user,
+    data: {user: user},
     success,
     error
   });
