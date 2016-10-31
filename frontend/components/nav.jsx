@@ -5,8 +5,7 @@ const Nav = ({currentUser, logout}) => (
   <AppBar
     title="bettergifts"
     showMenuIconButton={typeof currentUser.username !== "undefined"}
-    iconElementRight={<FlatButton label="Login" />}
-    iconElementRight={<FlatButton label="Sign Up" />}
+    iconElementRight={<FlatButton label="Login / Sign Up"/>}
   />
 );
 

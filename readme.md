@@ -1,6 +1,6 @@
 # BetterGifts
 
-[Heroku link][heroku] **Note:** This should be a link to your production site
+[Heroku link][heroku]
 
 [Trello link][trello]
 
@@ -20,7 +20,7 @@ sufficient CSS styling:
 - [ ] Searching product catalog
 - [ ] Selecting gifts
 - [ ] Infinite scroll
-- [ ] Production README [sample](docs/production_readme.md)
+- [ ] Production README
 
 ## Design Docs
 * [View Wireframes][wireframes]
