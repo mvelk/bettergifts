@@ -2,14 +2,16 @@
 {
   currentUser: {
     id: 1,
-    username: "app-academy"
+    username: "n_gaged"
   },
   forms: {
     signUp: {errors: []},
     logIn: {errors: []},
-    createNote: {errors: ["body can't be blank"]}
+    createList: {errors: ["Title can't be blank"]}
+    createItem: {errors: []}
+    createEvent: {errors: []}
   },
-  notes: {
+  wishlistItems: {
     1: {
       title: "Sample State",
       body: "is useful to plan",
@@ -23,13 +25,13 @@
       }
     }
   },
-  notebooks: {
+  wishlists: {
     1: {
       title: "Redux",
       author_id: 1,
       description: "is cool"
     }
   }
-  tagFilters: [1, 7, 14] // Used to track selected Tags for filtering of notes
+  tagFilters: [1, 7, 14] // Used to track selected Tags for filtering of items
 }
 ```

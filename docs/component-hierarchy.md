@@ -7,51 +7,38 @@
  - Home
  - Sidebar
 
-**NotesContainer**
- - NotesHeader
-  * NoteIndex
+**WishlistsContainer**
+ - WishlistsHeader
+  * WishlistsIndex
 
-**NotebookContainer**
- - NotebookHeader
-  + NoteIndex
+**EventsContainer**
+ - EventsHeader
+  + EventsIndex
 
-**SearchResultsContainer**
+**ProductsContainer**
  - Search
- - NoteIndex
+ - Filter (Tags)
+ - ProductsIndex
 
-**TagContainer**
- - NotebookHeader
-  + NoteIndex
+**FriendsContainer**
+ - FriendsHeader
+  + FriendsIndex
 
-**NoteIndex**
- - NoteIndexItem
-  + NoteDetail
-    + NoteTools
-    - NotebookSearch
+**WishlistIndex**
+ - WishlistIndexItem
+  + WishlistDetail
+    - Image
+    - Add/Delete Heart
+    - Product Info
     - Tags
       - Tag
-    * Note
+    * Item
 
-**NewNoteContainer**
- - NewNote
-  - RTETools
-  - NewNoteButton
-
-**Search**
-
-**NewNotebook**
- - NewNotebook
-
-**NewTag**
- - NewTag
-
-**NotebookSearch**
- + AutoSearch
- * AutoSearchResults
-
-**TagsSearch**
- + AutoSearch
- * AutoSearchResults
+**NewWishlistContainer**
+ - NewWishlist
+  - Inputs
+  - NewEventButton
+  - NewListButton
 
 ## Routes
 
@@ -60,13 +47,15 @@
 | "/sign-up" | "AuthFormContainer" |
 | "/sign-in" | "AuthFormContainer" |
 | "/home" | "HomeContainer" |
-| "/home/note/:noteId" | "NotesContainer" |
-| "/home/notebook/:notebookId/note/:noteId" | "NotebookContainer" |
-| "/home/tag/:tagId/note/:notedId" | "TagContainer" |
+| "/home/item/:itemId" | "ItemsContainer" |
+| "/home/wishlist/:wishlistId/item/:itemId" | "WishlistContainer" |
+| "/home/events/:eventId/ | "EventsContainer" |
+| "/home/friends/:friendId/wishlists/:wishlistId" | "FriendsContainer" |
 | "/home/search-results" | "SearchResultsContainer"
-| "/new-note" | "NewNoteContainer" |
+| "/new-wishlist" | "NewNoteContainer" |
+| "/new-event" | "NewEventContainer" |
 | "/search" | "Search" |
-| "/new-notebook" | "NewNotebook" |
+| "/new-product" | "NewProduct" |
 | "/new-tag" | "NewTag" |
 | "/tag-search" | "TagSearch" |
-| "/notebook-search" | "NotebookSearch" |
+| "/product-search" | "ProductSearch" |
