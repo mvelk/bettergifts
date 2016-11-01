@@ -13,8 +13,10 @@ imageurl        | string    |
 ## friendships
 column name | data type | details
 ------------|-----------|-----------------------
-user_id     | integer   | not null, composite key [friend_id]
-friend_id   | integer   | not null, composite key [friend_id]
+id          | integer   | not null, primary key
+user1_id    | integer   | not null, composite index [user1_id, user2_id]
+user2_id    | integer   | not null
+status      | integer   | not null, default: 0
 
 ## wishlists
 column name | data type | details
@@ -24,6 +26,8 @@ title       | string    | not null
 event_id    | integer   | not null, foreign key (references events), indexed
 wisher_id   | integer   | not null, foreign key (references users), indexed
 archived    | boolean   | not null, default: false
+shortdesc   | varchar(150) | not null
+imageurl    | string       | not null
 
 ## wishlistitems
 column name  | data type | details
@@ -42,15 +46,6 @@ name         | string       | not null
 price        | money        | not null
 shortdesc    | varchar(150) | not null
 otherdetails | varchar(500) | not null
-imageurl     | string       | not null
-
-## events
-column name  | data type    | details
--------------|--------------|-----------------------
-id           | integer      | not null, primary key
-title        | string       | not null
-wisher_id    | money        | not null
-shortdesc    | varchar(150) | not null
 imageurl     | string       | not null
 
 ## tags
