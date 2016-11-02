@@ -13,7 +13,7 @@ export default (state = { currentUser: {}, errors: {} }, action) => {
       newState = merge({}, state, { errors: action.errors });
       return newState;
     case LOGOUT:
-      return { currentUser: {}, errors: [] };
+      return { currentUser: {}, errors: {} };
     default:
       return state;
   }

@@ -12,7 +12,7 @@ class SessionForm extends React.Component {
 			username: "",
       email: "",
 			password: "",
-      open: this.props.modalOpen,
+      open: this.props.authModalOpen,
       formType: 'login'
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -94,7 +94,7 @@ class SessionForm extends React.Component {
     const actions = [];
     const customContentStyle = {
       width: '25%',
-      maxWidth: 'none',
+			minWidth: '360'
     };
 
 		return (

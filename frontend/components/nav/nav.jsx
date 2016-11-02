@@ -4,7 +4,7 @@ import { AppBar, FlatButton } from 'material-ui';
 
 const Nav = ({currentUser, logout, handleOpen}) => (
   <AppBar
-    title="betterGifts"
+    title="bettergifts"
     titleStyle={
       { fontFamily: 'Roboto Slab' }
     }
