@@ -2,7 +2,8 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import App from './app';
-
+import SessionFormContainer from './session/session_form_container';
+import Splash from './splash/splash';
 // Hacky material UI fix for React, will be deprecated once
 // Material UI included in React
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -54,7 +55,9 @@ const Root = ({ store }) => (
   <MuiThemeProvider muiTheme={muiTheme}>
     <Provider store={store}>
       <Router history={hashHistory}>
-        <Route path="/" component={App}/>
+        <Route path="/" component={App}>
+        <IndexRoute component={Splash} />
+        </Route>
       </Router>
     </Provider>
   </MuiThemeProvider>

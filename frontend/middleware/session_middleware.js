@@ -2,8 +2,12 @@ import { receiveCurrentUser, receiveErrors, LOGIN, LOGOUT, SIGNUP } from '../act
 import { login, signup, logout } from '../util/session_api_util';
 
 export default ({dispatch}) => next => action => {
-  const successCallback = user => dispatch(receiveCurrentUser(user));
-  const errorCallback = err => dispatch(receiveErrors(err.responseJSON));
+  const successCallback = user => {
+    dispatch(receiveCurrentUser(user));
+  };
+  const errorCallback = err => {
+    dispatch(receiveErrors(err.responseJSON));
+  };
   switch(action.type) {
     case LOGIN:
       login(action.user, successCallback, errorCallback);
