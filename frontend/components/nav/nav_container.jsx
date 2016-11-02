@@ -8,7 +8,8 @@ const mapStateToProps = ({session}) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(logout())
+  logout: () => dispatch(logout()),
+  openAuthModal: () => dispatch(openAuthModal())
 });
 
 export default connect(

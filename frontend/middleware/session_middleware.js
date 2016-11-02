@@ -1,8 +1,10 @@
 import { receiveCurrentUser, receiveErrors, LOGIN, LOGOUT, SIGNUP } from '../actions/session_actions';
+import { closeAuthModal } from '../actions/modals_actions';
 import { login, signup, logout } from '../util/session_api_util';
 
 export default ({dispatch}) => next => action => {
   const successCallback = user => {
+    dispatch(closeAuthModal());
     dispatch(receiveCurrentUser(user));
   };
   const errorCallback = err => {

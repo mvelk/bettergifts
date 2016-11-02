@@ -9,7 +9,7 @@ class Splash extends React.Component {
         <section className="hero-section">
           <div className="hero-section-content">
             <h2 className="hero-section-header" >Get them what they want,<br/>when they want it.</h2>
-            <a className="ghost-button-semi-transparent" value="" onTouchTap={() => alert("you clicked me!")}>start gifting</a>
+            <a className="ghost-button-semi-transparent" value="" onTouchTap={this.props.openAuthModal}>start gifting</a>
           </div>
         </section>
 
@@ -22,7 +22,7 @@ class Splash extends React.Component {
                 label="Let's do this"
                 fullWidth={false}
                 secondary={true}
-                onTouchTap={() => alert("you clicked me!")}
+                onTouchTap={this.props.openAuthModal}
                 />
             </div>
             <div className="splash-section-content-image">
@@ -43,7 +43,7 @@ class Splash extends React.Component {
                 label="Let's do this"
                 fullWidth={false}
                 secondary={true}
-                onTouchTap={() => alert("you clicked me!")}
+                onTouchTap={this.props.openAuthModal}
                 />
             </div>
           </div>
@@ -58,7 +58,7 @@ class Splash extends React.Component {
                 label="Let's do this"
                 fullWidth={false}
                 secondary={true}
-                onTouchTap={() => alert("you clicked me!")}
+                onTouchTap={this.props.openAuthModal}
                 />
             </div>
             <div className="splash-section-content-image">

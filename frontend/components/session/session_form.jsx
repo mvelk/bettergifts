@@ -12,22 +12,11 @@ class SessionForm extends React.Component {
 			username: "",
       email: "",
 			password: "",
-      open: this.props.authModalOpen,
       formType: 'login'
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleClose = this.handleClose.bind(this);
     this.handleToggleFormType = this.handleToggleFormType.bind(this);
 	}
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.loggedIn) {
-      this.props.handleClose();
-      this.setState({open: false});
-    } else {
-      this.setState({open: nextProps.modalOpen});
-    }
-  }
 
 	update(field) {
 		return e => this.setState({
@@ -68,11 +57,6 @@ class SessionForm extends React.Component {
     }
   }
 
-  handleClose() {
-    this.setState({open: false});
-    this.props.handleClose();
-  }
-
 	render() {
     const style = {
        margin: 12,
@@ -102,8 +86,8 @@ class SessionForm extends React.Component {
             <Dialog
                 modal={false}
                 actions={actions}
-                open={this.state.open}
-                onRequestClose={this.handleClose}
+                open={this.props.authModalOpen}
+                onRequestClose={this.props.closeAuthModal}
                 contentStyle={customContentStyle}>
 
             <form onSubmit={this.handleSubmit} className="login-form-box">
