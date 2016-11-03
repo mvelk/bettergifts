@@ -23,11 +23,11 @@ column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
 title       | string    | not null
-event_id    | integer   | not null, foreign key (references events), indexed
+event_date  | date      | not null
 wisher_id   | integer   | not null, foreign key (references users), indexed
 archived    | boolean   | not null, default: false
-shortdesc   | varchar(150) | not null
-imageurl    | string       | not null
+description | text      | not null
+imageurl    | string    |
 
 ## wishlistitems
 column name  | data type | details
@@ -36,14 +36,13 @@ id           | integer   | not null, primary key
 wishlist_id  | integer   | not null, foreign key (references wishlists), indexed
 product_id   | integer   | not null, foreign key (references products), indexed
 purchaser_id | integer   | foreign key (references users), indexed
-purchased    | boolean   | not null, default: false
 
 ## products
 column name  | data type    | details
 -------------|--------------|-----------------------
 id           | integer      | not null, primary key
 name         | string       | not null
-price        | money        | not null
+price        | decimal      | not null
 shortdesc    | varchar(150) | not null
 otherdetails | varchar(500) | not null
 imageurl     | string       | not null

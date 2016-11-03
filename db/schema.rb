@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161030235345) do
+ActiveRecord::Schema.define(version: 20161103003834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "products", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.decimal  "price",      null: false
+    t.string   "short_desc", null: false
+    t.text     "full_desc"
+    t.string   "image_url",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "username",                                                             null: false
@@ -26,6 +36,28 @@ ActiveRecord::Schema.define(version: 20161030235345) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["session_token"], name: "index_users_on_session_token", unique: true, using: :btree
     t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
+  end
+
+  create_table "wishlist_items", force: :cascade do |t|
+    t.integer  "wishlist_id",  null: false
+    t.integer  "product_id",   null: false
+    t.integer  "purchaser_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["purchaser_id"], name: "index_wishlist_items_on_purchaser_id", using: :btree
+  end
+
+  create_table "wishlists", force: :cascade do |t|
+    t.string   "title",                       null: false
+    t.date     "event_date",                  null: false
+    t.integer  "wisher_id",                   null: false
+    t.boolean  "archived",    default: false, null: false
+    t.text     "description",                 null: false
+    t.string   "image_url",                   null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["wisher_id", "title"], name: "index_wishlists_on_wisher_id_and_title", using: :btree
+    t.index ["wisher_id"], name: "index_wishlists_on_wisher_id", using: :btree
   end
 
 end
