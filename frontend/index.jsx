@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const rootEl = document.getElementById('root');
   let store;
   if (typeof window.currentUser !== "undefined") {
-    const preloadedState = { session: {currentUser: window.currentUser, errors: {} }, modals: { auth: false } };
+    const preloadedState = { session: {currentUser: window.currentUser, errors: {} }, modals: { auth: false, side: false } };
     console.log(preloadedState);
     store = configureStore(preloadedState);
   } else {

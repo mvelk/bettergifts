@@ -25,7 +25,7 @@ class Api::WishlistsController < ApplicationController
   end
 
   def index
-    @wishlists = Wishlist.all
+    @wishlists = Wishlist.where(archived: false).includes(:items).includes(:wisher).includes(:purchasers)
   end
 
   def show
