@@ -19,6 +19,11 @@ class User < ApplicationRecord
   validates :username, length: { minimum: 1 }
   validates :email, format: /@/
 
+  has_many :relations,
+  class_name: :Friendship,
+  primary_key: :id,
+  foreign_key: :user_one_id
+
   attr_reader :password
   after_initialize :ensure_session_token
 

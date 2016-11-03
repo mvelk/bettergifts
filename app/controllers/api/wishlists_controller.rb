@@ -25,7 +25,7 @@ class Api::WishlistsController < ApplicationController
   end
 
   def index
-    @wishlists = Wishlist.all.select(:id, :name, :image_url)
+    @wishlists = Wishlist.all
   end
 
   def show
