@@ -13,10 +13,6 @@ class Splash extends React.Component {
                onTouchTap={this.props.openAuthModal}>
                start gifting
             </a>
-            <a className="ghost-button-semi-transparent"
-               onTouchTap={ () => this.props.login( {user: { username: "demo-login", password: "password123"} } ) }>
-               demo login
-            </a>
           </div>
         </section>
 
