@@ -3,6 +3,8 @@ import { closeAuthModal } from '../actions/modals_actions';
 import { login, signup, logout } from '../util/session_api_util';
 
 export default ({dispatch}) => next => action => {
+  console.log("we made it to the middleware");
+  console.log(action.user);
   const successCallback = user => {
     dispatch(closeAuthModal());
     dispatch(receiveCurrentUser(user));
