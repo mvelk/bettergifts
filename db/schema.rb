@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 20161103160646) do
     t.integer  "purchaser_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["purchaser_id"], name: "index_wishlist_items_on_purchaser_id", using: :btree
   end
 
   create_table "wishlists", force: :cascade do |t|

@@ -24,16 +24,26 @@ export default (oldState = { myWishlists: [], friendsWishlists: [], upcomingWish
       newState = merge({}, oldState, { upcomingWishlists: action.upcomingWishlists });
       return newState;
     case REMOVE_WISHLIST:
-      let indexToRemove = -1
+      let indexToRemove = -1;
+
       for (let i = 0; i < oldState.myWishlists.length; i++) {
-        if (oldState.myWishlists[i].id ===
-        indexToRemove = oldState.myWishlists.indexOfaction.wishlist.id
+        if (oldState.myWishlists[i].id === action.wishlist.id) {
+          indexToRemove = i;
+          break;
+        }
       }
-      newState = merge(
-        {},
-        oldState,
-        myWishlists.slice()
-      )
+      //return old state if wishlist not found in array
+      if (indexToRemove === -1) {
+        return oldState;
+      }
+      //otherwise, dup state, set myWishlists to new array
+      //with item to remove sliced out
+      newState = merge({}, oldState);
+      newState.myWishlists = [
+        ...newState.myWishlists.slice(0, indexToRemove),
+        ...newState.myWishlists.slice(indexToRemove + 1)
+      ];
+      return newState;
     default:
       return oldState;
   }

@@ -1,4 +1,22 @@
 class Api::WishlistsController < ApplicationController
+  def index
+    @wishlists = current_user.own_wishlists.where(archived: false).includes(:items).includes(:purchasers)
+  end
+
+  def friends_index
+    friends = current_user.relations.where(status: 1)
+    @wishlists = Wishlist.where(wisher_id: friends).where(archived: false).includes(:items).includes(:purchasers)
+  end
+
+  def upcoming_index
+    my_circle = current_user.relations.select(:id).where(status: 1)
+    my_circle.push(current_user.id)
+    @wishlists = Wishlist.where(wisher_id: my_circle).where(archived: false).includes(:items).includes(:purchasers)
+  end
+
+  def show
+    @wishlist = Wishlist.find(params[:id])
+  end
   def create
     @wishlist = Wishlist.new(wishlist_params)
 
@@ -24,13 +42,7 @@ class Api::WishlistsController < ApplicationController
     end
   end
 
-  def index
-    @wishlists = Wishlist.where(archived: false).includes(:items).includes(:wisher).includes(:purchasers)
-  end
 
-  def show
-    @wishlist = Wishlist.find(params[:id])
-  end
 
   private
 

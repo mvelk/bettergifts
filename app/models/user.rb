@@ -19,10 +19,36 @@ class User < ApplicationRecord
   validates :username, length: { minimum: 1 }
   validates :email, format: /@/
 
-  has_many :relations,
+  has_many :own_wishlists,
+  class_name: :Wishlist,
+  primary_key: :id,
+  foreign_key: :wisher_id
+
+  has_many :own_wishlist_items,
+  through: :wishlists,
+  source: :items
+
+  has_many :desired_products,
+  through: :wishlist_items,
+  source: :product
+
+  has_many :gifted_wishlist_items,
+  class_name: :WishlistItem,
+  primary_key: :id,
+  foreign_key: :purchaser_id
+
+  has_many :gifted_products,
+  through: :gifted_wishlist_items,
+  source: :product
+
+  has_many :relationships,
   class_name: :Friendship,
   primary_key: :id,
   foreign_key: :user_one_id
+
+  has_many :relations,
+  through: :relationships,
+  source: :user_two
 
   attr_reader :password
   after_initialize :ensure_session_token

@@ -6,6 +6,5 @@ class CreateWishlistItems < ActiveRecord::Migration[5.0]
       t.integer :purchaser_id
       t.timestamps
     end
-    add_index :wishlist_items, :purchaser_id
   end
 end

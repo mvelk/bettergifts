@@ -16,5 +16,12 @@ class Friendship < ApplicationRecord
   validates :user_one_id, uniqueness: { scope: :user_two_id, message: "cannot have multiple relationships with a user"}
 
   belongs_to :user_one,
-  primary_key: :user_one_i
+  class_name: :User,
+  primary_key: :id,
+  foreign_key: :user_one_id
+
+  belongs_to :user_two,
+  class_name: :User,
+  primary_key: :id,
+  foreign_key: :user_two_id
 end

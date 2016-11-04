@@ -2,34 +2,56 @@ import { receiveMyWishlist,
          receiveAllMyWishlists,
          receiveAllFriendsWishlists,
          receiveAllUpcomingWishlists,
-         removeWishlist } from '../actions/session_actions';
+         removeWishlist,
+         FETCH_ALL_MY_WISHLISTS,
+         FETCH_ALL_FRIENDS_WISHLISTS,
+         FETCH_ALL_UPCOMING_WISHLISTS,
+         CREATE_NEW_WISHLIST,
+         DELETE_WISHLIST  } from '../actions/wishlist_actions';
 
 import { fetchAllMyWishlists,
          fetchAllFriendsWishlists,
          fetchAllUpcomingWishlists,
-         CREATE_NEW_WISHLIST,
-         DELETE_WISHLIST,
-         }
+         deleteWishlist,
+         createNewWishlist } from '../util/wishlist_api_util';
 
+export default ({dispatch}) => next => action => {
+  const errorCallback = (err) => {
+    console.log(err.responseJSON);
+  };
+  const successCallback1 = (myWishlist) => {
+    dispatch(receiveMyWishlist(myWishlist));
+  };
+  const successCallback2 = (myWishlists) => {
+    dispatch(receiveAllMyWishlists(myWishlists));
+  };
+  const successCallback3 = (friendsWishlists) => {
+    dispatch(receiveAllFriendsWishlists(friendsWishlists));
+  };
+  const successCallback4 = (upcomingWishlists) => {
+    dispatch(receiveAllUpcomingWishlists(upcomingWishlists));
+  };
+  const successCallback5 = (wishlist) => {
+    dispatch(removeWishlist(wishlist));
+  };
 
-export default (oldState = { myWishlists: [], friendsWishlists: [], upcomingWishlists: [] }, action) => {
-  Object.freeze(oldState);
-  let newState;
   switch(action.type) {
-    case RECEIVE_MY_WISHLIST:
-      newState = merge({}, oldState);
-      newState.myWishlists.push(action.myWishlist);
-      return newState;
-    case RECEIVE_ALL_MY_WISHLISTS:
-      newState = merge({}, oldState, { myWishlists: action.myWishlists });
-      return newState;
-    case RECEIVE_ALL_FRIENDS_WISHLISTS:
-      newState = merge({}, oldState, { friendsWishlists: action.friendsWishlists });
-      return newState;
-    case RECEIVE_ALL_UPCOMING_WISHLISTS:
-      newState = merge({}, oldState, { upcomingWishlists: action.upcomingWishlists });
-      return newState;
+    case FETCH_ALL_MY_WISHLISTS:
+      fetchAllMyWishlists(successCallback2, errorCallback);
+      return next(action);
+    case FETCH_ALL_FRIENDS_WISHLISTS:
+      fetchAllFriendsWishlists(successCallback3, errorCallback);
+      return next(action);
+    case FETCH_ALL_UPCOMING_WISHLISTS:
+      fetchAllUpcomingWishlists(successCallback4, errorCallback);
+      return next(action);
+    case CREATE_NEW_WISHLIST:
+      createNewWishlist(action.wishlist, successCallback1, errorCallback);
+      return next(action);
+    case DELETE_WISHLIST:
+      deleteWishlist(action.id, successCallback5, errorCallback);
+      return next(action);
     default:
-      return oldState;
+      return next(action);
   }
 };
