@@ -2,13 +2,15 @@ import { RECEIVE_MY_WISHLIST,
          RECEIVE_ALL_MY_WISHLISTS,
          RECEIVE_ALL_FRIENDS_WISHLISTS,
          RECEIVE_ALL_UPCOMING_WISHLISTS,
-         REMOVE_WISHLIST } from '../actions/session_actions';
+         REMOVE_WISHLIST } from '../actions/wishlist_actions';
 import { merge } from 'lodash';
 
 
 export default (oldState = { myWishlists: [], friendsWishlists: [], upcomingWishlists: [] }, action) => {
   Object.freeze(oldState);
   let newState;
+  console.log(action.type);
+  console.log(RECEIVE_ALL_MY_WISHLISTS === "RECEIVE_ALL_MY_WISHLISTS");
   switch(action.type) {
     case RECEIVE_MY_WISHLIST:
       newState = merge({}, oldState);
@@ -18,6 +20,8 @@ export default (oldState = { myWishlists: [], friendsWishlists: [], upcomingWish
       newState = merge({}, oldState, { myWishlists: action.myWishlists });
       return newState;
     case RECEIVE_ALL_FRIENDS_WISHLISTS:
+      console.log("we made it to the receiver");
+      console.log(action.myWishlist);
       newState = merge({}, oldState, { friendsWishlists: action.friendsWishlists });
       return newState;
     case RECEIVE_ALL_UPCOMING_WISHLISTS:

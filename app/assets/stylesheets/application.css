@@ -202,6 +202,42 @@
   height: auto;
 }
 
+.wishlist-index-heading {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wishlist-index-heading-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wishlist-index-item-container {
+  color: #fff;
+  height: 350px;
+  width: 350px;
+  padding: 30px;
+  margin: 50px 50px 0 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background-size:     cover;
+  background-repeat:   no-repeat;
+  background-position: center center;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition: all 0.5s cubic-bezier(.25,.8,.25,1);
+}
+
+.wishlist-index-item-container:hover {
+  box-shadow: 5px 10px 20px rgba(0,0,0,0.19), 2px 6px 6px rgba(0,0,0,0.23);
+}
+
 /* Rules for sizing the icon. */
 .material-icons.md-18 { font-size: 18px; }
 .material-icons.md-24 { font-size: 24px; }

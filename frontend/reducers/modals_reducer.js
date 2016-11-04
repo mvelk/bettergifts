@@ -2,11 +2,13 @@ import {
   OPEN_AUTH_MODAL,
   CLOSE_AUTH_MODAL,
   OPEN_SIDE_DRAWER,
-  CLOSE_SIDE_DRAWER } from '../actions/modals_actions';
+  CLOSE_SIDE_DRAWER,
+  OPEN_WISHLIST_FORM_MODAL,
+  CLOSE_WISHLIST_FORM_MODAL } from '../actions/modals_actions';
 
 import { merge } from 'lodash';
 
-export default (oldState = { auth: false, side: false }, action) => {
+export default (oldState = { auth: false, side: false , wishlist: false }, action) => {
   Object.freeze(oldState);
   let newState;
   switch(action.type) {
@@ -21,6 +23,12 @@ export default (oldState = { auth: false, side: false }, action) => {
       return newState;
     case CLOSE_SIDE_DRAWER:
       newState = merge({}, oldState, { side: false });
+      return newState;
+    case OPEN_WISHLIST_FORM_MODAL:
+      newState = merge({}, oldState, { wishlist: true });
+      return newState;
+    case CLOSE_WISHLIST_FORM_MODAL:
+      newState = merge({}, oldState, { wishlist: false });
       return newState;
     default:
       return oldState;

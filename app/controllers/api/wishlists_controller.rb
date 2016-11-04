@@ -1,17 +1,25 @@
 class Api::WishlistsController < ApplicationController
   def index
-    @wishlists = current_user.own_wishlists.where(archived: false).includes(:items).includes(:purchasers)
+    @wishlists = current_user.own_wishlists.where(archived: false).includes(:items)
   end
 
   def friends_index
-    friends = current_user.relations.where(status: 1)
-    @wishlists = Wishlist.where(wisher_id: friends).where(archived: false).includes(:items).includes(:purchasers)
+    friends_ids = Friendship.select(:friend_id).where(user_id: current_user.id).where(status: 1).map(&:friend_id)
+    @wishlists = Wishlist.all.where(wisher_id: friends_ids).where(archived: false).includes(:items)
+    render :index
+
   end
 
   def upcoming_index
-    my_circle = current_user.relations.select(:id).where(status: 1)
+    some_date = Time.now
+    my_circle = Friendship.select(:friend_id).where(user_id: current_user.id).where(status: 1).map(&:friend_id)
     my_circle.push(current_user.id)
-    @wishlists = Wishlist.where(wisher_id: my_circle).where(archived: false).includes(:items).includes(:purchasers)
+    @wishlists = Wishlist
+                 .where(wisher_id: my_circle)
+                 .where("event_date >= :date", date: some_date.tomorrow.beginning_of_day)
+                 .where(archived: false)
+                 .includes(:items)
+    render :index
   end
 
   def show

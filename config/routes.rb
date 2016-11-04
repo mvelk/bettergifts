@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resource :session
     resources :products
     resources :wishlist_items
-    resources :wishlists, only: [:index, :show, :delete, :create]
+    resources :wishlists, only: [:index, :show, :destroy, :create]
     get '/friends-wishlists' => 'wishlists#friends_index'
     get '/upcoming-wishlists' => 'wishlists#upcoming_index'
   end

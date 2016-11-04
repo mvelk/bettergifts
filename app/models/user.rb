@@ -41,17 +41,9 @@ class User < ApplicationRecord
   through: :gifted_wishlist_items,
   source: :product
 
-  has_many :relationships,
-  class_name: :Friendship,
-  primary_key: :id,
-  foreign_key: :user_one_id
-
-  has_many :relations,
-  through: :relationships,
-  source: :user_two
-
   attr_reader :password
   after_initialize :ensure_session_token
+  after_initialize :ensure_image_url
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
@@ -65,6 +57,10 @@ class User < ApplicationRecord
 
   def ensure_session_token
     self.session_token ||= User.generate_session_token
+  end
+
+  def ensure_image_url
+    self.image_url ||= "http://res.cloudinary.com/dkpumd3gf/image/upload/v1478280716/default_user_icon_k220an.png"
   end
 
   def reset_session_token!

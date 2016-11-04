@@ -16,6 +16,7 @@ import { fetchAllMyWishlists,
          createNewWishlist } from '../util/wishlist_api_util';
 
 export default ({dispatch}) => next => action => {
+  console.log(action);
   const errorCallback = (err) => {
     console.log(err.responseJSON);
   };
@@ -26,6 +27,7 @@ export default ({dispatch}) => next => action => {
     dispatch(receiveAllMyWishlists(myWishlists));
   };
   const successCallback3 = (friendsWishlists) => {
+    console.log('great success');
     dispatch(receiveAllFriendsWishlists(friendsWishlists));
   };
   const successCallback4 = (upcomingWishlists) => {
@@ -40,6 +42,7 @@ export default ({dispatch}) => next => action => {
       fetchAllMyWishlists(successCallback2, errorCallback);
       return next(action);
     case FETCH_ALL_FRIENDS_WISHLISTS:
+    console.log('we are making the request');
       fetchAllFriendsWishlists(successCallback3, errorCallback);
       return next(action);
     case FETCH_ALL_UPCOMING_WISHLISTS:

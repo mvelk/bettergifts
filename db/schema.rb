@@ -16,16 +16,16 @@ ActiveRecord::Schema.define(version: 20161103160646) do
   enable_extension "plpgsql"
 
   create_table "friendships", force: :cascade do |t|
-    t.integer  "user_one_id",    null: false
-    t.integer  "user_two_id",    null: false
+    t.integer  "user_id",        null: false
+    t.integer  "friend_id",      null: false
     t.integer  "status",         null: false
     t.integer  "action_user_id", null: false
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["action_user_id"], name: "index_friendships_on_action_user_id", using: :btree
-    t.index ["user_one_id", "user_two_id"], name: "index_friendships_on_user_one_id_and_user_two_id", unique: true, using: :btree
-    t.index ["user_one_id"], name: "index_friendships_on_user_one_id", using: :btree
-    t.index ["user_two_id"], name: "index_friendships_on_user_two_id", using: :btree
+    t.index ["friend_id"], name: "index_friendships_on_friend_id", using: :btree
+    t.index ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id", unique: true, using: :btree
+    t.index ["user_id"], name: "index_friendships_on_user_id", using: :btree
   end
 
   create_table "products", force: :cascade do |t|
@@ -39,13 +39,13 @@ ActiveRecord::Schema.define(version: 20161103160646) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",                                                             null: false
-    t.string   "email",                                                                null: false
-    t.string   "password_digest",                                                      null: false
-    t.string   "session_token",                                                        null: false
-    t.string   "image_url",       default: "/app/assets/images/default_user_icon.png", null: false
-    t.datetime "created_at",                                                           null: false
-    t.datetime "updated_at",                                                           null: false
+    t.string   "username",        null: false
+    t.string   "email",           null: false
+    t.string   "password_digest", null: false
+    t.string   "session_token",   null: false
+    t.string   "image_url",       null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["session_token"], name: "index_users_on_session_token", unique: true, using: :btree
     t.index ["username"], name: "index_users_on_username", unique: true, using: :btree

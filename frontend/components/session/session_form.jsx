@@ -35,14 +35,6 @@ class SessionForm extends React.Component {
     this.setState({formType: this.state.formType === 'login' ? 'signup' : 'login'});
   }
 
-	navLink() {
-		if (this.state.formType === "login") {
-			return <Link to="/signup">sign up instead</Link>;
-		} else {
-			return <Link to="/login">log in instead</Link>;
-		}
-	}
-
   emailTextField() {
     if (this.state.formType !== "login") {
       return (
