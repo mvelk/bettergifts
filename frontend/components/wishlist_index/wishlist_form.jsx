@@ -29,8 +29,14 @@ class WishlistForm extends React.Component {
 
 	handleSubmit(e) {
 		e.preventDefault();
-		const wishlist = this.state;
-		this.state.formType === 'create' ? this.props.createNewWishlist(wishlist) : console.log("eventually this will be edit action");
+		if (this.state.formType === 'create') {
+			let wishlist = this.state;
+			delete wishlist['formType'];
+			this.props.createNewWishlist(wishlist);
+		} else {
+			console.log("eventually this will be edit action");
+		}
+
 	}
 
   handleToggleFormType(e) {

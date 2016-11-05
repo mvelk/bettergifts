@@ -95,6 +95,13 @@
   margin: 0 auto;
 }
 
+.flex-centered {
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .authform-subheader {
   font-size: 16px;
   margin: 10px 0;

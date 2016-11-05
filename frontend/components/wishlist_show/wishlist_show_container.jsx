@@ -3,15 +3,13 @@ import { fetchWishlistDetail, createWishlistItem, deleteWishlistItem } from '../
 
 import WishlistShow from './wishlist_show';
 
-const mapStateToProps = ({wishlist_details, session}) => ({
-  wishlist_details: wishlist_details,
-  currentUser: session.currentUser,
-  wisher: wishlist_details.wisher,
-  items: wishlist_details.items,
-  purchasers: wishlist_details.purchasers,
-  products: wishlist_details.products,
-  errors: wishlist_details.errors
-});
+const mapStateToProps = state => {
+  console.log(state.wishlistDetail);
+  return ({
+    wishlistDetail: state.wishlistDetail,
+    currentUser: state.session.currentUser
+  });
+};
 
 const mapDispatchToProps = dispatch => ({
   fetchWishlistDetail: (wishlistId) => dispatch(fetchWishlistDetail(wishlistId)),

@@ -8,7 +8,7 @@ import { fetchAllMyWishlists,
          fetchAllUpcomingWishlists,
          deleteWishlist,
          createNewWishlist } from './actions/wishlist_actions';
-
+import { fetchWishlistDetail } from './actions/wishlist_detail_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   const rootEl = document.getElementById('root');
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
       session: {currentUser: window.currentUser, errors: {} },
       modals: { auth: false, side: false, wishlist: false },
       wishlists: { myWishlists: [], friendsWishlists: [], upcomingWishlists: [], errors: {} },
-      wishlist_details: {}
+      wishlistDetail: {}
     };
     store = configureStore(preloadedState);
   } else {
@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.fetchAllMyWishlists = fetchAllMyWishlists;
   window.fetchAllFriendsWishlists = fetchAllFriendsWishlists;
   window.fetchAllUpcomingWishlists = fetchAllUpcomingWishlists;
+  window.fetchWishlistDetail = fetchWishlistDetail;
   window.deleteWishlist = deleteWishlist;
   window.createNewWishlist = createNewWishlist;
   window.logout = logout;
