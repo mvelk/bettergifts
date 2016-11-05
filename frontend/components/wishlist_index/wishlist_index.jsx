@@ -6,7 +6,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import SwipeableViews from 'react-swipeable-views';
 import { blue900 } from 'material-ui/styles/colors';
 import WishlistIndexItem from './wishlist_index_item';
-
+import WishlistForm from './wishlist_form';
 const styles = {
   tab: {
     backgroundColor: blue900
@@ -25,7 +25,7 @@ const styles = {
   },
 };
 
-export default class TabsExampleSwipeable extends React.Component {
+class WishlistIndex extends React.Component {
 
   constructor(props) {
     super(props);
@@ -51,6 +51,12 @@ export default class TabsExampleSwipeable extends React.Component {
 
     return (
       <div>
+        <WishlistForm currentUser={this.props.currentUser}
+                      closeWishlistFormModal={this.props.closeWishlistFormModal}
+                      wishlistModalOpen={this.props.wishlistModalOpen}
+                      createNewWishlist={this.props.createNewWishlist}
+                      />
+
         <Tabs
           onChange={this.handleChange}
           value={this.state.slideIndex}
@@ -59,6 +65,7 @@ export default class TabsExampleSwipeable extends React.Component {
           <Tab label="Friends' Wishlists" value={1} style={styles.tab} />
           <Tab label="Upcoming Events" value={2} style={styles.tab} />
         </Tabs>
+
         <SwipeableViews
           index={this.state.slideIndex}
           onChangeIndex={this.handleChange}
@@ -69,19 +76,20 @@ export default class TabsExampleSwipeable extends React.Component {
               <div className="wishlist-index-heading-content">
                 <Avatar size={70} src={this.props.currentUser.image_url} style={styles.avatar} />
                 <hgroup>
-                  <h2 style={styles.headline}>{this.props.currentUser.username}'s Wishlists'</h2>
+                  <h2 style={styles.headline}>{this.props.currentUser.username}&#8217;s Wishlists</h2>
                   <p>Wishlists: {this.props.myWishlists.length}</p>
                 </hgroup>
               </div>
               <RaisedButton
                 label="Create New Wishlist"
+                icon={<i className="material-icons md-light">add</i>}
                 secondary={true}
-                onTouchTap={ () => alert("you clicked me") }
+                onTouchTap={ this.props.openWishlistFormModal }
               />
             </section>
             <section className="wishlist-index-items content-wrapper">
               {this.props.myWishlists.map((myWishlist, idx) => (
-                <WishlistIndexItem wishlist={myWishlist} key={idx} />
+                <WishlistIndexItem type="mine" wishlist={myWishlist} key={idx} />
               ))}
             </section>
           </div>
@@ -89,28 +97,50 @@ export default class TabsExampleSwipeable extends React.Component {
           <div style={styles.slide}>
             <section className="wishlist-index-heading content-wrapper">
               <div className="wishlist-index-heading-content">
-                <Avatar size={70} src={this.props.currentUser.image_url} style={styles.avatar} />
                 <hgroup>
-                  <h2 style={styles.headline}>Your Friends Wishlists</h2>
-                  <p>Wishlists: {this.props.myWishlists.length}</p>
+                  <h2 style={styles.headline}>Your Friends&#8217; Wishlists</h2>
+                  <p>Wishlists: {this.props.friendsWishlists.length}</p>
                 </hgroup>
               </div>
-              <button>Create New List</button>
+              <RaisedButton
+                label="Add Friend"
+                icon={<i className="material-icons md-light">person_add</i>}
+                secondary={true}
+                onTouchTap={ () => alert("you clicked me") }
+              />
             </section>
             <section className="wishlist-index-items content-wrapper">
-              {this.props.myWishlists.map((myWishlist, idx) => (
-                <WishlistIndexItem wishlist={myWishlist} key={idx} />
+              {this.props.friendsWishlists.map((friendsWishlist, idx) => (
+                <WishlistIndexItem type="friends" wishlist={friendsWishlist} key={idx} />
               ))}
             </section>
           </div>
 
           <div style={styles.slide}>
-            <h2 style={styles.headline}>Upcoming Events</h2>
-            <p>Wishlists: {this.props.upcomingWishlists.length}</p>
-            slide n°3
+            <section className="wishlist-index-heading content-wrapper">
+              <div className="wishlist-index-heading-content">
+                <hgroup>
+                  <h2 style={styles.headline}>Your Friends Wishlists</h2>
+                  <p>Wishlists: {this.props.upcomingWishlists.length}</p>
+                </hgroup>
+              </div>
+              <RaisedButton
+                label="Add Friend"
+                icon={<i className="material-icons md-light">person_add</i>}
+                secondary={true}
+                onTouchTap={ () => alert("you clicked me") }
+              />
+            </section>
+            <section className="wishlist-index-items content-wrapper">
+              {this.props.upcomingWishlists.map((upcomingWishlist, idx) => (
+                <WishlistIndexItem type="upcoming" wishlist={upcomingWishlist} key={idx} />
+              ))}
+            </section>
           </div>
         </SwipeableViews>
       </div>
     );
   }
 }
+
+export default WishlistIndex;

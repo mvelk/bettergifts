@@ -49,6 +49,8 @@ export default ({dispatch}) => next => action => {
       fetchAllUpcomingWishlists(successCallback4, errorCallback);
       return next(action);
     case CREATE_NEW_WISHLIST:
+      console.log('we are in the middleware and the action is double nested');
+      console.log(action);
       createNewWishlist(action.wishlist, successCallback1, errorCallback);
       return next(action);
     case DELETE_WISHLIST:

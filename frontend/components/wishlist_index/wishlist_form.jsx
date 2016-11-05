@@ -1,17 +1,23 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import Dialog from 'material-ui/Dialog';
+import DatePicker from 'material-ui/DatePicker';
 
 class WishlistForm extends React.Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
+      title: '',
+      event_date: '2016-12-25',
+      wisher_id: this.props.currentUser.id,
+      description: '',
+      image_url: '',
       formType: 'create'
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     this.handleToggleFormType = this.handleToggleFormType.bind(this);
 	}
 
@@ -24,7 +30,7 @@ class WishlistForm extends React.Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		const wishlist = this.state;
-		this.state.formType === 'create' ? this.props.createNewWishlist({wishlist}) : console.log("eventually this will be edit action");
+		this.state.formType === 'create' ? this.props.createNewWishlist(wishlist) : console.log("eventually this will be edit action");
 	}
 
   handleToggleFormType(e) {
@@ -32,67 +38,75 @@ class WishlistForm extends React.Component {
     this.setState({formType: this.state.formType === 'create' ? 'edit' : 'create'});
   }
 
+  handleChange(e, date) {
+    this.setState({
+      event_date: date,
+    });
+  }
+
   render() {
+    const actions = [];
+    const customContentStyle = {
+      width: '50%',
+      minWidth: '400'
+    };
+    let actionText;
+
+    if (this.state.formType === "create") {
+      actionText = "Create wishlist";
+    } else {
+      actionText = "Sign up";
+    }
+
     return (
       <div className="wishlist-form-container">
         <Dialog
           modal={false}
           actions={actions}
-          open={this.props.authModalOpen}
-          onRequestClose={this.props.closeAuthModal}
+          open={this.props.wishlistModalOpen}
+          onRequestClose={this.props.closeWishlistFormModal}
           contentStyle={customContentStyle}>
 
-          <form onSubmit={this.handleSubmit} className="login-form-box">
+          <form onSubmit={this.handleSubmit} className="wishlist-form-box">
 
-            <h2 className="authform-header">{primaryActionText}</h2>
-
-            <TextField
-              value={this.state.username}
-              onChange={this.update("username")}
-              floatingLabelText="Username"
-              fullWidth={true}
-              errorText={this.props.errors.username === undefined ? "" : `username ${this.props.errors.username.join(", ")}`}
-              />
-
-            {this.emailTextField()}
+            <h2 className="form-header">{actionText}</h2>
 
             <TextField
-              value={this.state.password}
-              onChange={this.update("password")}
-              type="password"
-              floatingLabelText="Password"
-              fullWidth={true}
-              errorText={this.props.errors.password === undefined ? "" : this.props.errors.password.join(", ")}
-              />
+              value={this.state.title}
+              onChange={this.update("title")}
+              floatingLabelText="Title"
+              fullWidth={true}  />
 
-            <div className="authform-buttonwrapper">
+            <DatePicker
+              floatingLabelText="When should gifts arrive?"
+              DateTimeFormat={Intl.DateTimeFormat}
+              locale="en-AU" formatDate={new Intl.DateTimeFormat('en-US', { day: 'numeric', month: 'numeric', year: 'numeric', }).format}
+              value={this.state.event_date}
+              onChange={this.handleChange}
+              fullWidth={true}
+              autoOk={true} />
+
+            <TextField
+              floatingLabelText="In a few words, what is the occasion"
+              value={this.state.description}
+              onChange={this.update("description")}
+              fullWidth={true} />
+
+            <TextField
+              floatingLabelText="Add an image link (optional)"
+              value={this.state.image_url}
+              onChange={this.update("image_url")}
+              fullWidth={true} />
+
+            <div className="buttonwrapper">
               <RaisedButton
                 type="submit"
-                label={primaryActionText}
+                label={actionText}
                 fullWidth={true}
                 primary={true}
                 />
             </div>
 
-            <div className="authform-buttonwrapper">
-              <RaisedButton
-                label="Use guest login"
-                fullWidth={true}
-                secondary={true}
-                onTouchTap={ () => this.props.login( {user: { username: "demo-login", password: "password123"} } ) }
-                />
-            </div>
-
-
-            <div className="authform-buttonwrapper">
-              <h3 className="authform-subheader">{secondaryPrompt}</h3>
-              <RaisedButton
-                label={secondaryActionText}
-                fullWidth={false}
-                secondary={true}
-                onTouchTap={this.handleToggleFormType}
-                />
-            </div>
           </form>
         </Dialog>
       </div>
@@ -100,3 +114,5 @@ class WishlistForm extends React.Component {
     );
   }
 }
+
+export default WishlistForm;

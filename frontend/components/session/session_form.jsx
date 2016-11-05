@@ -84,7 +84,7 @@ class SessionForm extends React.Component {
 
             <form onSubmit={this.handleSubmit} className="login-form-box">
 
-              <h2 className="authform-header">{primaryActionText}</h2>
+              <h2 className="form-header">{primaryActionText}</h2>
 
   						<TextField
                 value={this.state.username}
@@ -105,7 +105,7 @@ class SessionForm extends React.Component {
                 errorText={this.props.errors.password === undefined ? "" : this.props.errors.password.join(", ")}
               />
 
-            <div className="authform-buttonwrapper">
+            <div className="buttonwrapper">
               <RaisedButton
                 type="submit"
                 label={primaryActionText}
@@ -114,7 +114,7 @@ class SessionForm extends React.Component {
               />
               </div>
 
-						<div className="authform-buttonwrapper">
+						<div className="buttonwrapper">
               <RaisedButton
                 label="Use guest login"
                 fullWidth={true}
@@ -124,7 +124,7 @@ class SessionForm extends React.Component {
             </div>
 
 
-              <div className="authform-buttonwrapper">
+              <div className="buttonwrapper">
               <h3 className="authform-subheader">{secondaryPrompt}</h3>
               <RaisedButton
                 label={secondaryActionText}

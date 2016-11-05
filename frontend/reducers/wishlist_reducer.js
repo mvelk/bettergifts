@@ -6,7 +6,7 @@ import { RECEIVE_MY_WISHLIST,
 import { merge } from 'lodash';
 
 
-export default (oldState = { myWishlists: [], friendsWishlists: [], upcomingWishlists: [] }, action) => {
+export default (oldState = { myWishlists: [], friendsWishlists: [], upcomingWishlists: [], errors: {} }, action) => {
   Object.freeze(oldState);
   let newState;
   console.log(action.type);

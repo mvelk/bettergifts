@@ -4,6 +4,8 @@ import { fetchAllMyWishlists,
          fetchAllUpcomingWishlists,
          deleteWishlist,
          createNewWishlist } from '../../actions/wishlist_actions';
+import { openWishlistFormModal,
+         closeWishlistFormModal } from '../../actions/modals_actions';
 import WishlistIndex from './wishlist_index';
 
 const mapStateToProps = ({wishlists, modals, session}) => ({
@@ -11,7 +13,8 @@ const mapStateToProps = ({wishlists, modals, session}) => ({
   friendsWishlists: wishlists.friendsWishlists,
   upcomingWishlists: wishlists.upcomingWishlists,
   wishlistModalOpen: modals.wishlist,
-  currentUser: session.currentUser
+  currentUser: session.currentUser,
+  errors: wishlists.errors
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -19,7 +22,10 @@ const mapDispatchToProps = dispatch => ({
   fetchAllFriendsWishlists: () => dispatch(fetchAllFriendsWishlists()),
   fetchAllUpcomingWishlists: () => dispatch(fetchAllUpcomingWishlists()),
   deleteWishlist: id => dispatch(deleteWishlist(id)),
-  createNewWishlist: wishlist => dispatch(createNewWishlist(wishlist))
+  createNewWishlist: wishlist => dispatch(createNewWishlist(wishlist)),
+  openWishlistFormModal: () => dispatch(openWishlistFormModal()),
+  closeWishlistFormModal: () => dispatch(closeWishlistFormModal()),
+
 });
 
 export default connect(
