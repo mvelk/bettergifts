@@ -10,7 +10,7 @@ class WishlistForm extends React.Component {
 		super(props);
 		this.state = {
       title: '',
-      event_date: '2016-12-25',
+      event_date: new Date(),
       wisher_id: this.props.currentUser.id,
       description: '',
       image_url: '',
@@ -30,8 +30,13 @@ class WishlistForm extends React.Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		if (this.state.formType === 'create') {
-			let wishlist = this.state;
-			delete wishlist['formType'];
+			let wishlist = {
+				title: this.state.title,
+				event_date: this.state.event_date,
+				wisher_id: this.state.wisher_id,
+				description: this.state.description,
+				image_url: this.state.image_url
+			};
 			this.props.createNewWishlist(wishlist);
 		} else {
 			console.log("eventually this will be edit action");
@@ -61,7 +66,7 @@ class WishlistForm extends React.Component {
     if (this.state.formType === "create") {
       actionText = "Create wishlist";
     } else {
-      actionText = "Sign up";
+      actionText = "Edit wishlist";
     }
 
     return (

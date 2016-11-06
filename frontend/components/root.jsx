@@ -10,6 +10,8 @@ import WishlistShowContainer from './wishlist_show/wishlist_show_container';
 // Material UI included in React
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
+import { fetchWishlistDetail } from '../actions/wishlist_detail_actions';
+
 // Material UI dependencies
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui';
@@ -51,20 +53,25 @@ const muiTheme = getMuiTheme({
   }
 });
 
+//<Route path="/wishlists/:wishlistId" component={WishlistShowContainer} onEnter={requestWishlistDetailOnEnter} />
 
+const Root = ({ store }) => {
 
-const Root = ({ store }) => (
-  <MuiThemeProvider muiTheme={muiTheme}>
-    <Provider store={store}>
-      <Router history={hashHistory}>
-        <Route path="/" component={App}>
-          <IndexRoute component={SplashContainer} />
-          <Route path="/wishlists" component={WishlistIndexContainer} />
-          <Route path="/wishlists/:wishlistId" component={WishlistShowContainer} />
-        </Route>
-      </Router>
-    </Provider>
-  </MuiThemeProvider>
-);
+  const requestWishlistDetailOnEnter = nextState => {
+		store.dispatch(fetchWishlistDetail(nextState.params.wishlistId));
+	};
+  return (
+    <MuiThemeProvider muiTheme={muiTheme}>
+      <Provider store={store}>
+        <Router history={hashHistory}>
+          <Route path="/" component={App}>
+            <IndexRoute component={SplashContainer} />
+            <Route path="/wishlists/:slideIndex" component={WishlistIndexContainer} />
+          </Route>
+        </Router>
+      </Provider>
+    </MuiThemeProvider>
+  );
+};
 
 export default Root;

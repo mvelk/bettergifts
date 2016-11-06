@@ -4,7 +4,6 @@ import { fetchWishlistDetail, createWishlistItem, deleteWishlistItem } from '../
 import WishlistShow from './wishlist_show';
 
 const mapStateToProps = state => {
-  console.log(state.wishlistDetail);
   return ({
     wishlistDetail: state.wishlistDetail,
     currentUser: state.session.currentUser

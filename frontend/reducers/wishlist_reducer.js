@@ -15,6 +15,7 @@ export default (oldState = { myWishlists: [], friendsWishlists: [], upcomingWish
     case RECEIVE_MY_WISHLIST:
       newState = merge({}, oldState);
       newState.myWishlists.push(action.myWishlist);
+      console.log(newState);
       return newState;
     case RECEIVE_ALL_MY_WISHLISTS:
       newState = merge({}, oldState, { myWishlists: action.myWishlists });

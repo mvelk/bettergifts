@@ -9,6 +9,8 @@ import { receiveMyWishlist,
          CREATE_NEW_WISHLIST,
          DELETE_WISHLIST  } from '../actions/wishlist_actions';
 
+import { closeWishlistFormModal } from '../actions/modals_actions';
+
 import { fetchAllMyWishlists,
          fetchAllFriendsWishlists,
          fetchAllUpcomingWishlists,
@@ -20,6 +22,7 @@ export default ({dispatch}) => next => action => {
     console.log(err.responseJSON);
   };
   const successCallback1 = (myWishlist) => {
+    dispatch(closeWishlistFormModal());
     dispatch(receiveMyWishlist(myWishlist));
   };
   const successCallback2 = (myWishlists) => {

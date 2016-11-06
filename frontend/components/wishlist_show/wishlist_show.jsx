@@ -24,19 +24,20 @@ const styles = {
   },
 };
 
-class WishlistShow extends React.Component {
+export default class WishlistShow extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  componentDidMount() {
-    console.log(this.props.params.wishlistId);
-    if (this.props.params.wishlistId) {
-      this.props.fetchWishlistDetail(this.props.params.wishlistId);
+  componentWillReceiveProps(nextProps) {
+    console.log('we received props');
+    console.log(nextProps.params['wishlistId']);
+    if (nextProps.params['wishlistId']) {
+      this.props.fetchWishlistDetail(nextProps.params['wishlistId']);
     }
   }
 
-  add_item_button() {
+  addItemButton() {
     if (this.props.wishlistDetail.wisher.id === this.props.currentUser.id) {
       return (
         <div className="wishlist-show_actions">
@@ -66,6 +67,7 @@ class WishlistShow extends React.Component {
     }
   }
   render() {
+    console.log('rendering');
     console.log(this.props.wishlistDetail);
     if (this.props.wishlistDetail.id === undefined) {
       return (
@@ -77,10 +79,28 @@ class WishlistShow extends React.Component {
       );
     } else {
       return(
-        <h1>we made it</h1>
+        <div>
+          <section className="wishlist-show-heading content-wrapper">
+            <div className="wishlist-show-heading-content">
+              <Avatar size={70} src={this.props.wishlistDetail.wisher.image_url} style={styles.avatar} />
+              <hgroup>
+                <h2 style={styles.headline}>{this.props.wishlistDetail.title}</h2>
+                <p>{this.props.wishlistDetail.wisher.username}&#8217; wishlists</p>
+                <p>{this.props.wishlistDetail.description}</p>
+                <p>{this.props.wishlistDetail.event_date}</p>
+              </hgroup>
+            </div>
+
+            {this.addItemButton()}
+
+          </section>
+          <section className="wishlist-index-items content-wrapper">
+            {this.props.wishlistDetail.items.map((item, idx) => (
+              <WishlistShowItem product={this.props.wishlistDetail.products[idx]} item={item} key={idx} />
+            ))}
+          </section>
+        </div>
       );
     }
   }
 }
-
-export default WishlistShow;

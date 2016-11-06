@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
       session: {currentUser: window.currentUser, errors: {} },
       modals: { auth: false, side: false, wishlist: false },
       wishlists: { myWishlists: [], friendsWishlists: [], upcomingWishlists: [], errors: {} },
-      wishlistDetail: {}
+      wishlistDetail: { items: [] }
     };
     store = configureStore(preloadedState);
   } else {

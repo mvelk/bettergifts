@@ -26,9 +26,6 @@ export default ({wishlist, type}) => {
   return (
     <div className='wishlist-index-item-container'
          style={styles.itemContainer}>
-         <div className="top-right" >
-           <FontIcon className="material-icons" style={{ fontSize: 48, }} color='#fff'>favorite</FontIcon>
-         </div>
       <h3>{wishlist.title}</h3>
 
       {wisherDetails()}

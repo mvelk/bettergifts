@@ -30,9 +30,15 @@ class WishlistIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      slideIndex: 0,
+      slideIndex: parseInt(this.props.params['slideIndex']),
     };
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      slideIndex: parseInt(nextProps.params['slideIndex'])
+    });
   }
 
   handleChange(value) {

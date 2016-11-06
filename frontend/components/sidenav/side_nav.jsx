@@ -31,9 +31,9 @@ const Nav = ({currentUser, sideDrawerOpen, closeSideDrawer, openSideDrawer}) => 
       />
       <Menu>
         <MenuItem leftIcon={<i className="material-icons">home</i>} primaryText="Home" onTouchTap={ handleClick("/") } />
-        <MenuItem leftIcon={<i className="material-icons">list</i>} primaryText="My Wishlists" onTouchTap={ handleClick("/wishlists") } />
-        <MenuItem leftIcon={<i className="material-icons">list</i>} primaryText="Friends Wishlists" onTouchTap={ handleClick("/friends-wishlists") } />
-        <MenuItem leftIcon={<i className="material-icons">event</i>} primaryText="Upcoming Events" onTouchTap={ handleClick("/upcoming-wishlists") } />
+        <MenuItem leftIcon={<i className="material-icons">list</i>} primaryText="My Wishlists" onTouchTap={ handleClick("/wishlists/0") } />
+        <MenuItem leftIcon={<i className="material-icons">list</i>} primaryText="Friends Wishlists" onTouchTap={ handleClick("/wishlists/1") } />
+        <MenuItem leftIcon={<i className="material-icons">event</i>} primaryText="Upcoming Events" onTouchTap={ handleClick("/wishlists/2") } />
         <MenuItem leftIcon={<i className="material-icons">people</i>} primaryText="Friends" onTouchTap={ handleClick("/friends") } />
         <MenuItem leftIcon={<i className="material-icons">search</i>} primaryText="Find Products" onTouchTap={ handleClick("/upcoming-wishlists") } />
         <MenuItem leftIcon={<i className="material-icons">shopping cart</i>} primaryText="Past Purchases" onTouchTap={ handleClick("/past-purchases") } />
@@ -43,6 +43,7 @@ const Nav = ({currentUser, sideDrawerOpen, closeSideDrawer, openSideDrawer}) => 
         <MenuItem primaryText="Twitter" onTouchTap={ closeSideDrawer } />
       </Menu>
     </Drawer>
-)};
+  );
+};
 
 export default Nav;

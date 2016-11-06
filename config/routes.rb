@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :wishlists, only: [:index, :show, :destroy, :create]
     get '/friends-wishlists' => 'wishlists#friends_index'
     get '/upcoming-wishlists' => 'wishlists#upcoming_index'
+    post '/product-search' => 'product_search#keyword_search'
   end
 end
