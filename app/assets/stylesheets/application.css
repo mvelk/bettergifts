@@ -120,7 +120,7 @@
 
 .hero-section {
   width: 100%;
-  height: 600px;
+  height: 700px;
   background-image: url("http://res.cloudinary.com/dkpumd3gf/image/upload/c_scale,h_1160,w_1920/v1478119480/gift-photo_hwwamf.jpg");
   background-size: cover;
   display: flex;
@@ -215,7 +215,8 @@
 }
 
 .wishlist-index-heading {
-  margin-top: 50px;
+  margin-top: 25px;
+  margin-bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;

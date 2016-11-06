@@ -1,4 +1,3 @@
 node_modules/
 bundle.js
 bundle.js.map
-app/controllers/api/product_search_controller.rb

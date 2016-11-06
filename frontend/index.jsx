@@ -9,6 +9,10 @@ import { fetchAllMyWishlists,
          deleteWishlist,
          createNewWishlist } from './actions/wishlist_actions';
 import { fetchWishlistDetail } from './actions/wishlist_detail_actions';
+import { searchProductsByKeyword } from './util/product_api_util';
+
+const success = (products) => { console.log(products); };
+const errors = (err) => { console.log(err.responseJSON); };
 
 document.addEventListener('DOMContentLoaded', () => {
   const rootEl = document.getElementById('root');
@@ -18,12 +22,14 @@ document.addEventListener('DOMContentLoaded', () => {
       session: {currentUser: window.currentUser, errors: {} },
       modals: { auth: false, side: false, wishlist: false },
       wishlists: { myWishlists: [], friendsWishlists: [], upcomingWishlists: [], errors: {} },
-      wishlistDetail: { items: [] }
+      wishlistDetail: { items: [] },
+      products: []
     };
     store = configureStore(preloadedState);
   } else {
     store = configureStore();
   }
+
   window.fetchAllMyWishlists = fetchAllMyWishlists;
   window.fetchAllFriendsWishlists = fetchAllFriendsWishlists;
   window.fetchAllUpcomingWishlists = fetchAllUpcomingWishlists;
@@ -31,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.deleteWishlist = deleteWishlist;
   window.createNewWishlist = createNewWishlist;
   window.logout = logout;
+  window.searchProductsByKeyword = searchProductsByKeyword;
   window.store = store;
   ReactDOM.render(<Root store={store} />, rootEl);
 });
