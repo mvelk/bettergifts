@@ -4,6 +4,7 @@ json.array! @response_collection do |response|
   json.largeImage response['LargeImage']
   json.imageSets response['ImageSets']
   json.itemAttributes do
+    json.title response['ItemAttributes']['Title']
     json.brand response['ItemAttributes']['Brand']
     json.color response['ItemAttributes']['Color']
     json.feature response['ItemAttributes']['Feature']

@@ -1,5 +1,6 @@
 import React from 'react';
-import { SpringGrid } from 'react-stonecutter';
+import { CSSGrid, measureItems, makeResponsive, layout } from 'react-stonecutter';
+
 import TextField from 'material-ui/TextField';
 import IconButton from 'material-ui/IconButton';
 
@@ -23,11 +24,26 @@ class ProductGallery extends React.Component {
 		this.props.searchProductsByKeyword(this.state.keywords);
 	}
 
+  generateItemCards() {
+    return(
+    this.props.products.map((product, idx) => {
+      if (product.largeImage['URL']) {
+        console.log(product.largeImage['URL']);
+        return(<li key={idx}><img src={product.largeImage['URL']} width='200px' /></li>);
+      }
+    }));
+  }
+
   render() {
-    console.log(this.props.products);
+    const Grid = makeResponsive(measureItems(CSSGrid), {
+      maxWidth: 1920,
+      minPadding: 100,
+      measureImages: true
+
+    });
     return (
 
-      <div>
+      <div className="content-wrapper">
         <form onSubmit={this.handleSubmit} className="search-form-box">
 
           <TextField
@@ -43,21 +59,20 @@ class ProductGallery extends React.Component {
 
         </form>
 
-        <SpringGrid
+        <Grid
           component="ul"
           columns={5}
-          columnWidth={150}
+          columnWidth={200}
           gutterWidth={5}
           gutterHeight={5}
-          itemHeight={200}
           springConfig={{ stiffness: 170, damping: 26 }}
+          duration={800}
+          easing="ease-out"
         >
 
-        {this.props.products.map((product, idx) => (
-          <li key={idx}><img src={product.largeImage} height="250px" /></li>
-        ))}
+        {this.generateItemCards()}
 
-        </SpringGrid>
+        </Grid>
 
       </div>
 
