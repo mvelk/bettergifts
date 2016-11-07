@@ -10,8 +10,16 @@ import { fetchAllMyWishlists,
          createNewWishlist } from './actions/wishlist_actions';
 import { fetchWishlistDetail } from './actions/wishlist_detail_actions';
 import { searchProductsByKeyword } from './util/product_api_util';
+import {
+  fetchFriendsList,
+  fetchPendingRequests,
+  getFriendshipStatus,
+  addFriend,
+  updateFriendship,
+  unfriend
+} from './util/friends_api_util';
 
-const success = (products) => { console.log(products); };
+const success = (data) => { console.log(data); };
 const errors = (err) => { console.log(err.responseJSON); };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -29,15 +37,14 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     store = configureStore();
   }
-
-  window.fetchAllMyWishlists = fetchAllMyWishlists;
-  window.fetchAllFriendsWishlists = fetchAllFriendsWishlists;
-  window.fetchAllUpcomingWishlists = fetchAllUpcomingWishlists;
-  window.fetchWishlistDetail = fetchWishlistDetail;
-  window.deleteWishlist = deleteWishlist;
-  window.createNewWishlist = createNewWishlist;
-  window.logout = logout;
-  window.searchProductsByKeyword = searchProductsByKeyword;
+  window.success = success;
+  window.errors = errors;
+  window.fetchFriendsList = fetchFriendsList;
+  window.fetchPendingRequests = fetchPendingRequests;
+  window.getFriendshipStatus = getFriendshipStatus;
+  window.addFriend = addFriend;
+  window.updateFriendship = updateFriendship;
+  window.unfriend = unfriend;
   window.store = store;
   ReactDOM.render(<Root store={store} />, rootEl);
 });

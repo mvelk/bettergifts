@@ -15,7 +15,10 @@ class Api::WishlistsController < ApplicationController
 
   def upcoming_index
     some_date = Time.now
-    my_circle = Friendship.select(:friend_id).where(user_id: current_user.id).where(status: 1).map(&:friend_id)
+    current_user_id = current_user.id
+    friends_ids_one = Friendship.select(:user_one_id).where(user_two_id: current_user_id).where(status: 1).map(&:user_one_id)
+    friends_ids_two = Friendship.select(:user_two_id).where(user_one_id: current_user_id).where(status: 1).map(&:user_two_id)
+    my_circle = friends_ids_one.concat(friends_ids_two).uniq
     my_circle.push(current_user.id)
     @wishlists = Wishlist
                  .where(wisher_id: my_circle)
