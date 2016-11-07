@@ -10,6 +10,6 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 class Friendship < ApplicationRecord
-  validates :user_id, :friend_id, :status, :action_user_id, presence: true
-  validates :user_id, uniqueness: { scope: :friend_id, message: "cannot have multiple relationships with a user" }
+  validates :user_one_id, :user_two_id, :status, :action_user_id, presence: true
+  validates :user_one_id, uniqueness: { scope: :user_two_id, message: "user pair can only have one relationship" }
 end

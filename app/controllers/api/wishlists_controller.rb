@@ -7,7 +7,6 @@ class Api::WishlistsController < ApplicationController
     friends_ids = Friendship.select(:friend_id).where(user_id: current_user.id).where(status: 1).map(&:friend_id)
     @wishlists = Wishlist.all.where(wisher_id: friends_ids).where(archived: false).includes(:items).includes(:wisher)
     render :index
-
   end
 
   def upcoming_index

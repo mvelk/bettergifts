@@ -16,16 +16,15 @@ ActiveRecord::Schema.define(version: 20161103160646) do
   enable_extension "plpgsql"
 
   create_table "friendships", force: :cascade do |t|
-    t.integer  "user_id",        null: false
-    t.integer  "friend_id",      null: false
+    t.integer  "user_one_id",    null: false
+    t.integer  "user_two_id",    null: false
     t.integer  "status",         null: false
     t.integer  "action_user_id", null: false
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.index ["action_user_id"], name: "index_friendships_on_action_user_id", using: :btree
-    t.index ["friend_id"], name: "index_friendships_on_friend_id", using: :btree
-    t.index ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id", unique: true, using: :btree
-    t.index ["user_id"], name: "index_friendships_on_user_id", using: :btree
+    t.index ["user_one_id"], name: "index_friendships_on_user_one_id", using: :btree
+    t.index ["user_two_id"], name: "index_friendships_on_user_two_id", using: :btree
   end
 
   create_table "products", force: :cascade do |t|
