@@ -4,7 +4,9 @@ class Api::ProductSearchController < ApplicationController
   def keyword_search
     request = Vacuum.new
     request.configure(
-
+      aws_access_key_id: 'AKIAIIFHBD5ALSBKIONA',
+      aws_secret_access_key: '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',
+      associate_tag: 'bettergifts-io-20'
     )
     response_group = %w(ItemAttributes Images).join(',')
 

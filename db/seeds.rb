@@ -27,5 +27,4 @@ WishlistItem.create({wishlist_id: 1, product_id: 3, purchaser_id: 3})
 WishlistItem.create({wishlist_id: 2, product_id: 1})
 
 sleep(2)
-Friendship.create({user_id: 2, friend_id: 3, status: 1, action_user_id: 2})
-Friendship.create({user_id: 3, friend_id: 2, status: 1, action_user_id: 2})
+Friendship.create({user_one_id: 2, user_two_id: 3, status: 1, action_user_id: 2})
