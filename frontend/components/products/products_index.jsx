@@ -63,6 +63,7 @@ class ProductGallery extends React.Component {
           component="ul"
           columns={5}
           columnWidth={200}
+          itemHeight={150}
           gutterWidth={5}
           gutterHeight={5}
           springConfig={{ stiffness: 170, damping: 26 }}

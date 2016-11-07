@@ -125,10 +125,10 @@ class Api::FriendshipsController < ApplicationController
   def friends_list
     user_id = params[:friendship][:user_one_id]
     friendships = Friendship.all.where('(user_one_id = ? OR user_two_id = ?) AND (status = 1)', user_id, user_id)
-    user_ones = friendships.map(&:user_one_id).uniq
-    user_twos = friendships.map(&:user_two_id).uniq
+    user_ones = friendships.map(&:user_one).uniq
+    user_twos = friendships.map(&:user_two).uniq
     friends = user_ones.concat(user_twos)
-    friends.delete(user_id)
+    friends.delete_if { |friend| friend.id == user_id }
     render json: friends
   end
 
@@ -136,11 +136,26 @@ class Api::FriendshipsController < ApplicationController
   def pending_requests
     user_id = params[:user_id]
     friendships = Friendship.all.where('(user_one_id = ? OR user_two_id = ?) AND (status = 0)', user_id, user_id)
-    user_ones = friendships.map(&:user_one_id).uniq
-    user_twos = friendships.map(&:user_two_id).uniq
+    user_ones = friendships.map(&:user_one).uniq
+    user_twos = friendships.map(&:user_two).uniq
     friends = user_ones.concat(user_twos)
     friends.delete(user_id)
     render json: friends
+  end
+
+  def remove_friend
+    user_one_id = params[:friendship][:user_one_id]
+    user_two_id = params[:friendship][:user_two_id]
+
+    smaller_user_id = user_one_id < user_two_id ? user_one_id : user_two_id
+    larger_user_id = user_one_id > user_two_id ? user_one_id : user_two_id
+
+    friendship = Friendship.all.where('user_one_id = ? AND user_two_id = ? AND status = 1', smaller_user_id, larger_user_id)
+    if friendship.destroy
+      render json: friendship
+    else
+      render json: "failed to remove friend", status: 400
+    end
   end
 
 end

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     post '/add-friend' => 'friendships#friend_request'
     patch '/update-friendship' => 'friendships#update_friend_request'
     post '/friendship-status' => 'friendships#check_friendship'
-
+    delete '/remove-friend' => 'friendships#remove_friend'
 
   end
 end
