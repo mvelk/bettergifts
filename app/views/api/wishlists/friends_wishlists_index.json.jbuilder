@@ -1,4 +1,3 @@
-require 'Date'
 json.array! (@wishlists) do |wishlist|
   json.id wishlist.id
   json.title wishlist.title
