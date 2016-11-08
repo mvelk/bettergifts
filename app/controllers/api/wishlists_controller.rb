@@ -7,8 +7,8 @@ class Api::WishlistsController < ApplicationController
     current_user_id = current_user.id
     friends_ids_one = Friendship.select(:user_one_id).where(user_two_id: current_user_id).where(status: 1).map(&:user_one_id)
     friends_ids_two = Friendship.select(:user_two_id).where(user_one_id: current_user_id).where(status: 1).map(&:user_two_id)
-    friends_ids = friends_ids_one.concat(friends_ids_two).uniq
-    friends.delete(current_user_id)
+    friends_ids = friends_ids_one.concat(friends_ids_two)
+    friends_ids.delete(current_user_id)
     @wishlists = Wishlist.all.where(wisher_id: friends_ids).where(archived: false).includes(:items).includes(:wisher)
     render :index
   end

@@ -7,6 +7,7 @@ import SplashContainer from './splash/splash_container';
 import WishlistIndexContainer from './wishlist_index/wishlist_index_container';
 import WishlistShowContainer from './wishlist_show/wishlist_show_container';
 import ProductsSearchContainer from './products/products_search_container';
+import FriendsIndexContainer from './friends/friends_index_container';
 
 // Hacky material UI fix for React, will be deprecated once
 // Material UI included in React
@@ -69,7 +70,9 @@ const Root = ({ store }) => {
           <Route path="/" component={App}>
             <IndexRoute component={SplashContainer} />
             <Route path="/wishlists/:slideIndex" component={WishlistIndexContainer} />
+            <Route path="/wishlist/:wishlistId" component={WishlistShowContainer} />
             <Route path="/products" component={ProductsSearchContainer} />
+            <Route path="/friends" component={FriendsIndexContainer} />
           </Route>
         </Router>
       </Provider>

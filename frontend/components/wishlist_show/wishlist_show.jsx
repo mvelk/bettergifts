@@ -1,15 +1,11 @@
 import React from 'react';
-import {Tabs, Tab} from 'material-ui/Tabs';
 import Avatar from 'material-ui/Avatar';
 import RaisedButton from 'material-ui/RaisedButton';
-import { blue900 } from 'material-ui/styles/colors';
 import WishlistShowItem from './wishlist_show_item';
 import CircularProgress from 'material-ui/CircularProgress';
 
 const styles = {
-  tab: {
-    backgroundColor: blue900
-  },
+
   headline: {
     fontSize: 24,
     paddingTop: 16,
@@ -24,17 +20,13 @@ const styles = {
   },
 };
 
-export default class WishlistShow extends React.Component {
+class WishlistShow extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log('we received props');
-    console.log(nextProps.params['wishlistId']);
-    if (nextProps.params['wishlistId']) {
-      this.props.fetchWishlistDetail(nextProps.params['wishlistId']);
-    }
+  componentDidMount() {
+    this.props.fetchWishlistDetail(this.props.params.wishlistId);
   }
 
   addItemButton() {
@@ -67,8 +59,6 @@ export default class WishlistShow extends React.Component {
     }
   }
   render() {
-    console.log('rendering');
-    console.log(this.props.wishlistDetail);
     if (this.props.wishlistDetail.id === undefined) {
       return (
 
@@ -94,13 +84,11 @@ export default class WishlistShow extends React.Component {
             {this.addItemButton()}
 
           </section>
-          <section className="wishlist-index-items content-wrapper">
-            {this.props.wishlistDetail.items.map((item, idx) => (
-              <WishlistShowItem product={this.props.wishlistDetail.products[idx]} item={item} key={idx} />
-            ))}
-          </section>
+
         </div>
       );
     }
   }
 }
+
+export default WishlistShow;

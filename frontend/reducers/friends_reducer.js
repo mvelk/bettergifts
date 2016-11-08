@@ -4,15 +4,18 @@ import {
   RECEIVE_FRIEND,
   REMOVE_FRIEND,
   REMOVE_PENDING_REQUEST,
-  RECEIVE_FRIEND_STATUS } from "../actions/product_actions";
+  RECEIVE_FRIEND_STATUS } from "../actions/friends_actions";
 
 import { merge } from 'lodash';
 
 export default (oldState = { friends: [], pendingRequests: [], friendStatus: {}}, action) => {
+  Object.freeze(oldState);
   console.log(action);
   let newState;
   let newFriends;
   let newPendingRequests;
+  let targetId;
+  let index;
   switch(action.type) {
 
     case RECEIVE_FRIENDS_LIST:
@@ -24,15 +27,12 @@ export default (oldState = { friends: [], pendingRequests: [], friendStatus: {}}
       return newState;
 
     case RECEIVE_FRIEND:
-      newFriends = [
-        ...oldState.friends,
-        action.friend
-      ];
-      newState = merge({}, oldState, { friends: newFriends });
-
+      newState = merge({}, oldState);
+      newState.friends.push(action.friend);
+      return newState;
     case REMOVE_FRIEND:
-      let targetId = action.userId;
-      let index = -1;
+      targetId = action.userId;
+      index = -1;
       for (let i = 0; i < oldState.friends.length; i++) {
         if (oldState.friends[i].id === targetId) {
           index = i;
@@ -51,10 +51,9 @@ export default (oldState = { friends: [], pendingRequests: [], friendStatus: {}}
       }
 
     case REMOVE_PENDING_REQUEST:
-      let targetId = action.userId;
-      let index = -1;
+      index = -1;
       for (let i = 0; i < oldState.pendingRequests.length; i++) {
-        if (oldState.pendingRequests[i].id === targetId) {
+        if (oldState.pendingRequests[i].id == action.friendship.user_one_id || oldState.pendingRequests[i].id == action.friendship.user_two_id) {
           index = i;
           break;
         }
@@ -62,13 +61,14 @@ export default (oldState = { friends: [], pendingRequests: [], friendStatus: {}}
       if (index === -1) {
         return oldState;
       } else {
-        newPendingRequests = [
-          ...oldState.pendingRequests.slice(0, index),
-          ...oldState.pendingRequests.slice(index + 1)
-        ];
-        newState = merge({}, oldState, { pendingRequests: newPendingRequests });
+        newPendingRequests = [...oldState.pendingRequests];
+        newPendingRequests.splice(index, 1);
+        newState = merge({}, oldState);
+        newState.pendingRequests = newPendingRequests;
+        debugger;
         return newState;
       }
+
 
     case RECEIVE_FRIEND_STATUS:
       newState = merge({}, oldState, { friendStatus: action.friendStatus });

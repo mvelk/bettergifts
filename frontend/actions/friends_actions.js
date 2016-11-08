@@ -82,9 +82,9 @@ export const removeFriend = (userId) => ({
   userId
 });
 
-export const removePendingRequest = (userId) => ({
+export const removePendingRequest = (friendship) => ({
   type: REMOVE_PENDING_REQUEST,
-  userId
+  friendship
 });
 
 export const receiveFriendStatus = (friendStatus) => ({

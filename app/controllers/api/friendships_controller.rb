@@ -2,7 +2,7 @@ class Api::FriendshipsController < ApplicationController
   # create
   def friend_request
     current_user_id = current_user.id
-    friend_id = params[:friend_id]
+    friend_id = params[:friend_id].to_i
     action_user_id = current_user.id
 
     smaller_user_id = current_user_id < friend_id ? current_user_id : friend_id
@@ -59,13 +59,13 @@ class Api::FriendshipsController < ApplicationController
 
   # update1
   def update_friend_request
-    new_status = params[:status]
+    new_status = params[:status].to_i
     if new_status == 0
       render json: 'cannot change status to pending', status: 400
     end
 
     current_user_id = current_user.id
-    friend_id = params[:friend_id]
+    friend_id = params[:friend_id].to_i
 
     smaller_user_id = current_user_id < friend_id ? current_user_id : friend_id
     larger_user_id = current_user_id > friend_id ? current_user_id : friend_id
@@ -75,10 +75,19 @@ class Api::FriendshipsController < ApplicationController
         larger_user_id
       ).first
 
-    render json: 'no friendship record found', status: 400 unless friendship
+    unless friendship
+      render json: 'no friendship record found', status: 400
+    end
 
     if friendship.update(status: new_status)
-      render json: friendship
+      if (new_status == 1)
+        render json: {
+          friend: User.find(friend_id),
+          friendship: friendship
+        }
+      else
+        render json: friendship
+      end
     else
       render json: friendship.errors, status: 400
     end
@@ -119,7 +128,7 @@ class Api::FriendshipsController < ApplicationController
 
   #index1
   def friends_list
-    user_id = params[:user_id]
+    user_id = params[:user_id].to_i
     friendships = Friendship.all.where('(user_one_id = ? OR user_two_id = ?) AND (status = 1)', user_id, user_id)
     user_ones = friendships.map(&:user_one)
     user_twos = friendships.map(&:user_two)
@@ -130,7 +139,7 @@ class Api::FriendshipsController < ApplicationController
 
   #index2
   def pending_requests
-    user_id = params[:user_id]
+    user_id = params[:user_id].to_i
     friendships = Friendship.all.where('(user_one_id = ? OR user_two_id = ?) AND (status = 0)', user_id, user_id)
     user_ones = friendships.map(&:user_one)
     user_twos = friendships.map(&:user_two)
@@ -141,7 +150,7 @@ class Api::FriendshipsController < ApplicationController
 
   def remove_friend
     current_user_id = current_user.id
-    friend_id = params[:friend_id]
+    friend_id = params[:friend_id].to_i
 
     smaller_user_id = current_user_id < friend_id ? current_user_id : friend_id
     larger_user_id = current_user_id > friend_id ? current_user_id : friend_id

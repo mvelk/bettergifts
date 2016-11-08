@@ -42,7 +42,7 @@ export const updateFriendship = (friendId, status, success, error) => {
   $.ajax({
     method: 'patch',
     url: '/api/update-friendship',
-    data: { friendId: friendId, status: status },
+    data: { friend_id: friendId, status: status },
     success,
     error
   });

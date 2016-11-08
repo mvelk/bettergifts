@@ -17,11 +17,10 @@ import { fetchWishlistDetail,
 export default ({dispatch}) => next => action => {
   console.log(action);
   const errorCallback = (err) => {
-    console.log("silly errors");
     console.log(err.responseJSON);
   };
 
-  const successCallback6 = (wishlistDetail) => {
+  const receiveWishlistDetailCallback = (wishlistDetail) => {
     console.log("great success");
     console.log(wishlistDetail);
     dispatch(receiveWishlistDetail(wishlistDetail));
@@ -29,19 +28,7 @@ export default ({dispatch}) => next => action => {
 
   switch(action.type) {
     case FETCH_WISHLIST_DETAIL:
-      dispatch(fetchWishlistDetail(action.wishlistId,
-                                   successCallback6,
-                                   errorCallback));
-      return next(action);
-    case CREATE_WISHLIST_ITEM:
-      dispatch(createWishlistItem(action.wishlistItem,
-                                  successCallback6,
-                                  errorCallback));
-      return next(action);
-    case DELETE_WISHLIST_ITEM:
-      dispatch(deleteWishlistItem(action.id,
-                                  successCallback6,
-                                  errorCallback));
+      fetchWishlistDetail(action.wishlistId, receiveWishlistDetailCallback, errorCallback);
       return next(action);
     default:
       return next(action);

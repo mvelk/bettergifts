@@ -9,20 +9,15 @@ import { merge } from 'lodash';
 export default (oldState = { myWishlists: [], friendsWishlists: [], upcomingWishlists: [], errors: {} }, action) => {
   Object.freeze(oldState);
   let newState;
-  console.log(action.type);
-  console.log(RECEIVE_ALL_MY_WISHLISTS === "RECEIVE_ALL_MY_WISHLISTS");
   switch(action.type) {
     case RECEIVE_MY_WISHLIST:
       newState = merge({}, oldState);
       newState.myWishlists.push(action.myWishlist);
-      console.log(newState);
       return newState;
     case RECEIVE_ALL_MY_WISHLISTS:
       newState = merge({}, oldState, { myWishlists: action.myWishlists });
       return newState;
     case RECEIVE_ALL_FRIENDS_WISHLISTS:
-      console.log("we made it to the receiver");
-      console.log(action.myWishlist);
       newState = merge({}, oldState, { friendsWishlists: action.friendsWishlists });
       return newState;
     case RECEIVE_ALL_UPCOMING_WISHLISTS:

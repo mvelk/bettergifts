@@ -44,7 +44,7 @@ export default ({wishlist, type}) => {
       <RaisedButton
         label={`${wishlist.num_items} wishes`}
         primary={true}
-        onTouchTap={ () => hashHistory.push(`/wishlists/${wishlist.id}`) }
+        onTouchTap={ () => hashHistory.push(`/wishlist/${wishlist.id}`) }
       />
     </div>
 
