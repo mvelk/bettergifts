@@ -25,26 +25,30 @@ export default ({wishlist, type}) => {
   };
   return (
     <div className='wishlist-index-item-container'>
-      <h3>{wishlist.title}</h3>
+      <div className="index-item-image" style={styles.itemImage} />
+      <div className="index-item-card">
+        <h3 className="index-item-card-title">{wishlist.title}</h3>
 
-      {wisherDetails()}
+        {wisherDetails()}
 
-      <p>
-        <i className="material-icons">people</i>
-        {wishlist.num_purchasers} friends gifting
-      </p>
+        <p className="index-item-card-info">
+          <i className="material-icons md-24 index-item-card-icon">people</i>
+          {wishlist.num_purchasers} friends gifting
+        </p>
 
+        <p className="index-item-card-info">
+          <i className="material-icons md-24 index-item-card-icon">event_note</i>
+          {wishlist.event_date}
+        </p>
 
-
-      <p>
-        <i className="material-icons">event_note</i>
-        {wishlist.event_date}
-      </p>
-      <RaisedButton
-        label={`${wishlist.num_items} wishes`}
-        primary={true}
-        onTouchTap={ () => hashHistory.push(`/wishlist/${wishlist.id}`) }
-      />
+        <div className="index-item-card-button-spacer">
+          <RaisedButton
+            label={`${wishlist.num_items} wishes`}
+            primary={true}
+            onTouchTap={ () => hashHistory.push(`/wishlist/${wishlist.id}`) }
+            />
+        </div>
+      </div>
     </div>
 
   );
