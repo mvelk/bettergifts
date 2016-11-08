@@ -18,7 +18,7 @@ export default ({wishlist, type}) => {
     } else {
       return (
         <div className="wisher-details">
-          <p><Avatar size={30} src={wishlist.wisher_picture} /> {wishlist.wisher_name}</p>
+            <div className="index-item-avatar"><Avatar size={30} src={wishlist.wisher_picture} /></div> {wishlist.wisher_name}
         </div>
       );
     }

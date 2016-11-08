@@ -7,8 +7,7 @@ export default (oldState = {}, action) => {
   let newState;
   switch(action.type) {
     case RECEIVE_WISHLIST_DETAIL:
-      newState = merge({}, oldState, action.wishlistDetail);
-      return newState;
+      return action.wishlistDetail;
     case REMOVE_WISHLIST_ITEM:
       newState = merge({}, oldState);
       delete newState[action.id];

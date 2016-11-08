@@ -33,8 +33,9 @@ class ProductGallery extends React.Component {
         marginBottom: 10,
       }
     };
-
-    const items = this.props.products.map((product, idx) => (
+    const items = this.props.products.map((product, idx) => {
+      if (!product.largeImage) { return ''; }
+      return (
       <figure key={idx}>
       <img src={product.largeImage['URL']} />
       <figcaption>{product.itemAttributes.title}</figcaption>
@@ -45,8 +46,8 @@ class ProductGallery extends React.Component {
             primary={true}
             style={styles.raisedButton}
           />
-      </figure>
-    ));
+      </figure>);
+    });
 
 
 
