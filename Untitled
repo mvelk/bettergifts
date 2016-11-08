@@ -1,0 +1,8 @@
+<p className='index-item-card-info'>
+  <i className="material-icons md-24 index-item-card-icon">people</i>
+  {wishlist.num_purchasers} friends gifting
+</p>
+<p className='index-item-card-info'>
+  <i className="material-icons md-24 index-item-card-icon">event_note</i>
+  {wishlist.event_date}
+</p>

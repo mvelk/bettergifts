@@ -17,9 +17,6 @@ const styles = {
     marginBottom: 12,
     fontWeight: 400,
   },
-  slide: {
-    padding: 10,
-  },
   avatar: {
     marginRight: 40,
   },
@@ -78,21 +75,26 @@ class WishlistIndex extends React.Component {
         >
 
           <div>
-            <section className="wishlist-index-heading content-wrapper">
-              <div className="wishlist-index-heading-content">
-                <Avatar size={70} src={this.props.currentUser.image_url} style={styles.avatar} />
-                <hgroup>
-                  <h2 style={styles.headline}>{this.props.currentUser.username}&#8217;s Wishlists</h2>
-                  <p>Wishlists: {this.props.myWishlists.length}</p>
-                </hgroup>
-              </div>
-              <RaisedButton
-                label="Create New Wishlist"
-                icon={<i className="material-icons md-light">add</i>}
-                secondary={true}
-                onTouchTap={ this.props.openWishlistFormModal }
-              />
-            </section>
+            <div className="header-bar">
+              <section className="wishlist-index-heading content-wrapper">
+                <div className="wishlist-index-heading-content">
+                  <Avatar size={70} src={this.props.currentUser.image_url} style={styles.avatar} />
+                  <hgroup>
+                    <h2 style={styles.headline}>{this.props.currentUser.username}&#8217;s Wishlists</h2>
+                    <p>Wishlists: {this.props.myWishlists.length}</p>
+                  </hgroup>
+                </div>
+                <div className="wishlist-index-actions">
+                  <RaisedButton
+                    label="Create New Wishlist"
+                    icon={<i className="material-icons md-light">add</i>}
+                    secondary={true}
+                    onTouchTap={ this.props.openWishlistFormModal }
+                  />
+                </div>
+              </section>
+            </div>
+
             <section className="wishlist-index-items content-wrapper">
               {this.props.myWishlists.map((myWishlist, idx) => (
                 <WishlistIndexItem type="mine" wishlist={myWishlist} key={idx} />
@@ -100,21 +102,23 @@ class WishlistIndex extends React.Component {
             </section>
           </div>
 
-          <div style={styles.slide}>
-            <section className="wishlist-index-heading content-wrapper">
-              <div className="wishlist-index-heading-content">
-                <hgroup>
-                  <h2 style={styles.headline}>Your Friends&#8217; Wishlists</h2>
-                  <p>Wishlists: {this.props.friendsWishlists.length}</p>
-                </hgroup>
-              </div>
-              <RaisedButton
-                label="Add Friend"
-                icon={<i className="material-icons md-light">person_add</i>}
-                secondary={true}
-                onTouchTap={ () => alert("you clicked me") }
-              />
-            </section>
+          <div>
+            <div className="header-bar">
+              <section className="wishlist-index-heading content-wrapper">
+                <div className="wishlist-index-heading-content">
+                  <hgroup>
+                    <h2 style={styles.headline}>Your Friends&#8217; Wishlists</h2>
+                    <p>Wishlists: {this.props.friendsWishlists.length}</p>
+                  </hgroup>
+                </div>
+                <RaisedButton
+                  label="Add Friend"
+                  icon={<i className="material-icons md-light">person_add</i>}
+                  secondary={true}
+                  onTouchTap={ () => alert("you clicked me") }
+                />
+              </section>
+            </div>
             <section className="wishlist-index-items content-wrapper">
               {this.props.friendsWishlists.map((friendsWishlist, idx) => (
                 <WishlistIndexItem type="friends" wishlist={friendsWishlist} key={idx} />
@@ -122,21 +126,23 @@ class WishlistIndex extends React.Component {
             </section>
           </div>
 
-          <div style={styles.slide}>
-            <section className="wishlist-index-heading content-wrapper">
-              <div className="wishlist-index-heading-content">
-                <hgroup>
-                  <h2 style={styles.headline}>Your Friends Wishlists</h2>
-                  <p>Wishlists: {this.props.upcomingWishlists.length}</p>
-                </hgroup>
-              </div>
-              <RaisedButton
-                label="Add Friend"
-                icon={<i className="material-icons md-light">person_add</i>}
-                secondary={true}
-                onTouchTap={ () => alert("you clicked me") }
-              />
-            </section>
+          <div>
+            <div className="header-bar">
+              <section className="wishlist-index-heading content-wrapper">
+                <div className="wishlist-index-heading-content">
+                  <hgroup>
+                    <h2 style={styles.headline}>Your Friends Wishlists</h2>
+                    <p>Wishlists: {this.props.upcomingWishlists.length}</p>
+                  </hgroup>
+                </div>
+                <RaisedButton
+                  label="Add Friend"
+                  icon={<i className="material-icons md-light">person_add</i>}
+                  secondary={true}
+                  onTouchTap={ () => alert("you clicked me") }
+                />
+              </section>
+            </div>
             <section className="wishlist-index-items content-wrapper">
               {this.props.upcomingWishlists.map((upcomingWishlist, idx) => (
                 <WishlistIndexItem type="upcoming" wishlist={upcomingWishlist} key={idx} />

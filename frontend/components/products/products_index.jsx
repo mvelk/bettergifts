@@ -42,7 +42,7 @@ class ProductGallery extends React.Component {
         <RaisedButton
             label="Add to Wish List"
             fullWidth={true}
-            secondary={true}
+            primary={true}
             style={styles.raisedButton}
           />
       </figure>

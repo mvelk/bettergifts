@@ -29,6 +29,7 @@ class WishlistShow extends React.Component {
     this.props.fetchWishlistDetail(this.props.params.wishlistId);
   }
 
+
   addItemButton() {
     if (this.props.wishlistDetail.wisher.id === this.props.currentUser.id) {
       return (
@@ -80,11 +81,14 @@ class WishlistShow extends React.Component {
                 <p>{this.props.wishlistDetail.event_date}</p>
               </hgroup>
             </div>
-
             {this.addItemButton()}
-
           </section>
 
+          <section className="wishlist-index-items content-wrapper">
+            {this.props.wishlistDetail.items.map((item, idx) => (
+              <WishlistShowItem item={item} product={this.props.wishlistDetail.products[idx]} key={idx} />
+            ))}
+          </section>
         </div>
       );
     }

@@ -9,17 +9,15 @@ const WishlistShowItem = (props) => {
   // </div>
 
   const style = {
-    height: 250,
     width: 250,
     margin: 20,
     textAlign: 'center',
     display: 'inline-block',
   };
-
   return (
     <Paper style={style} zDepth={3}>
-      <img src={this.props.product.image_url} style={{ width: 250, }}/>
-      {this.props.product.name}
+      <img src={props.product.image_url} style={{ width: 250, }}/>
+      {props.product.name}
     </Paper>
   );
 };

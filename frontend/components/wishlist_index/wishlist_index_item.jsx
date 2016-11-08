@@ -7,7 +7,7 @@ import {hashHistory} from 'react-router';
 
 export default ({wishlist, type}) => {
   const styles = {
-    itemContainer: {
+    itemImage: {
       backgroundImage: 'url(' + wishlist.image_url + ')'
     },
   };
@@ -24,8 +24,7 @@ export default ({wishlist, type}) => {
     }
   };
   return (
-    <div className='wishlist-index-item-container'
-         style={styles.itemContainer}>
+    <div className='wishlist-index-item-container'>
       <h3>{wishlist.title}</h3>
 
       {wisherDetails()}
