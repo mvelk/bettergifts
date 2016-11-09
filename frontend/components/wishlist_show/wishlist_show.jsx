@@ -71,6 +71,7 @@ class WishlistShow extends React.Component {
     } else {
       return(
         <div>
+          <div className="header-bar">
           <section className="wishlist-show-heading content-wrapper">
             <div className="wishlist-show-heading-content">
               <Avatar size={70} src={this.props.wishlistDetail.wisher.image_url} style={styles.avatar} />
@@ -83,6 +84,7 @@ class WishlistShow extends React.Component {
             </div>
             {this.addItemButton()}
           </section>
+          </div>
 
           <section className="wishlist-index-items content-wrapper">
             {this.props.wishlistDetail.items.map((item, idx) => (

@@ -17,9 +17,9 @@ export default ({wishlist, type}) => {
       return ('');
     } else {
       return (
-        <div className="wisher-details">
-            <div className="index-item-avatar"><Avatar size={30} src={wishlist.wisher_picture} /></div> {wishlist.wisher_name}
-        </div>
+          <div className="index-item-avatar">
+            <Avatar size={50} backgroundColor="#0d47a1" src={wishlist.wisher_picture} />
+          </div>
       );
     }
   };
@@ -27,9 +27,10 @@ export default ({wishlist, type}) => {
     <div className='wishlist-index-item-container'>
       <div className="index-item-image" style={styles.itemImage} />
       <div className="index-item-card">
+        {wisherDetails()}
         <h3 className="index-item-card-title">{wishlist.title}</h3>
 
-        {wisherDetails()}
+
 
         <p className="index-item-card-info">
           <i className="material-icons md-24 index-item-card-icon">people</i>

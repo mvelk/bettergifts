@@ -3,8 +3,8 @@
 # Table name: friendships
 #
 #  id             :integer          not null, primary key
-#  user_id        :integer          not null
-#  friend_id      :integer          not null
+#  user_one_id    :integer          not null
+#  user_two_id    :integer          not null
 #  status         :integer          not null
 #  action_user_id :integer          not null
 #  created_at     :datetime         not null

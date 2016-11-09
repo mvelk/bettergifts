@@ -28,13 +28,18 @@ ActiveRecord::Schema.define(version: 20161103160646) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.decimal  "price",      null: false
-    t.string   "short_desc", null: false
-    t.text     "full_desc"
-    t.string   "image_url",  null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "asin_id",               null: false
+    t.string   "medium_image",          null: false
+    t.string   "large_image",           null: false
+    t.string   "title",                 null: false
+    t.string   "brand",                 null: false
+    t.string   "color",                 null: false
+    t.text     "features",              null: false
+    t.string   "price",                 null: false
+    t.string   "manufacturer",          null: false
+    t.string   "manufacturer_part_num", null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "users", force: :cascade do |t|

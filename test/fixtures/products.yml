@@ -2,14 +2,19 @@
 #
 # Table name: products
 #
-#  id         :integer          not null, primary key
-#  name       :string           not null
-#  price      :decimal(, )      not null
-#  short_desc :string           not null
-#  full_desc  :text
-#  image_url  :string           not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id                    :integer          not null, primary key
+#  asin_id               :string           not null
+#  medium_image          :string           not null
+#  large_image           :string           not null
+#  title                 :string           not null
+#  brand                 :string           not null
+#  color                 :string           not null
+#  features              :text             not null
+#  price                 :string           not null
+#  manufacturer          :string           not null
+#  manufacturer_part_num :string           not null
+#  created_at            :datetime         not null
+#  updated_at            :datetime         not null
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

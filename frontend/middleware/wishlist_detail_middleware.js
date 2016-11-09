@@ -1,4 +1,5 @@
 import { FETCH_WISHLIST_DETAIL,
+         fetchWishlistDetail,
          CREATE_WISHLIST_ITEM,
          DELETE_WISHLIST_ITEM,
          receiveWishlistDetail } from '../actions/wishlist_detail_actions';
@@ -26,9 +27,23 @@ export default ({dispatch}) => next => action => {
     dispatch(receiveWishlistDetail(wishlistDetail));
   };
 
+  const refetchCallback = (wishlistItem) => {
+    dispatch(fetchWishlistDetail(wishlistItem.wishlistId));
+  };
+
+  const successCallback = (data) => {
+    console.log(data);
+  };
+
   switch(action.type) {
     case FETCH_WISHLIST_DETAIL:
       fetchWishlistDetail(action.wishlistId, receiveWishlistDetailCallback, errorCallback);
+      return next(action);
+    case CREATE_WISHLIST_ITEM:
+      createWishlistItem(action.productId, refetchCallback, errorCallback);
+      return next(action);
+    case DELETE_WISHLIST_ITEM:
+      deleteWishlistItem(action.id, refetchCallback, errorCallback);
       return next(action);
     default:
       return next(action);

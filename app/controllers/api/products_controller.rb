@@ -1,9 +1,9 @@
 class Api::ProductsController < ApplicationController
   def create
-    @product = Product.new(product_params)
+    @product = Product.new
 
     if @product.save
-      render :show
+      render json: { product: @product, wishlistId: params[:wishlistId] }
     else
       render json: @product.errors.messages, status: 422
     end
@@ -15,27 +15,12 @@ class Api::ProductsController < ApplicationController
     render :show
   end
 
-  def update
-    @product = Product.find(params[:id])
-    if @product.update(product_params)
-      render json: @product, include: [:items]
-    else
-      render json: @item.errors.messages, status: 422
-    end
-  end
-
   def index
-    @wishlists = Product.all.select(:id, :name, :image_url)
+    @wishlists = Product.all
   end
 
   def show
     @product = Product.find(params[:id])
-  end
-
-  private
-
-  def product_params
-    params.permit(:product).permit(:title, :event_date, :description, :wisher_id, :description, :image_url)
   end
 
 end
