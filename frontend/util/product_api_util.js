@@ -9,11 +9,11 @@ export const searchProductsByKeyword = (keywords, success, error) => {
 
 };
 
-export const addProductToDB = (product, wishlistId, success, error) => {
+export const addProductToDB = (product, wishlistItem, success, error) => {
   $.ajax({
     method: 'post',
     url: '/api/products',
-    data: { product: product, wishlistId: wishlistId },
+    data: { product: product, wishlist_item: wishlistItem },
     success,
     error
   });

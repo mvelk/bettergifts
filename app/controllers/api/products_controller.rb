@@ -1,9 +1,22 @@
 class Api::ProductsController < ApplicationController
   def create
     @product = Product.new
+    @product.asin_id = params[:product][:asin]
+    @product.large_image = params[:product][:largeImage][:URL]
+    @product.medium_image = params[:product][:mediumImage][:URL]
+    @product.title = params[:product][:itemAttributes][:title]
+    @product.color = params[:product][:itemAttributes][:color]
+    @product.brand = params[:product][:itemAttributes][:brand]
+    @product.features = params[:product][:itemAttributes][:feature].join('@@@')
+    @product.price = params[:product][:itemAttributes][:price][:FormattedPrice]
+    @product.manufacturer = params[:product][:itemAttributes][:manufacturer]
+    @product.manufacturer_part_num = params[:product][:itemAttributes][:manufacturer_part_num]
 
-    if @product.save
-      render json: { product: @product, wishlistId: params[:wishlistId] }
+    if @product.save!
+      @wishlist_item = WishlistItem.new(params[:wishlistItem])
+      @wishlist_item.product_id = @product.id
+      @wishlist_item.save!
+      render json: { product: @product, wishlistItem: @wishlist_item }
     else
       render json: @product.errors.messages, status: 422
     end

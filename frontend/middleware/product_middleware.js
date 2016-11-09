@@ -7,20 +7,19 @@ export default ({dispatch}) => next => action => {
     console.log(err.responseJSON);
   };
   const searchSuccessCallback = (products) => {
-    console.log(products);
     dispatch(receiveProductSearchResults(products));
   };
   const createWishlistItemCallback = (data) => {
-    dispatch(createWishlistItem(data.productId, data.wishlistId));
+    console.log(data);
+    //dispatch(createWishlistItem(data.wishlistItem));
   };
   console.log(action);
   switch(action.type) {
     case SEARCH_PRODUCTS_BY_KEYWORD:
-      console.log('we made it');
       searchProductsByKeyword(action.keywords, searchSuccessCallback, errorCallback);
       return next(action);
     case ADD_PRODUCT_TO_DB:
-      addProductToDB(action.product, action.wishlistId, createWishlistItemCallback, errorCallback);
+      addProductToDB(action.product, action.wishlistItem, createWishlistItemCallback, errorCallback);
     default:
       return next(action);
   }

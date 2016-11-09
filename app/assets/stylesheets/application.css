@@ -251,7 +251,7 @@ box-shadow: 0px 7px 35px -4px rgba(0,0,0,0.4);
   color: #fff;
   height: 375px;
   width: 30%;
-  margin: 3.3333333% 3.3333333% 3.3333333% 0;
+  margin: 3.3333333% 3.3333333% 0 0;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -337,6 +337,7 @@ box-shadow: 0px 7px 35px -4px rgba(0,0,0,0.4);
 }
 
 .friends-index-heading {
+  padding: 25px 0;
   margin-top: 25px;
   margin-bottom: 10px;
   display: flex;
@@ -454,6 +455,10 @@ div#columns small a {
 @media screen and (max-width: 750px) {
   #columns { column-gap: 0px; }
   #columns figure { width: 100%; }
+}
+
+.price {
+  color: #ff4081;
 }
 
 /* Rules for sizing the icon. */

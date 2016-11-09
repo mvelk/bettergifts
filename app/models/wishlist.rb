@@ -28,16 +28,12 @@ class Wishlist < ApplicationRecord
   through: :items,
   source: :product
 
-  has_many :purchasers,
-  through: :items,
-  source: :purchaser
-
   belongs_to :wisher,
   class_name: :User,
   primary_key: :id,
   foreign_key: :wisher_id
 
   def ensure_image_url
-    self.image_url ||= "http://res.cloudinary.com/dkpumd3gf/image/upload/v1478143290/theme-christmas_regdkd.jpg"
+    self.image_url = "http://res.cloudinary.com/dkpumd3gf/image/upload/v1478143290/theme-christmas_regdkd.jpg" if (self.image_url == '')
   end
 end

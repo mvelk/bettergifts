@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof window.currentUser !== "undefined") {
     preloadedState = {
       session: {currentUser: window.currentUser, errors: {} },
-      modals: { auth: false, side: false, wishlist: false },
+      modals: { auth: false, side: false, wishlist: false, wishlistItem: false },
       wishlists: { myWishlists: [], friendsWishlists: [], upcomingWishlists: [], errors: {} },
       wishlistDetail: { items: [] },
       products: [],
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     preloadedState = {
       session: {currentUser: {}, errors: {} },
-      modals: { auth: false, side: false, wishlist: false },
+      modals: { auth: false, side: false, wishlist: false, wishlistItem: false },
       wishlists: { myWishlists: [], friendsWishlists: [], upcomingWishlists: [], errors: {} },
       wishlistDetail: { items: [] },
       products: [],

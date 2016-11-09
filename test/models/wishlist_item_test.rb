@@ -8,6 +8,7 @@
 #  purchaser_id :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  comment      :string
 #
 
 require 'test_helper'

@@ -5,20 +5,33 @@ import IconButton from 'material-ui/IconButton';
 import StarBorder from 'material-ui/svg-icons/toggle/star-border';
 import RaisedButton from 'material-ui/RaisedButton';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import WishlistItemForm from './wishlist_item_form';
 
 class ProductGallery extends React.Component {
   constructor(props) {
 		super(props);
 		this.state = {
-			keywords: ""
+			keywords: "",
+      product: null
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 	}
 
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
     });
+  }
+  handleClick(product) {
+    return e => {
+      this.setState({ product });
+      this.props.openWishlistItemFormModal();
+    };
+  }
+
+  componentDidMount() {
+    this.props.fetchAllMyWishlists();
   }
 
   handleSubmit(e) {
@@ -34,21 +47,25 @@ class ProductGallery extends React.Component {
       }
     };
     const items = this.props.products.map((product, idx) => {
-      if (!product.largeImage) { return ''; }
+      if (!product.largeImage || !product.itemAttributes.price ) { return ''; }
       return (
       <figure key={idx}>
       <img src={product.largeImage['URL']} />
-      <figcaption>{product.itemAttributes.title}</figcaption>
-        <span className="price"></span>
+      <figcaption>
+        {product.itemAttributes.title} &nbsp;
+        <span className="price">{product.itemAttributes.price.FormattedPrice}</span>
+      </figcaption>
+
         <RaisedButton
+            icon={<i className="material-icons md-24 md-light">add_shopping_cart</i>}
             label="Add to Wish List"
             fullWidth={true}
             primary={true}
             style={styles.raisedButton}
+            onTouchTap={this.handleClick(product)}
           />
       </figure>);
     });
-
 
 
     return (
@@ -66,6 +83,13 @@ class ProductGallery extends React.Component {
             hintText="Search by keyword"
             fullWidth={true}/>
         </form>
+
+        <WishlistItemForm
+          product={this.state.product}
+          myWishlists={this.props.myWishlists}
+          closeWishlistItemFormModal={this.props.closeWishlistItemFormModal}
+          wishlistItemModalOpen={this.props.wishlistItemModalOpen}
+          addProductToDB={this.props.addProductToDB} />
 
         <div id="columns" className="columns_4">
           <ReactCSSTransitionGroup

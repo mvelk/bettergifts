@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addProductToDB: (product, wishlistId) => dispatch(addProductToDB(product, wishlistId))
+  addProductToDB: (product, wishlistItem) => dispatch(addProductToDB(product, wishlistItem))
 });
 
 export default connect(

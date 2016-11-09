@@ -19,10 +19,30 @@
 
 class Product < ApplicationRecord
   validates :asin_id, :medium_image, :large_image, :title, :features, :price, presence: true
-  after_initialize :ensure_image_urls
+  after_initialize :ensure_image_urls, :ensure_price, :ensure_features
+
+  has_many :wishlist_items,
+  class_name: :WishlistItem,
+  primary_key: :id,
+  foreign_key: :product_id
+
+  has_many :wishlists,
+  through: :wishlist_items,
+  source: :wishlist
+
+
   def ensure_image_urls
     # TODO: change this image before sending to production
     self.medium_image ||= "http://6.kicksonfire.net/wp-content/uploads/2015/11/adidas-Yeezy-350-Boost-Moonrock-2.jpg?541b01"
     self.large_image ||= "http://6.kicksonfire.net/wp-content/uploads/2015/11/adidas-Yeezy-350-Boost-Moonrock-2.jpg?541b01"
+  end
+
+  def ensure_price
+    # TODO: change this image before sending to production
+    self.price ||= ""
+  end
+
+  def ensure_features
+    self.features ||= [""]
   end
 end

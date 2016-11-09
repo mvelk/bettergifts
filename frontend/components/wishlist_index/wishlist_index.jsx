@@ -131,7 +131,7 @@ class WishlistIndex extends React.Component {
               <section className="wishlist-index-heading content-wrapper">
                 <div className="wishlist-index-heading-content">
                   <hgroup>
-                    <h2 style={styles.headline}>Your Friends Wishlists</h2>
+                    <h2 style={styles.headline}>Upcoming Events</h2>
                     <p>Wishlists: {this.props.upcomingWishlists.length}</p>
                   </hgroup>
                 </div>

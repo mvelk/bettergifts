@@ -16,14 +16,11 @@ import { fetchWishlistDetail,
 // frontend
 
 export default ({dispatch}) => next => action => {
-  console.log(action);
   const errorCallback = (err) => {
     console.log(err.responseJSON);
   };
 
   const receiveWishlistDetailCallback = (wishlistDetail) => {
-    console.log("great success");
-    console.log(wishlistDetail);
     dispatch(receiveWishlistDetail(wishlistDetail));
   };
 
@@ -40,7 +37,7 @@ export default ({dispatch}) => next => action => {
       fetchWishlistDetail(action.wishlistId, receiveWishlistDetailCallback, errorCallback);
       return next(action);
     case CREATE_WISHLIST_ITEM:
-      createWishlistItem(action.productId, refetchCallback, errorCallback);
+      createWishlistItem(action.wishlistItem, refetchCallback, errorCallback);
       return next(action);
     case DELETE_WISHLIST_ITEM:
       deleteWishlistItem(action.id, refetchCallback, errorCallback);

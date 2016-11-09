@@ -14,8 +14,8 @@ export const receiveProductSearchResults = (products) => ({
   products
 });
 
-export const addProductToDB = (product, wishlistId) => ({
+export const addProductToDB = (product, wishlistItem) => ({
   type: ADD_PRODUCT_TO_DB,
   product,
-  wishlistId
+  wishlistItem
 });

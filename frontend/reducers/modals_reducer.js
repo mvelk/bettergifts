@@ -4,11 +4,13 @@ import {
   OPEN_SIDE_DRAWER,
   CLOSE_SIDE_DRAWER,
   OPEN_WISHLIST_FORM_MODAL,
-  CLOSE_WISHLIST_FORM_MODAL } from '../actions/modals_actions';
+  CLOSE_WISHLIST_FORM_MODAL,
+  OPEN_WISHLIST_ITEM_FORM_MODAL,
+  CLOSE_WISHLIST_ITEM_FORM_MODAL } from '../actions/modals_actions';
 
 import { merge } from 'lodash';
 
-export default (oldState = { auth: false, side: false , wishlist: false }, action) => {
+export default (oldState = { auth: false, side: false , wishlist: false, wishlistItem: false }, action) => {
   Object.freeze(oldState);
   let newState;
   switch(action.type) {
@@ -29,6 +31,12 @@ export default (oldState = { auth: false, side: false , wishlist: false }, actio
       return newState;
     case CLOSE_WISHLIST_FORM_MODAL:
       newState = merge({}, oldState, { wishlist: false });
+      return newState;
+    case OPEN_WISHLIST_ITEM_FORM_MODAL:
+      newState = merge({}, oldState, { wishlistItem: true });
+      return newState;
+    case CLOSE_WISHLIST_ITEM_FORM_MODAL:
+      newState = merge({}, oldState, { wishlistItem: false });
       return newState;
     default:
       return oldState;
