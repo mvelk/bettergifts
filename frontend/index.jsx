@@ -8,17 +8,7 @@ import { fetchAllMyWishlists,
          fetchAllUpcomingWishlists,
          deleteWishlist,
          createNewWishlist } from './actions/wishlist_actions';
-import { fetchWishlistDetail } from './actions/wishlist_detail_actions';
 import { searchProductsByKeyword } from './util/product_api_util';
-
-// import {
-//   fetchFriendsList,
-//   fetchPendingRequests,
-//   getFriendshipStatus,
-//   addFriend,
-//   updateFriendship,
-//   unfriend
-// } from './util/friends_api_util';
 
 import { fetchFriendsList, fetchPendingRequests, acceptFriendRequest } from './actions/friends_actions';
 
@@ -54,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.fetchFriendsList = fetchFriendsList;
   window.fetchPendingRequests = fetchPendingRequests;
   window.acceptFriendRequest = acceptFriendRequest;
-  window.fetchWishlistDetail = fetchWishlistDetail;
   // window.fetchPendingRequests = fetchPendingRequests;
   // window.getFriendshipStatus = getFriendshipStatus;
   // window.addFriend = addFriend;
