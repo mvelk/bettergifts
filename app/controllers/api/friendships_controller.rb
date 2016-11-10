@@ -36,7 +36,7 @@ class Api::FriendshipsController < ApplicationController
         # otherwise, reset friendship request to pending
         # set action_user_id to new requestor
           existing_friendship.update(status: 0, action_user_id: action_user_id)
-          render json: friendship
+          render json: existing_friendship
         end
       when 3
         render json: 'cannot add friend', status: 400
@@ -93,6 +93,11 @@ class Api::FriendshipsController < ApplicationController
     end
   end
 
+  def search
+    query_string = params[:query_string]
+    search_results = User.where('first_name LIKE ? OR last_name LIKE ? OR email LIKE ? OR username LIKE ?', "%#{query_string}%", "%#{query_string}%", "%#{query_string}%", "%#{query_string}%")
+    render json: search_results
+  end
 
   # show
 
@@ -128,7 +133,7 @@ class Api::FriendshipsController < ApplicationController
 
   #index1
   def friends_list
-    user_id = params[:user_id].to_i
+    user_id = params[:user_id] ? params[:user_id].to_i : current_user.id.to_i
     friendships = Friendship.all.where('(user_one_id = ? OR user_two_id = ?) AND (status = 1)', user_id, user_id)
     user_ones = friendships.map(&:user_one)
     user_twos = friendships.map(&:user_two)
@@ -140,7 +145,7 @@ class Api::FriendshipsController < ApplicationController
   #index2
   def pending_requests
     user_id = params[:user_id].to_i
-    friendships = Friendship.all.where('(user_one_id = ? OR user_two_id = ?) AND (status = 0)', user_id, user_id)
+    friendships = Friendship.all.where('(user_one_id = ? OR user_two_id = ?) AND (status = 0) AND (action_user_id != ?)', user_id, user_id, user_id)
     user_ones = friendships.map(&:user_one)
     user_twos = friendships.map(&:user_two)
     pending_friends = user_ones.concat(user_twos).uniq(&:id)

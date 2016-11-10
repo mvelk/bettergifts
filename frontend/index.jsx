@@ -22,20 +22,20 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof window.currentUser !== "undefined") {
     preloadedState = {
       session: {currentUser: window.currentUser, errors: {} },
-      modals: { auth: false, side: false, wishlist: false, wishlistItem: false },
+      modals: { auth: false, side: false, wishlist: false, wishlistItem: false, userSearch: false },
       wishlists: { myWishlists: [], friendsWishlists: [], upcomingWishlists: [], errors: {} },
       wishlistDetail: { items: [] },
       products: [],
-      friends: { friends: [], pendingRequests: [], friendStatus: {} }
+      friends: { friends: [], pendingRequests: [], friendStatus: {}, userSearchResults: [] }
     };
   } else {
     preloadedState = {
       session: {currentUser: {}, errors: {} },
-      modals: { auth: false, side: false, wishlist: false, wishlistItem: false },
+      modals: { auth: false, side: false, wishlist: false, wishlistItem: false, userSearch: false },
       wishlists: { myWishlists: [], friendsWishlists: [], upcomingWishlists: [], errors: {} },
       wishlistDetail: { items: [] },
       products: [],
-      friends: { friends: [], pendingRequests: [], friendStatus: {} }
+      friends: { friends: [], pendingRequests: [], friendStatus: {}, userSearchResults: [] }
     };
   }
   store = configureStore(preloadedState);

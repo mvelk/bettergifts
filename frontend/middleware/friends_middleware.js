@@ -7,15 +7,19 @@ import {
   REJECT_FRIEND_REQUEST,
   ACCEPT_FRIEND_REQUEST,
   UNFRIEND,
+  SEARCH_FOR_FRIENDS,
   receiveFriendsList,
   receivePendingRequests,
   receiveFriend,
   removeFriend,
   removePendingRequest,
-  receiveFriendStatus
+  receiveFriendStatus,
+  receiveUserSearchResults,
+  fetchFriendsList as fetchFriends
 } from '../actions/friends_actions';
 
 import {
+  searchForFriends,
   fetchFriendsList,
   fetchPendingRequests,
   getFriendshipStatus,
@@ -30,6 +34,9 @@ import {
     };
     const successCallback = (data) => {
       console.log(data);
+    };
+    const receiveUserSearchResultsCallback = (users) => {
+      dispatch(receiveUserSearchResults(users));
     };
     const receiveFriendsCallback = (friends) => {
       dispatch(receiveFriendsList(friends));
@@ -53,8 +60,14 @@ import {
     const removeFriendCallback = (friendId) => {
       dispatch(removeFriend(friendId));
     };
+    const fetchFriendsListCallback = () => {
+      dispatch(fetchFriends());
+    };
 
     switch(action.type) {
+      case SEARCH_FOR_FRIENDS:
+        searchForFriends(action.queryString, receiveUserSearchResultsCallback, errorsCallback);
+        return next(action);
       case FETCH_FRIENDS_LIST:
         fetchFriendsList(action.userId, receiveFriendsCallback, errorsCallback);
         return next(action);
@@ -65,10 +78,10 @@ import {
         getFriendshipStatus(action.friendId, receiveFriendStatusCallback, errorsCallback);
         return next(action);
       case ADD_FRIEND:
-        addFriend(action.friendId, receiveFriendCallback, errorsCallback);
+        addFriend(action.friendId, fetchFriendsListCallback, errorsCallback);
         return next(action);
       case BLOCK_FRIEND:
-        updateFriendship(action.friendId, action.status, successCallback, errorsCallback);
+        updateFriendship(action.friendId, action.status, fetchFriendsListCallback, errorsCallback);
         return next(action);
       case REJECT_FRIEND_REQUEST:
         updateFriendship(action.friendId, action.status, removePendingRequestCallback, errorsCallback);
@@ -77,7 +90,7 @@ import {
         updateFriendship(action.friendId, action.status, removePendingAndFetchFriendsCallback, errorsCallback);
         return next(action);
       case UNFRIEND:
-        unfriend(action.friendId, removeFriendCallback, errorsCallback);
+        unfriend(action.friendId, fetchFriendsListCallback, errorsCallback);
         return next(action);
       default:
         return next(action);

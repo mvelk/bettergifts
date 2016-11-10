@@ -6,6 +6,8 @@ export const OPEN_WISHLIST_FORM_MODAL = "OPEN_WISHLIST_FORM_MODAL";
 export const CLOSE_WISHLIST_FORM_MODAL = "CLOSE_WISHLIST_FORM_MODAL";
 export const OPEN_WISHLIST_ITEM_FORM_MODAL = "OPEN_WISHLIST_ITEM_FORM_MODAL";
 export const CLOSE_WISHLIST_ITEM_FORM_MODAL = "CLOSE_WISHLIST_ITEM_FORM_MODAL";
+export const OPEN_USER_SEARCH_FORM_MODAL = "OPEN_USER_SEARCH_FORM_MODAL";
+export const CLOSE_USER_SEARCH_FORM_MODAL = "CLOSE_USER_SEARCH_FORM_MODAL";
 
 export const openSideDrawer = () => ({
   type: OPEN_SIDE_DRAWER
@@ -37,4 +39,12 @@ export const openWishlistItemFormModal = () => ({
 
 export const closeWishlistItemFormModal = () => ({
   type: CLOSE_WISHLIST_ITEM_FORM_MODAL
+});
+
+export const closeUserSearchFormModal = () => ({
+  type: CLOSE_USER_SEARCH_FORM_MODAL
+});
+
+export const openUserSearchFormModal = () => ({
+  type: OPEN_USER_SEARCH_FORM_MODAL
 });

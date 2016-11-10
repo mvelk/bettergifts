@@ -362,8 +362,55 @@ box-shadow: 0px 7px 35px -4px rgba(0,0,0,0.4);
   align-items: center;
 }
 
+.friends-index-item-button-wrapper {
+  position: relative;
+  top: -3px;
+  left: 0;
+}
+
+.search-bar {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-bar-icon {
+  position: relative;
+  top: 14px;
+  left: 0;
+}
+
+.user-search-results {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-search-result {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.user-search-result-info {
+  display: flex;
+  align-items: flex-start;
+}
+
 .friends-index-content-container {
   width: 50%;
+}
+
+.add-friend-button {
+  background-color: #1565c0;
+  color: white;
+  opacity: 1;
+  font-size: 14px;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding-left: 8px;
+  padding-right: 16px;
 }
 
 .top-right {

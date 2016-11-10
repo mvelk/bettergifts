@@ -15,9 +15,23 @@ export const REMOVE_PENDING_REQUEST = "REMOVE_PENDING_REQUEST";
 
 export const FETCH_PENDING_REQUESTS = "FETCH_PENDING_REQUESTS";
 export const RECEIVE_PENDING_REQUESTS = "RECEIVE_PENDING_REQUESTS";
+export const SEARCH_FOR_FRIENDS = "SEARCH_FOR_FRIENDS";
+export const RECEIVE_USER_SEARCH_RESULTS = "RECEIVE_USER_SEARCH_RESULTS";
+export const CLEAR_USER_SEARCH_RESULTS = "CLEAR_USER_SEARCH_RESULTS";
 
+export const clearUserSearchResults = () => ({
+  type: CLEAR_USER_SEARCH_RESULTS
+});
 
+export const receiveUserSearchResults = (users) => ({
+  type: RECEIVE_USER_SEARCH_RESULTS,
+  users
+});
 
+export const searchForFriends = (queryString) => ({
+  type: SEARCH_FOR_FRIENDS,
+  queryString
+});
 
 export const fetchFriendsList = (userId) => ({
   type: FETCH_FRIENDS_LIST,

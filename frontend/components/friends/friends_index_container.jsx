@@ -2,6 +2,8 @@ import { connect } from 'react-redux';
 import {
   fetchFriendsList,
   fetchPendingRequests,
+  searchForFriends,
+  clearUserSearchResults,
   addFriend,
   unfriend,
   acceptFriendRequest,
@@ -10,21 +12,29 @@ import {
 
 import FriendsIndex from './friends_index';
 
-const mapStateToProps = ({ session, friends }) => ({
+import { openUserSearchFormModal, closeUserSearchFormModal } from '../../actions/modals_actions';
+
+const mapStateToProps = ({ session, friends, modals }) => ({
   currentUser: session.currentUser,
   friends: friends.friends,
+  userSearchResults: friends.userSearchResults,
   pendingRequests: friends.pendingRequests,
-  friendStatus: friends.friendStatus
+  friendStatus: friends.friendStatus,
+  userSearchModalOpen: modals.userSearch
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  searchForFriends: (queryString) => dispatch(searchForFriends(queryString)),
   fetchFriendsList: (userId) => dispatch(fetchFriendsList(userId)),
   fetchPendingRequests: (userId) => dispatch(fetchPendingRequests(userId)),
   addFriend: (friendId) => dispatch(addFriend(friendId)),
   unfriend: (friendId) => dispatch(unfriend(friendId)),
   acceptFriendRequest: (friendId) => dispatch(acceptFriendRequest(friendId)),
   rejectFriendRequest: (friendId) => dispatch(rejectFriendRequest(friendId)),
-  blockFriend: (friendId) => dispatch(blockFriend(friendId))
+  blockFriend: (friendId) => dispatch(blockFriend(friendId)),
+  closeUserSearchFormModal: () => dispatch(closeUserSearchFormModal()),
+  openUserSearchFormModal: () => dispatch(openUserSearchFormModal()),
+  clearUserSearchResults: () => dispatch(clearUserSearchResults())
 });
 
 export default connect(

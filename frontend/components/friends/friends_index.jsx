@@ -4,6 +4,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { blue900 } from 'material-ui/styles/colors';
 import FriendsIndexItem from './friends_index_item';
 import PendingRequestIndexItem from './pending_request_item';
+import FriendsSearchForm from './friends_search_form';
+
 const styles = {
   headline: {
     fontSize: 24,
@@ -39,7 +41,7 @@ class FriendsIndex extends React.Component {
                 <Avatar size={70} src={this.props.currentUser.image_url} style={styles.avatar} />
                 <hgroup>
                   <h2 style={styles.headline}>{this.props.currentUser.username}&#8217;s Friends</h2>
-                  <p>Friends: {this.props.friends.length}</p>
+                  <p>Friends: {this.props.friends.length }</p>
                 </hgroup>
 
               </div>
@@ -48,7 +50,7 @@ class FriendsIndex extends React.Component {
                 label="Find More Friends"
                 icon={<i className="material-icons md-light">person_add</i>}
                 secondary={true}
-                onTouchTap={ () => alert("you clicked me") }
+                onTouchTap={ this.props.openUserSearchFormModal }
               />
             </section>
           </div>
@@ -79,7 +81,14 @@ class FriendsIndex extends React.Component {
 
             </section>
 
-
+            <FriendsSearchForm
+              searchForFriends={this.props.searchForFriends}
+              userSearchResults={this.props.userSearchResults}
+              userSearchModalOpen={this.props.userSearchModalOpen}
+              addFriend={this.props.addFriend}
+              closeUserSearchFormModal={this.props.closeUserSearchFormModal}
+              clearUserSearchResults={this.props.clearUserSearchResults}
+              />
 
 
       </div>

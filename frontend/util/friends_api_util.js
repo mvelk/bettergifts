@@ -57,3 +57,13 @@ export const unfriend = (friendId, success, error) => {
     error
   });
 };
+
+export const searchForFriends = (queryString, success, error) => {
+  $.ajax({
+    method: 'post',
+    url: '/api/user-search',
+    data: { query_string: queryString },
+    success,
+    error
+  });
+};

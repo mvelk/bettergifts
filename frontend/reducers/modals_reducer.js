@@ -1,4 +1,6 @@
 import {
+  OPEN_USER_SEARCH_FORM_MODAL,
+  CLOSE_USER_SEARCH_FORM_MODAL,
   OPEN_AUTH_MODAL,
   CLOSE_AUTH_MODAL,
   OPEN_SIDE_DRAWER,
@@ -10,10 +12,16 @@ import {
 
 import { merge } from 'lodash';
 
-export default (oldState = { auth: false, side: false , wishlist: false, wishlistItem: false }, action) => {
+export default (oldState = { auth: false, side: false , wishlist: false, wishlistItem: false, userSearch: false }, action) => {
   Object.freeze(oldState);
   let newState;
   switch(action.type) {
+    case OPEN_USER_SEARCH_FORM_MODAL:
+      newState = merge({}, oldState, { userSearch: true });
+      return newState;
+    case CLOSE_USER_SEARCH_FORM_MODAL:
+      newState = merge({}, oldState, { userSearch: false });
+      return newState;
     case OPEN_AUTH_MODAL:
       newState = merge({}, oldState, { auth: true });
       return newState;
