@@ -17,12 +17,14 @@ class PendingRequestItem extends React.Component {
         <Avatar size={35} src={this.props.pendingFriend.image_url} style={styles.avatar} />
         <h4>{this.props.pendingFriend.username}</h4>
           <RaisedButton
+            icon={<i className="material-icons md-light">done</i>}
             label="Add Friend"
             fullWidth={false}
             primary={true}
             onTouchTap={() => this.props.acceptFriendRequest(this.props.pendingFriend.id)}
           />
           <RaisedButton
+            icon={<i className="material-icons md-light">close</i>}
             label="Remove"
             fullWidth={false}
             secondary={true}

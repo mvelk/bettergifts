@@ -34,7 +34,7 @@ class WishlistItemForm extends React.Component {
 			this.props.product,
 			{
 				comment: this.state.comment,
-				wishlistId: this.state.wishlist.id
+				wishlist_id: this.state.wishlist.id
 			}
 		);
 	}

@@ -16,10 +16,10 @@ export const receiveWishlistDetail = (wishlistDetail) => ({
   wishlistDetail
 });
 
-export const createWishlistItem = (wishlistItem) => ({
-  type: CREATE_WISHLIST_ITEM,
-  wishlistItem
-});
+// export const createWishlistItem = (wishlistItem) => ({
+//   type: CREATE_WISHLIST_ITEM,
+//   wishlistItem
+// });
 
 export const deleteWishlistItem = (id) => ({
   type: DELETE_WISHLIST_ITEM,

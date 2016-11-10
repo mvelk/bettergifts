@@ -41,7 +41,15 @@ class FriendsIndex extends React.Component {
                   <h2 style={styles.headline}>{this.props.currentUser.username}&#8217;s Friends</h2>
                   <p>Friends: {this.props.friends.length}</p>
                 </hgroup>
+
               </div>
+
+              <RaisedButton
+                label="Find More Friends"
+                icon={<i className="material-icons md-light">person_add</i>}
+                secondary={true}
+                onTouchTap={ () => alert("you clicked me") }
+              />
             </section>
           </div>
 

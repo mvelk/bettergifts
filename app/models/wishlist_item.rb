@@ -24,7 +24,7 @@ class WishlistItem < ApplicationRecord
   primary_key: :id,
   foreign_key: :product_id
 
-  belongs_to :purchaser,
+  belongs_to :purchaser, optional: true,
   class_name: :User,
   primary_key: :id,
   foreign_key: :purchaser_id

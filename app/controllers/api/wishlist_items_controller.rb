@@ -33,9 +33,5 @@ class Api::WishlistItemsController < ApplicationController
     @wishlist_item = WishlistItem.find(params[:id])
   end
 
-  private
 
-  def wishlist_item_params
-    params.require(:wishlist_item).permit(:product_id, :purchaser_id)
-  end
 end

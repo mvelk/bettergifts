@@ -338,8 +338,6 @@ box-shadow: 0px 7px 35px -4px rgba(0,0,0,0.4);
 
 .friends-index-heading {
   padding: 25px 0;
-  margin-top: 25px;
-  margin-bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;

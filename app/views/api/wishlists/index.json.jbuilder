@@ -6,5 +6,6 @@ json.array! (@wishlists) do |wishlist|
   json.wisher_id wishlist.wisher_id
   json.wisher_picture wishlist.wisher.image_url
   json.wisher_name wishlist.wisher.username
+  json.num_purchasers wishlist.purchasers.length
   json.num_items wishlist.items.length
 end

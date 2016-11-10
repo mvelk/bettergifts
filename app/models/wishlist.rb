@@ -19,6 +19,10 @@ class Wishlist < ApplicationRecord
   validates :wisher_id, uniqueness: { scope: :title }
   after_initialize :ensure_image_url
 
+  has_many :purchasers,
+  through: :items,
+  source: :purchaser
+
   has_many :items,
   class_name: :WishlistItem,
   primary_key: :id,

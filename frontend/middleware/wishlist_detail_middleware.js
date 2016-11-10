@@ -36,9 +36,9 @@ export default ({dispatch}) => next => action => {
     case FETCH_WISHLIST_DETAIL:
       fetchWishlistDetail(action.wishlistId, receiveWishlistDetailCallback, errorCallback);
       return next(action);
-    case CREATE_WISHLIST_ITEM:
-      createWishlistItem(action.wishlistItem, refetchCallback, errorCallback);
-      return next(action);
+    // case CREATE_WISHLIST_ITEM:
+    //   createWishlistItem(action.wishlistItem, refetchCallback, errorCallback);
+    //   return next(action);
     case DELETE_WISHLIST_ITEM:
       deleteWishlistItem(action.id, refetchCallback, errorCallback);
       return next(action);

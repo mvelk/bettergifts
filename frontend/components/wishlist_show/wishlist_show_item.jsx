@@ -16,8 +16,8 @@ const WishlistShowItem = (props) => {
   };
   return (
     <Paper style={style} zDepth={3}>
-      <img src={props.product.image_url} style={{ width: 250, }}/>
-      {props.product.name}
+      <img src={props.product.large_image} style={{ width: 250, }}/>
+      {props.product.title}
     </Paper>
   );
 };

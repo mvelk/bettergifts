@@ -11,9 +11,9 @@ class Api::ProductsController < ApplicationController
     @product.price = params[:product][:itemAttributes][:price][:FormattedPrice]
     @product.manufacturer = params[:product][:itemAttributes][:manufacturer]
     @product.manufacturer_part_num = params[:product][:itemAttributes][:manufacturer_part_num]
-
     if @product.save!
-      @wishlist_item = WishlistItem.new(params[:wishlistItem])
+
+      @wishlist_item = WishlistItem.new(strong_params)
       @wishlist_item.product_id = @product.id
       @wishlist_item.save!
       render json: { product: @product, wishlistItem: @wishlist_item }
@@ -36,4 +36,9 @@ class Api::ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
+  private
+
+  def strong_params
+    params.require(:wishlist_item).permit(:comment, :product_id, :wishlist_id, :purchaser_id)
+  end
 end
