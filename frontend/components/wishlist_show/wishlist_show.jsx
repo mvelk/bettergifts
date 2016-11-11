@@ -59,6 +59,44 @@ class WishlistShow extends React.Component {
       );
     }
   }
+
+  wishlistDetailDisplay() {
+    if (this.props.wishlistDetail.items.length > 0) {
+      return (
+        <section className="wishlist-show-items content-wrapper">
+          {this.props.wishlistDetail.items.map((item, idx) => (
+            <WishlistShowItem
+              key={item.id}
+              wisher={this.props.wishlistDetail.wisher}
+              wishlistId={this.props.wishlistDetail.id}
+              currentUser={this.props.currentUser}
+              commitItemPurchase={this.props.commitItemPurchase}
+              cancelItemPurchase={this.props.cancelItemPurchase}
+              item={item}
+              product={this.props.wishlistDetail.products[item.product_id]}
+              deleteWishlistItem={this.props.deleteWishlistItem}
+               />
+          ))}
+        </section>
+      );
+    } else {
+      return (
+        <section className="wishlist-index-items content-wrapper">
+          <div className="greeting">
+            <h2 className="greeting-heading">It's looking a little sparse in here.</h2>
+            <p className="greeting-subheading">Search our database of more than <br/>200 million products for gifts you will love.</p>
+            <RaisedButton
+              label="Find More Products"
+              icon={<i className="material-icons md-light">search</i>}
+              secondary={true}
+              onTouchTap={ () => alert("you clicked me") }
+            />
+          </div>
+        </section>
+      );
+    }
+  }
+
   render() {
     if (this.props.wishlistDetail.id === undefined) {
       return (
@@ -85,22 +123,8 @@ class WishlistShow extends React.Component {
             {this.addItemButton()}
           </section>
           </div>
+          {this.wishlistDetailDisplay()}
 
-          <section className="wishlist-show-items content-wrapper">
-            {this.props.wishlistDetail.items.map((item, idx) => (
-              <WishlistShowItem
-                key={item.id}
-                wisher={this.props.wishlistDetail.wisher}
-                wishlistId={this.props.wishlistDetail.id}
-                currentUser={this.props.currentUser}
-                commitItemPurchase={this.props.commitItemPurchase}
-                cancelItemPurchase={this.props.cancelItemPurchase}
-                item={item}
-                product={this.props.wishlistDetail.products[item.product_id]}
-                deleteWishlistItem={this.props.deleteWishlistItem}
-                 />
-            ))}
-          </section>
         </div>
       );
     }

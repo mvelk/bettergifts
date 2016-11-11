@@ -7,7 +7,7 @@ import {
   REMOVE_FRIEND,
   REMOVE_PENDING_REQUEST,
   RECEIVE_FRIEND_STATUS } from "../actions/friends_actions";
-
+import { LOGOUT } from '../actions/session_actions';
 import { merge } from 'lodash';
 
 export default (oldState = { friends: [], pendingRequests: [], friendStatus: {}, userSearchResults: []}, action) => {
@@ -19,6 +19,8 @@ export default (oldState = { friends: [], pendingRequests: [], friendStatus: {},
   let targetId;
   let index;
   switch(action.type) {
+    case LOGOUT:
+      return { friends: [], pendingRequests: [], friendStatus: {}, userSearchResults: []};
     case CLEAR_USER_SEARCH_RESULTS:
       newState = merge({}, oldState);
       newState.userSearchResults = [];

@@ -3,13 +3,15 @@ import { RECEIVE_MY_WISHLIST,
          RECEIVE_ALL_FRIENDS_WISHLISTS,
          RECEIVE_ALL_UPCOMING_WISHLISTS,
          REMOVE_WISHLIST } from '../actions/wishlist_actions';
+import { LOGOUT } from '../actions/session_actions';
 import { merge } from 'lodash';
-
 
 export default (oldState = { myWishlists: [], friendsWishlists: [], upcomingWishlists: [], errors: {} }, action) => {
   Object.freeze(oldState);
   let newState;
   switch(action.type) {
+    case LOGOUT:
+      return { myWishlists: [], friendsWishlists: [], upcomingWishlists: [], errors: {} };
     case RECEIVE_MY_WISHLIST:
       newState = merge({}, oldState);
       newState.myWishlists.push(action.myWishlist);

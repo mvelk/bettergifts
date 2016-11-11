@@ -51,6 +51,7 @@ class WishlistIndex extends React.Component {
   }
 
   myWishlists() {
+    let greetingName = this.props.currentUser.first_name ? this.props.currentUser.first_name : this.props.currentUser.username;
     if (this.props.myWishlists.length > 0) {
       return (
         <section className="wishlist-index-items content-wrapper">
@@ -63,7 +64,7 @@ class WishlistIndex extends React.Component {
       return (
         <section className="wishlist-index-items content-wrapper">
           <div className="greeting">
-            <h2 className="greeting-heading">Welcome to BetterGifts, {this.props.currentUser.username}!</h2>
+            <h2 className="greeting-heading">Welcome to BetterGifts, {greetingName}!</h2>
             <p className="greeting-subheading">You haven't created any wishlists yet.</p>
               <RaisedButton
                 label="Create New Wishlist"
