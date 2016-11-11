@@ -2,11 +2,13 @@ import { receiveCurrentUser, receiveErrors, LOGIN, LOGOUT, SIGNUP } from '../act
 import { closeAuthModal } from '../actions/modals_actions';
 import { login, signup, logout } from '../util/session_api_util';
 import { hashHistory } from 'react-router';
+import { fetchPendingRequests } from '../actions/friends_actions';
 
 export default ({dispatch}) => next => action => {
   const loginSuccessCallback = user => {
     dispatch(closeAuthModal());
     dispatch(receiveCurrentUser(user));
+    dispatch(fetchPendingRequests(user.id));
     hashHistory.push("/wishlists/0");
   };
   const logoutSuccessCallback = () => {

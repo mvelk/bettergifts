@@ -14,16 +14,18 @@ class PendingRequestItem extends React.Component {
   render() {
     return(
       <div className="pending-request-item" >
-
+        <div className="pending-request-content">
           <Avatar size={50} src={this.props.pendingFriend.image_url} style={{marginRight: 30}} />
           <div className="pending-request-text">
-            <span style={{color: 'black'}}>{this.props.pendingFriend.first_name + ' ' + this.props.pendingFriend.last_name}</span><br />
+            <h4 className="pending-request-name">{this.props.pendingFriend.first_name + ' ' + this.props.pendingFriend.last_name}</h4>
             {this.props.pendingFriend.username}
           </div>
-          <div className="pending-request-actions">
+        </div>
+
+        <div className="pending-request-actions">
           <RaisedButton
             icon={<i className="material-icons md-light">done</i>}
-            style={{height:'24', marginBottom: '10'}}
+            style={{height:'24', paddingRight: 0, paddingLeft: 0, marginRight: '10'}}
             label="Accept"
             fullWidth={false}
             primary={true}

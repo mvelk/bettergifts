@@ -26,9 +26,9 @@ const mapStateToProps = ({ session, friends, modals }) => ({
 const mapDispatchToProps = (dispatch) => ({
   searchForFriends: (queryString) => dispatch(searchForFriends(queryString)),
   fetchFriendsList: (userId) => dispatch(fetchFriendsList(userId)),
-  fetchPendingRequests: (userId) => dispatch(fetchPendingRequests(userId)),
   addFriend: (friendId) => dispatch(addFriend(friendId)),
   unfriend: (friendId) => dispatch(unfriend(friendId)),
+  fetchPendingRequests: (userId) => dispatch(fetchPendingRequests(userId)),
   acceptFriendRequest: (friendId) => dispatch(acceptFriendRequest(friendId)),
   rejectFriendRequest: (friendId) => dispatch(rejectFriendRequest(friendId)),
   blockFriend: (friendId) => dispatch(blockFriend(friendId)),

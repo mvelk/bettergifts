@@ -1,16 +1,26 @@
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import { openAuthModal, openSideDrawer } from '../../actions/modals_actions';
+import {
+  fetchPendingRequests,
+  acceptFriendRequest,
+  rejectFriendRequest,
+  blockFriend } from '../../actions/friends_actions';
+
 import Nav from './nav';
 
-const mapStateToProps = ({session}) => ({
-  currentUser: session.currentUser
+const mapStateToProps = ({session, friends}) => ({
+  currentUser: session.currentUser,
+  pendingRequests: friends.pendingRequests
 });
 
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
   openAuthModal: () => dispatch(openAuthModal()),
-  openSideDrawer: () => dispatch(openSideDrawer())
+  openSideDrawer: () => dispatch(openSideDrawer()),
+  fetchPendingRequests: (userId) => dispatch(fetchPendingRequests(userId)),
+  acceptFriendRequest: (friendId) => dispatch(acceptFriendRequest(friendId)),
+  rejectFriendRequest: (friendId) => dispatch(rejectFriendRequest(friendId))
 });
 
 export default connect(
