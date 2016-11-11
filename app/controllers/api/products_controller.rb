@@ -15,6 +15,8 @@ class Api::ProductsController < ApplicationController
     @product.price = params[:product][:itemAttributes][:price][:FormattedPrice]
     @product.manufacturer = params[:product][:itemAttributes][:manufacturer]
     @product.manufacturer_part_num = params[:product][:itemAttributes][:manufacturer_part_num]
+    @product.medium_image ||= "http://6.kicksonfire.net/wp-content/uploads/2015/11/adidas-Yeezy-350-Boost-Moonrock-2.jpg?541b01"
+    @product.large_image ||= "http://6.kicksonfire.net/wp-content/uploads/2015/11/adidas-Yeezy-350-Boost-Moonrock-2.jpg?541b01"
     if @product.save!
 
       @wishlist_item = WishlistItem.new(strong_params)
