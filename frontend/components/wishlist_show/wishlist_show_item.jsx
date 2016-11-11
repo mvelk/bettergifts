@@ -16,7 +16,7 @@ class WishlistShowItem extends React.Component {
   }
 
   handleDelete(e) {
-    this.props.deleteItemPurchase(e.currentTarget.value);
+    this.props.deleteWishlistItem(e.currentTarget.value);
   }
 
   handleCancel(e) {

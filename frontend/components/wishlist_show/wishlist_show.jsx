@@ -96,7 +96,7 @@ class WishlistShow extends React.Component {
                 commitItemPurchase={this.props.commitItemPurchase}
                 cancelItemPurchase={this.props.cancelItemPurchase}
                 item={item}
-                product={this.props.wishlistDetail.products[idx]}
+                product={this.props.wishlistDetail.products[item.product_id]}
                 deleteWishlistItem={this.props.deleteWishlistItem}
                  />
             ))}
