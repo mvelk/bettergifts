@@ -1,5 +1,10 @@
 import { connect } from 'react-redux';
-import { fetchWishlistDetail, createWishlistItem, deleteWishlistItem } from '../../actions/wishlist_detail_actions';
+import {
+  fetchWishlistDetail,
+  createWishlistItem,
+  deleteWishlistItem,
+  commitItemPurchase,
+  cancelItemPurchase } from '../../actions/wishlist_detail_actions';
 
 import WishlistShow from './wishlist_show';
 
@@ -13,7 +18,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   fetchWishlistDetail: (wishlistId) => dispatch(fetchWishlistDetail(wishlistId)),
   createWishlistItem: (wishlistItem) => dispatch(createWishlistItem(wishlistItem)),
-  deleteWishlistItem: (wishlistItemId) => dispatch(deleteWishlistItem(wishlistItemId))
+  deleteWishlistItem: (wishlistItemId) => dispatch(deleteWishlistItem(wishlistItemId)),
+  commitItemPurchase: (purchaserId, wishlistItemId) => dispatch(commitItemPurchase(purchaserId, wishlistItemId)),
+  cancelItemPurchase: (wishlistItemId) => dispatch(cancelItemPurchase(wishlistItemId))
 });
 
 export default connect(

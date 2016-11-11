@@ -7,7 +7,11 @@ class Api::ProductsController < ApplicationController
     @product.title = params[:product][:itemAttributes][:title]
     @product.color = params[:product][:itemAttributes][:color]
     @product.brand = params[:product][:itemAttributes][:brand]
-    @product.features = params[:product][:itemAttributes][:feature].join('@@@')
+    if params[:product][:itemAttributes][:feature] == ""
+      @product.features = "feature"
+    else
+      @product.features = params[:product][:itemAttributes][:feature].join('@@@')
+    end
     @product.price = params[:product][:itemAttributes][:price][:FormattedPrice]
     @product.manufacturer = params[:product][:itemAttributes][:manufacturer]
     @product.manufacturer_part_num = params[:product][:itemAttributes][:manufacturer_part_num]

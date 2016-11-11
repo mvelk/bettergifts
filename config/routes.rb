@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     get '/upcoming-wishlists' => 'wishlists#upcoming_index'
     post '/product-search' => 'product_search#keyword_search'
 
+    patch '/commit-item-purchase' => 'wishlist_items#commit_purchase'
+    patch '/cancel-item-purchase' => 'wishlist_items#cancel_purchase'
+
     get '/friends/:user_id' => 'friendships#friends_list'
     get '/pending-requests/:user_id' => 'friendships#pending_requests'
     post '/add-friend' => 'friendships#friend_request'

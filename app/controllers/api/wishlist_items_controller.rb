@@ -9,10 +9,28 @@ class Api::WishlistItemsController < ApplicationController
     end
   end
 
+  def commit_purchase
+    @wishlist_item = WishlistItem.find(params[:wishlist_item_id])
+    if @wishlist_item.update(purchaser_id: params[:purchaser_id])
+      render json: @wishlist_item
+    else
+      render json: @wishlist_item.errors, status: 422
+    end
+  end
+
+  def cancel_purchase
+    @wishlist_item = WishlistItem.find(params[:wishlist_item_id])
+    if @wishlist_item.update(purchaser_id: nil)
+      render json: @wishlist_item
+    else
+      render json: @wishlist_item.errors, status: 422
+    end
+  end
+
   def destroy
     @wishlist_item = WishlistItem.find(params[:id])
     @wishlist_item.destroy
-    render :show
+    render json: @wishlist_item
   end
 
   def update

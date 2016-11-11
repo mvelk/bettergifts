@@ -19,7 +19,7 @@
 
 class Product < ApplicationRecord
   validates :asin_id, :medium_image, :large_image, :title, :features, :price, presence: true
-  after_initialize :ensure_image_urls, :ensure_price, :ensure_features
+  after_initialize :ensure_image_urls, :ensure_price
 
   has_many :wishlist_items,
   class_name: :WishlistItem,
@@ -42,7 +42,4 @@ class Product < ApplicationRecord
     self.price ||= ""
   end
 
-  def ensure_features
-    self.features ||= [""]
-  end
 end

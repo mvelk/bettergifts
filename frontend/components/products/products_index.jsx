@@ -91,7 +91,7 @@ class ProductGallery extends React.Component {
           wishlistItemModalOpen={this.props.wishlistItemModalOpen}
           addProductToDB={this.props.addProductToDB} />
 
-        <div id="columns" className="columns_4">
+        <div id="columns" className="columns_num">
           <ReactCSSTransitionGroup
             transitionName="carousel"
              transitionEnterTimeout={300}

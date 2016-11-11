@@ -2,9 +2,13 @@ import { FETCH_WISHLIST_DETAIL,
          fetchWishlistDetail as fetchDetail,
          CREATE_WISHLIST_ITEM,
          DELETE_WISHLIST_ITEM,
+         CANCEL_ITEM_PURCHASE,
+         COMMIT_ITEM_PURCHASE,
          receiveWishlistDetail } from '../actions/wishlist_detail_actions';
 
 import { fetchWishlistDetail,
+         cancelItemPurchase,
+         commitItemPurchase,
          createWishlistItem,
          deleteWishlistItem } from '../util/wishlist_detail_api_util';
 
@@ -25,7 +29,7 @@ export default ({dispatch}) => next => action => {
   };
 
   const refetchCallback = (wishlistItem) => {
-    dispatch(fetchDetail(wishlistItem.wishlistId));
+    dispatch(fetchDetail(wishlistItem.wishlist_id));
   };
 
   const successCallback = (data) => {
@@ -36,9 +40,10 @@ export default ({dispatch}) => next => action => {
     case FETCH_WISHLIST_DETAIL:
       fetchWishlistDetail(action.wishlistId, receiveWishlistDetailCallback, errorCallback);
       return next(action);
-    // case CREATE_WISHLIST_ITEM:
-    //   createWishlistItem(action.wishlistItem, refetchCallback, errorCallback);
-    //   return next(action);
+    case COMMIT_ITEM_PURCHASE:
+      commitItemPurchase(action.purchaserId, action.wishlistItemId, refetchCallback, errorCallback);
+    case CANCEL_ITEM_PURCHASE:
+      cancelItemPurchase(action.wishlistItemId, refetchCallback, errorCallback);
     case DELETE_WISHLIST_ITEM:
       deleteWishlistItem(action.id, refetchCallback, errorCallback);
       return next(action);

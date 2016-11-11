@@ -20,40 +20,48 @@ class Api::FriendshipsController < ApplicationController
         # if same initiator, throw error
         if existing_friendship.action_user_id == action_user_id
           render json: 'cannot add friend when request still pending', status: 400
+          return
         else
         # otherwise, accept pending request
           existing_friendship.update(status: 1)
           render json: existing_friendship
+          return
         end
       when 1
         render json: 'user is already a friend', status: 400
+        return
+        return
       when 2
         # as above, if same initiator, throw error
         # error does not tell user request was rejected
         if existing_friendship.action_user_id == action_user_id
           render json: 'cannot add friend when request still pending', status: 400
+          return
         else
         # otherwise, reset friendship request to pending
         # set action_user_id to new requestor
           existing_friendship.update(status: 0, action_user_id: action_user_id)
           render json: existing_friendship
+          return
         end
       when 3
         render json: 'cannot add friend', status: 400
+      else
+        # if no friendship currently exists, make new one
+        friendship = Friendship.new
+        friendship.status = 0
+        friendship.user_one_id = smaller_user_id
+        friendship.user_two_id = larger_user_id
+        friendship.action_user_id = action_user_id
+
+        if friendship.save
+          render json: friendship
+          return
+        else
+          render json: friendship.errors, status: 400
+          return
+        end
       end
-    end
-
-    # if no friendship currently exists, make new one
-    friendship = Friendship.new
-    friendship.status = 0
-    friendship.user_one_id = smaller_user_id
-    friendship.user_two_id = larger_user_id
-    friendship.action_user_id = action_user_id
-
-    if friendship.save
-      render json: friendship
-    else
-      render json: friendship.errors, status: 400
     end
   end
 

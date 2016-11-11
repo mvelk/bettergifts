@@ -86,9 +86,19 @@ class WishlistShow extends React.Component {
           </section>
           </div>
 
-          <section className="wishlist-index-items content-wrapper">
+          <section className="wishlist-show-items content-wrapper">
             {this.props.wishlistDetail.items.map((item, idx) => (
-              <WishlistShowItem item={item} product={this.props.wishlistDetail.products[idx]} key={idx} />
+              <WishlistShowItem
+                key={item.id}
+                wisher={this.props.wishlistDetail.wisher}
+                wishlistId={this.props.wishlistDetail.id}
+                currentUser={this.props.currentUser}
+                commitItemPurchase={this.props.commitItemPurchase}
+                cancelItemPurchase={this.props.cancelItemPurchase}
+                item={item}
+                product={this.props.wishlistDetail.products[idx]}
+                deleteWishlistItem={this.props.deleteWishlistItem}
+                 />
             ))}
           </section>
         </div>

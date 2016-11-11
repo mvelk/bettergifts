@@ -66,7 +66,7 @@ class WishlistItemForm extends React.Component {
 
             <h2 className="form-header">Create New Wishlist Item</h2>
 
-						<img src={this.props.product.largeImage['URL']} width="200px" />
+						<img src={this.props.product.largeImage['URL']} className="form-product-image" />
 						<figcaption>
 						  {this.props.product.itemAttributes.title} &nbsp;
 						  <span className="price">{this.props.product.itemAttributes.price.FormattedPrice}</span>
