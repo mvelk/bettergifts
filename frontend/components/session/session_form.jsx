@@ -11,6 +11,8 @@ class SessionForm extends React.Component {
 		this.state = {
 			username: "",
       email: "",
+			first_name: "",
+			last_name: "",
 			password: "",
       formType: 'login'
 		};
@@ -35,16 +37,33 @@ class SessionForm extends React.Component {
     this.setState({formType: this.state.formType === 'login' ? 'signup' : 'login'});
   }
 
-  emailTextField() {
+  signupTextFields() {
     if (this.state.formType !== "login") {
       return (
-        <TextField
-          value={this.state.email}
-          onChange={this.update("email")}
-          floatingLabelText="Email"
-          fullWidth={true}
-          errorText={this.props.errors.email === undefined ? "" : `email ${this.props.errors.email.join(", ")}`}
-        />
+				<div>
+	        <TextField
+	          value={this.state.email}
+	          onChange={this.update("email")}
+	          floatingLabelText="Email"
+	          fullWidth={true}
+	          errorText={this.props.errors.email === undefined ? "" : `email ${this.props.errors.email.join(", ")}`}
+	        />
+				<div style={{display: 'flex'}}>
+					<TextField
+	          value={this.state.first_name}
+	          onChange={this.update("first_name")}
+	          floatingLabelText="First Name"
+	          fullWidth={false}
+	        />
+					<TextField
+	          value={this.state.last_name}
+	          onChange={this.update("last_name")}
+	          floatingLabelText="Last Name"
+	          fullWidth={false}
+	        />
+				</div>
+
+				</div>
       );
     }
   }
@@ -94,7 +113,7 @@ class SessionForm extends React.Component {
                 errorText={this.props.errors.username === undefined ? "" : `username ${this.props.errors.username.join(", ")}`}
               />
 
-              {this.emailTextField()}
+						{this.signupTextFields()}
 
               <TextField
                 value={this.state.password}

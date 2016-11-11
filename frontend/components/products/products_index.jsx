@@ -7,6 +7,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import WishlistItemForm from './wishlist_item_form';
 
+
 class ProductGallery extends React.Component {
   constructor(props) {
 		super(props);
@@ -66,7 +67,6 @@ class ProductGallery extends React.Component {
           />
       </figure>);
     });
-
 
     return (
 

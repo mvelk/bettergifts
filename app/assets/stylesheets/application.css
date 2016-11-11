@@ -276,6 +276,7 @@
   transition: all 0.5s cubic-bezier(.25,.8,.25,1);
 }
 
+
 .index-item-image {
   background-size:     cover;
   background-repeat:   no-repeat;
@@ -439,6 +440,27 @@
 .layout-helper {
   border: 1px solid red;
 }
+
+.greeting {
+  position: relative;
+  margin: 100px auto;
+  width: 50%;
+  text-align: center;
+}
+
+.greeting-heading {
+  font-size: 36px;
+}
+
+.greeting-subheading {
+  font-family: 'Roboto', sans-serif;
+  font-size: 22px;
+}
+
+.pink {
+  color: #ff4081;
+}
+
 
 /*
 *{

@@ -50,6 +50,99 @@ class WishlistIndex extends React.Component {
     this.props.fetchAllUpcomingWishlists();
   }
 
+  myWishlists() {
+    if (this.props.myWishlists.length > 0) {
+      return (
+        <section className="wishlist-index-items content-wrapper">
+          {this.props.myWishlists.map((myWishlist, idx) => (
+            <WishlistIndexItem type="mine" wishlist={myWishlist} key={idx} />
+          ))}
+        </section>
+      );
+    } else {
+      return (
+        <section className="wishlist-index-items content-wrapper">
+          <div className="greeting">
+            <h2 className="greeting-heading">Welcome to BetterGifts, {this.props.currentUser.username}!</h2>
+            <p className="greeting-subheading">You haven't created any wishlists yet.</p>
+              <RaisedButton
+                label="Create New Wishlist"
+                icon={<i className="material-icons md-light">add</i>}
+                secondary={true}
+                onTouchTap={ this.props.openWishlistFormModal }
+              />
+          </div>
+        </section>
+      );
+    }
+  }
+
+  friendsWishlists() {
+    if (this.props.friendsWishlists.length > 0) {
+      return (
+        <section className="wishlist-index-items content-wrapper">
+          {this.props.friendsWishlists.map((friendsWishlist, idx) => (
+            <WishlistIndexItem type="friends" wishlist={friendsWishlist} key={idx} />
+          ))}
+        </section>
+      );
+    } else {
+      return (
+        <section className="wishlist-index-items content-wrapper">
+          <div className="greeting">
+            <h2 className="greeting-heading">Let's get social!</h2>
+            <p className="greeting-subheading">You haven't added any friends yet.</p>
+            <p className="greeting-subheading">Don't worry -- we make it easy.</p>
+            <RaisedButton
+              label="Find Friends"
+              icon={<i className="material-icons md-light">person_add</i>}
+              secondary={true}
+              onTouchTap={ () => alert("you clicked me") }
+            />
+          </div>
+        </section>
+      );
+    }
+  }
+
+  upcomingWishlists() {
+    if (this.props.upcomingWishlists.length > 0) {
+      return (
+        <section className="wishlist-index-items content-wrapper">
+          {this.props.upcomingWishlists.map((friendsWishlist, idx) => (
+            <WishlistIndexItem type="friends" wishlist={friendsWishlist} key={idx} />
+          ))}
+        </section>
+      );
+    } else {
+      return (
+        <section className="wishlist-index-items content-wrapper">
+          <div className="greeting">
+            <h2 className="greeting-heading">It's quiet. A little <i>too</i> quiet.</h2>
+            <p className="greeting-subheading">Let's get this party started.</p>
+
+              <RaisedButton
+                label="Create New Wishlist"
+                style={{marginRight: '20'}}
+                icon={<i className="material-icons md-light">add</i>}
+                primary={true}
+                onTouchTap={ this.props.openWishlistFormModal }
+                />
+
+              <RaisedButton
+                label="Find Friends"
+                icon={<i className="material-icons md-light">person_add</i>}
+                secondary={true}
+                onTouchTap={ () => alert("you clicked me") }
+              />
+
+          </div>
+        </section>
+      );
+    }
+  }
+
+
   render() {
 
     return (
@@ -95,11 +188,7 @@ class WishlistIndex extends React.Component {
               </section>
             </div>
 
-            <section className="wishlist-index-items content-wrapper">
-              {this.props.myWishlists.map((myWishlist, idx) => (
-                <WishlistIndexItem type="mine" wishlist={myWishlist} key={idx} />
-              ))}
-            </section>
+            {this.myWishlists()}
           </div>
 
           <div>
@@ -112,18 +201,15 @@ class WishlistIndex extends React.Component {
                   </hgroup>
                 </div>
                 <RaisedButton
-                  label="Add Friend"
+                  label="Find Friends"
                   icon={<i className="material-icons md-light">person_add</i>}
                   secondary={true}
                   onTouchTap={ () => alert("you clicked me") }
                 />
               </section>
             </div>
-            <section className="wishlist-index-items content-wrapper">
-              {this.props.friendsWishlists.map((friendsWishlist, idx) => (
-                <WishlistIndexItem type="friends" wishlist={friendsWishlist} key={idx} />
-              ))}
-            </section>
+            {this.friendsWishlists()}
+
           </div>
 
           <div>
@@ -136,18 +222,14 @@ class WishlistIndex extends React.Component {
                   </hgroup>
                 </div>
                 <RaisedButton
-                  label="Add Friend"
+                  label="Find Friends"
                   icon={<i className="material-icons md-light">person_add</i>}
                   secondary={true}
                   onTouchTap={ () => alert("you clicked me") }
                 />
               </section>
             </div>
-            <section className="wishlist-index-items content-wrapper">
-              {this.props.upcomingWishlists.map((upcomingWishlist, idx) => (
-                <WishlistIndexItem type="upcoming" wishlist={upcomingWishlist} key={idx} />
-              ))}
-            </section>
+            {this.upcomingWishlists()}
           </div>
         </SwipeableViews>
       </div>

@@ -6,6 +6,7 @@ import { receiveMyWishlist,
          FETCH_ALL_MY_WISHLISTS,
          FETCH_ALL_FRIENDS_WISHLISTS,
          FETCH_ALL_UPCOMING_WISHLISTS,
+         fetchAllUpcomingWishlists as fetchUpcomingWishlists,
          CREATE_NEW_WISHLIST,
          DELETE_WISHLIST  } from '../actions/wishlist_actions';
 
@@ -24,6 +25,7 @@ export default ({dispatch}) => next => action => {
   const successCallback1 = (myWishlist) => {
     dispatch(closeWishlistFormModal());
     dispatch(receiveMyWishlist(myWishlist));
+    dispatch(fetchUpcomingWishlists());
   };
   const successCallback2 = (myWishlists) => {
     dispatch(receiveAllMyWishlists(myWishlists));
