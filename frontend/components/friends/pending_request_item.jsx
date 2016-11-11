@@ -13,23 +13,31 @@ const styles = {
 class PendingRequestItem extends React.Component {
   render() {
     return(
-      <div className="layout-helper" >
-        <Avatar size={35} src={this.props.pendingFriend.image_url} style={styles.avatar} />
-        <h4>{this.props.pendingFriend.username}</h4>
+      <div className="pending-request-item" >
+
+          <Avatar size={50} src={this.props.pendingFriend.image_url} style={{marginRight: 30}} />
+          <div className="pending-request-text">
+            <span style={{color: 'black'}}>{this.props.pendingFriend.first_name + ' ' + this.props.pendingFriend.last_name}</span><br />
+            {this.props.pendingFriend.username}
+          </div>
+          <div className="pending-request-actions">
           <RaisedButton
             icon={<i className="material-icons md-light">done</i>}
-            label="Add Friend"
+            style={{height:'24', marginBottom: '10'}}
+            label="Accept"
             fullWidth={false}
             primary={true}
             onTouchTap={() => this.props.acceptFriendRequest(this.props.pendingFriend.id)}
           />
           <RaisedButton
             icon={<i className="material-icons md-light">close</i>}
-            label="Remove"
+            style={{height:'24'}}
             fullWidth={false}
+            label="Remove"
             secondary={true}
             onTouchTap={() => this.props.rejectFriendRequest(this.props.pendingFriend.id)}
           />
+        </div>
       </div>
     );
   }

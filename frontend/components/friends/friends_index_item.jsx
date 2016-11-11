@@ -6,9 +6,10 @@ import FontIcon from 'material-ui/FontIcon';
 import {hashHistory} from 'react-router';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
+
 const styles = {
   avatar: {
-    marginRight: 20,
+    marginRight: 30,
   },
 };
 
@@ -36,17 +37,40 @@ class FriendsIndexItem extends React.Component {
 
   render() {
     return(
-      <div className="friends-index-item" >
-        <Avatar size={35} src={this.props.friend.image_url} style={styles.avatar} />
-        <h4>{this.props.friend.username}</h4>
-        <div className="friends-index-item-button-wrapper">
-          <DropDownMenu value={this.state.value} onChange={this.handleChange}>
-            <MenuItem value={1} primaryText="Friends" />
-            <MenuItem value={2} primaryText="Unfriend" />
-            <MenuItem value={3} primaryText="Block" />
-          </DropDownMenu>
+      <Paper style={{marginTop: '10', marginRight: '10'}} zDepth={2}>
+        <div className="friends-index-item" >
+          <div className="friends-index-item-content">
+            <Avatar size={50} src={this.props.friend.image_url} style={styles.avatar} />
+            <div className="friends-index-item-text">
+              <h4>{this.props.friend.first_name + " " + this.props.friend.last_name}</h4>
+              {this.props.friend.username}
+            </div>
+          </div>
+          <div className="friends-index-item-button-wrapper">
+            <DropDownMenu
+              value={this.state.value}
+              labelStyle={{ color: '#0d47a1'}}
+              underlineStyle={{ border: 'none'}}
+              onChange={this.handleChange}>
+              <MenuItem
+                style={{ color: '#0d47a1' }}
+                leftIcon={<i className="material-icons md-22">people</i>}
+                value={1}
+                primaryText="Friends" />
+              <MenuItem
+                style={{ color: '#0d47a1' }}
+                leftIcon={<i className="material-icons md-22">people_outline</i>}
+                value={2}
+                primaryText="Unfriend" />
+              <MenuItem
+                style={{ color: '#0d47a1' }}
+                leftIcon={<i className="material-icons md-22">highlight_off</i>}
+                value={3}
+                primaryText="Block" />
+            </DropDownMenu>
+          </div>
         </div>
-      </div>
+      </Paper>
     );
   }
 }

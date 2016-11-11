@@ -89,7 +89,7 @@ class WishlistShowItem extends React.Component {
             title={this.props.item.comment} />
           <CardText style={{paddingTop: '10', paddingBottom: '20', textAlign: 'center'}}>
             {this.props.product.title}&nbsp;
-            <span style={{color: "#ff4081"}}>{this.props.product.price}</span>{this.props.item.id}
+            <span style={{color: "#ff4081"}}>{this.props.product.price}</span>
           </CardText>
 
           <CardActions style={{backgroundColor: "#0d47a1", padding: '20', textAlign: 'center'}}>

@@ -63,6 +63,7 @@ class FriendsSearchForm extends React.Component {
                 actions={actions}
                 open={this.props.userSearchModalOpen}
                 onRequestClose={this.handleClose}
+								autoScrollBodyContent={true}
                 contentStyle={customContentStyle}>
 
           <form onSubmit={this.handleSubmit} className="login-form-box">
@@ -84,8 +85,10 @@ class FriendsSearchForm extends React.Component {
               <div className="user-search-result">
                 <div className="user-search-result-info">
                   <Avatar size={35} src={user.image_url} style={{marginRight: 20}} />
-                  {user.first_name} {user.last_name} <br />
-                  {user.username}
+									<div className="user-search-result-text">
+										<span style={{color: 'black'}}>{user.first_name + ' ' + user.last_name}</span><br />
+										{user.username}
+									</div>
                 </div>
 
                   <RaisedButton

@@ -81,6 +81,41 @@
  	border-spacing: 0;
  }
 
+ .app-header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   height: 50px;
+   background-color: #2196f3;
+   padding: 0px 10px 0 10px;
+ }
+
+ .app-header h1 {
+   font-size: 24px;
+ }
+
+ .right-group {
+   display: flex;
+   align-items: center;
+ }
+
+ .home-button {
+    background: none;
+    margin-left: 5px;
+    border: 0;
+    color: white;
+    font: inherit;
+    padding: 0;
+    position: relative;
+    top: -3px;
+    left: 0;
+    overflow: visible;
+    -webkit-appearance: button; /* for input */
+    -webkit-user-select: none; /* for button */
+       -moz-user-select: none;
+        -ms-user-select: none;
+}
+
 .form-header {
   font-size: 22px;
   margin: 0px;
@@ -276,7 +311,22 @@
   transition: all 0.5s cubic-bezier(.25,.8,.25,1);
 }
 
+.user-search-result-text {
+  display: flex;
+  flex-direction: column;
+}
 
+.pending-request-text {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.6);
+  margin-right: 30px;
+}
+.pending-request-actions {
+  display: flex;
+  flex-direction: column;
+}
 .index-item-image {
   background-size:     cover;
   background-repeat:   no-repeat;
@@ -372,11 +422,28 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
+  padding: 30px 0;
 }
 
 .friends-index-item {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.friends-index-item-content {
+  display: flex;
+  flex-direction: row;
+}
+
+.friends-index-item-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 0.6);
+  font-family: "Roboto", sans-serif;
 }
 
 .friends-index-item-button-wrapper {
@@ -406,16 +473,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 0;
+  padding: 15px 0;
 }
 
 .user-search-result-info {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .friends-index-content-container {
   width: 50%;
+}
+
+.pending-request-item {
+  display: flex;
 }
 
 .add-friend-button {
@@ -609,8 +680,15 @@ div#columns small a {
   }
 }
 
+.friends-index-item h4 {
+  font-size: 24px;
+  color: black;
+  font-family: "Roboto Slab", sans-serif;
+}
+
 /* Rules for sizing the icon. */
 .material-icons.md-18 { font-size: 18px; }
+.material-icons.md-22 { font-size: 22px; }
 .material-icons.md-24 { font-size: 24px; }
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }

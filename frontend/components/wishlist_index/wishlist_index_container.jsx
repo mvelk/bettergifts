@@ -5,6 +5,7 @@ import { fetchAllMyWishlists,
          deleteWishlist,
          createNewWishlist } from '../../actions/wishlist_actions';
 import { openWishlistFormModal,
+         openUserSearchFormModal,
          closeWishlistFormModal } from '../../actions/modals_actions';
 import WishlistIndex from './wishlist_index';
 
@@ -25,7 +26,7 @@ const mapDispatchToProps = dispatch => ({
   createNewWishlist: wishlist => dispatch(createNewWishlist(wishlist)),
   openWishlistFormModal: () => dispatch(openWishlistFormModal()),
   closeWishlistFormModal: () => dispatch(closeWishlistFormModal()),
-
+  openUserSearchFormModal: () => dispatch(openUserSearchFormModal())
 });
 
 export default connect(

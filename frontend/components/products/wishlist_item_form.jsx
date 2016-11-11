@@ -60,6 +60,7 @@ class WishlistItemForm extends React.Component {
                 actions={actions}
                 open={this.props.wishlistItemModalOpen}
                 onRequestClose={this.props.closeWishlistItemFormModal}
+								autoScrollBodyContent={true}
                 contentStyle={customContentStyle}>
 
           <form onSubmit={this.handleSubmit} className="login-form-box">

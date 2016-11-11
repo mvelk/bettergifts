@@ -7,6 +7,8 @@ import SwipeableViews from 'react-swipeable-views';
 import { blue900 } from 'material-ui/styles/colors';
 import WishlistIndexItem from './wishlist_index_item';
 import WishlistForm from './wishlist_form';
+import {hashHistory} from 'react-router';
+
 const styles = {
   tab: {
     backgroundColor: blue900
@@ -30,6 +32,7 @@ class WishlistIndex extends React.Component {
       slideIndex: parseInt(this.props.params['slideIndex']),
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleFindFriends = this.handleFindFriends.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -42,6 +45,11 @@ class WishlistIndex extends React.Component {
     this.setState({
       slideIndex: value,
     });
+  }
+
+  handleFindFriends() {
+    hashHistory.push("/friends");
+    this.props.openUserSearchFormModal();
   }
 
   componentDidMount() {
@@ -93,12 +101,12 @@ class WishlistIndex extends React.Component {
           <div className="greeting">
             <h2 className="greeting-heading">Let's get social!</h2>
             <p className="greeting-subheading">You haven't added any friends yet.</p>
-            <p className="greeting-subheading">Don't worry -- we make it easy.</p>
+            <p className="greeting-subheading">Don't worry -- it's easy.</p>
             <RaisedButton
               label="Find Friends"
               icon={<i className="material-icons md-light">person_add</i>}
               secondary={true}
-              onTouchTap={ () => alert("you clicked me") }
+              onTouchTap={ this.handleFindFriends }
             />
           </div>
         </section>
@@ -134,7 +142,7 @@ class WishlistIndex extends React.Component {
                 label="Find Friends"
                 icon={<i className="material-icons md-light">person_add</i>}
                 secondary={true}
-                onTouchTap={ () => alert("you clicked me") }
+                onTouchTap={ this.handleFindFriends }
               />
 
           </div>
@@ -205,7 +213,7 @@ class WishlistIndex extends React.Component {
                   label="Find Friends"
                   icon={<i className="material-icons md-light">person_add</i>}
                   secondary={true}
-                  onTouchTap={ () => alert("you clicked me") }
+                  onTouchTap={ this.handleFindFriends }
                 />
               </section>
             </div>
@@ -226,7 +234,7 @@ class WishlistIndex extends React.Component {
                   label="Find Friends"
                   icon={<i className="material-icons md-light">person_add</i>}
                   secondary={true}
-                  onTouchTap={ () => alert("you clicked me") }
+                  onTouchTap={ this.handleFindFriends }
                 />
               </section>
             </div>

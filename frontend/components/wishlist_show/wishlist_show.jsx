@@ -3,6 +3,7 @@ import Avatar from 'material-ui/Avatar';
 import RaisedButton from 'material-ui/RaisedButton';
 import WishlistShowItem from './wishlist_show_item';
 import CircularProgress from 'material-ui/CircularProgress';
+import { hashHistory } from 'react-router';
 
 const styles = {
 
@@ -23,14 +24,19 @@ const styles = {
 class WishlistShow extends React.Component {
   constructor(props) {
     super(props);
+    this.handleFindProducts = this.handleFindProducts.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchWishlistDetail(this.props.params.wishlistId);
   }
 
+  handleFindProducts() {
+    hashHistory.push('/products');
+  }
 
-  addItemButton() {
+
+  wishlistShowButtons() {
     if (this.props.wishlistDetail.wisher.id === this.props.currentUser.id) {
       return (
         <div className="wishlist-show_actions">
@@ -44,7 +50,7 @@ class WishlistShow extends React.Component {
             label="Find More Products"
             icon={<i className="material-icons md-light">search</i>}
             secondary={true}
-            onTouchTap={ () => alert("you clicked me") }
+            onTouchTap={ this.handleFindProducts }
           />
         </div>
       );
@@ -89,7 +95,7 @@ class WishlistShow extends React.Component {
               label="Find More Products"
               icon={<i className="material-icons md-light">search</i>}
               secondary={true}
-              onTouchTap={ () => alert("you clicked me") }
+              onTouchTap={ this.handleFindProducts }
             />
           </div>
         </section>
@@ -120,7 +126,7 @@ class WishlistShow extends React.Component {
                 <p>{this.props.wishlistDetail.event_date}</p>
               </hgroup>
             </div>
-            {this.addItemButton()}
+            {this.wishlistShowButtons()}
           </section>
           </div>
           {this.wishlistDetailDisplay()}

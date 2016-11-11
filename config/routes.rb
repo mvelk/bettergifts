@@ -21,5 +21,7 @@ Rails.application.routes.draw do
     delete '/remove-friend' => 'friendships#remove_friend'
     post '/user-search' => 'friendships#search'
 
+    post
+
   end
 end
