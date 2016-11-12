@@ -139,8 +139,8 @@
 }
 
 .form-product-image {
-  max-width: 400px;
-  max-height: 400px;
+  max-width: 100%;
+  height: auto;
 }
 
 .buttonwrapper {

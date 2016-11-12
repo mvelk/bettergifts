@@ -46,8 +46,8 @@ class WishlistItemForm extends React.Component {
 
     const actions = [];
     const customContentStyle = {
-      width: '25%',
-			minWidth: '360'
+      width: '30%',
+			minWidth: '560'
     };
 		if (this.props.product) {
 			const menuItems = this.props.myWishlists.map((wishlist, idx) => (
@@ -59,8 +59,8 @@ class WishlistItemForm extends React.Component {
                 modal={false}
                 actions={actions}
                 open={this.props.wishlistItemModalOpen}
-                onRequestClose={this.props.closeWishlistItemFormModal}
 								autoScrollBodyContent={true}
+                onRequestClose={this.props.closeWishlistItemFormModal}
                 contentStyle={customContentStyle}>
 
           <form onSubmit={this.handleSubmit} className="login-form-box">
