@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'faker'
 gem 'bcrypt'
 gem 'annotate'
 gem 'vacuum'

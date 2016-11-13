@@ -9,9 +9,10 @@ import {
 
 import Nav from './nav';
 
-const mapStateToProps = ({session, friends}) => ({
+const mapStateToProps = ({session, friends}, ownProps) => ({
   currentUser: session.currentUser,
-  pendingRequests: friends.pendingRequests
+  pendingRequests: friends.pendingRequests,
+  location: ownProps.location
 });
 
 const mapDispatchToProps = dispatch => ({

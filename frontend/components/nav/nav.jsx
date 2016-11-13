@@ -8,9 +8,26 @@ class Nav extends React.Component {
     super(props);
     this.state = {
       open: false,
+      backgroundColor: 'transparent',
     };
     this.handleNotificationsTap = this.handleNotificationsTap.bind(this);
     this.handleRequestClose = this.handleRequestClose.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.props.location.pathname !== "/") {
+      this.setState({backgroundColor: '#2196f3'});
+    } else {
+      this.setState({backgroundColor: 'transparent'});
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.location.pathname !== "/") {
+      this.setState({backgroundColor: '#2196f3'});
+    } else {
+      this.setState({backgroundColor: 'transparent'});
+    }
   }
 
   handleNotificationsTap(e) {
@@ -100,7 +117,7 @@ class Nav extends React.Component {
 
   render() {
     return(
-      <header className="app-header">
+      <header style={{ backgroundColor: this.state.backgroundColor }} className="app-header">
         <div className="left-group">
           {this.navButton()}
           <button className="home-button" onTouchTap={() => hashHistory.push("/")}>

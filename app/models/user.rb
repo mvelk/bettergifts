@@ -27,11 +27,11 @@ class User < ApplicationRecord
   foreign_key: :wisher_id
 
   has_many :own_wishlist_items,
-  through: :wishlists,
+  through: :own_wishlists,
   source: :items
 
   has_many :desired_products,
-  through: :wishlist_items,
+  through: :own_wishlist_items,
   source: :product
 
   has_many :gifted_wishlist_items,

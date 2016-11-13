@@ -38,8 +38,6 @@ class WishlistForm extends React.Component {
 				image_url: this.state.image_url
 			};
 			this.props.createNewWishlist(wishlist);
-		} else {
-			console.log("eventually this will be edit action");
 		}
 
 	}

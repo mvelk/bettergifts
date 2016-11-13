@@ -12,7 +12,6 @@ import { merge } from 'lodash';
 
 export default (oldState = { friends: [], pendingRequests: [], friendStatus: {}, userSearchResults: []}, action) => {
   Object.freeze(oldState);
-  console.log(action);
   let newState;
   let newFriends;
   let newPendingRequests;
@@ -21,26 +20,32 @@ export default (oldState = { friends: [], pendingRequests: [], friendStatus: {},
   switch(action.type) {
     case LOGOUT:
       return { friends: [], pendingRequests: [], friendStatus: {}, userSearchResults: []};
+
     case CLEAR_USER_SEARCH_RESULTS:
       newState = merge({}, oldState);
       newState.userSearchResults = [];
       return newState;
+
     case RECEIVE_USER_SEARCH_RESULTS:
       newState = merge({}, oldState);
       newState.userSearchResults = action.users;
       return newState;
+
     case RECEIVE_FRIENDS_LIST:
-      newState = merge({}, oldState, { friends: action.friends });
+      newState = merge({}, oldState);
+      newState.friends = action.friends;
       return newState;
 
     case RECEIVE_PENDING_REQUESTS:
-      newState = merge({}, oldState, { pendingRequests: action.pendingFriends });
+      newState = merge({}, oldState);
+      newState.pendingRequests = action.pendingFriends;
       return newState;
 
     case RECEIVE_FRIEND:
       newState = merge({}, oldState);
       newState.friends.push(action.friend);
       return newState;
+
     case REMOVE_FRIEND:
       targetId = action.userId;
       index = -1;

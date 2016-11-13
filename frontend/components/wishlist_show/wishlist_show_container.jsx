@@ -6,6 +6,9 @@ import {
   commitItemPurchase,
   cancelItemPurchase } from '../../actions/wishlist_detail_actions';
 
+import {
+    deleteWishlist } from '../../actions/wishlist_actions';
+
 import WishlistShow from './wishlist_show';
 
 const mapStateToProps = state => {
@@ -16,6 +19,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
+  deleteWishlist: (id) => dispatch(deleteWishlist(id)),
   fetchWishlistDetail: (wishlistId) => dispatch(fetchWishlistDetail(wishlistId)),
   createWishlistItem: (wishlistItem) => dispatch(createWishlistItem(wishlistItem)),
   deleteWishlistItem: (wishlistItemId) => dispatch(deleteWishlistItem(wishlistItemId)),

@@ -182,7 +182,7 @@ class WishlistIndex extends React.Component {
                 <div className="wishlist-index-heading-content">
                   <Avatar size={70} src={this.props.currentUser.image_url} style={styles.avatar} />
                   <hgroup>
-                    <h2 style={styles.headline}>{this.props.currentUser.username}&#8217;s Wishlists</h2>
+                    <h2 style={styles.headline}>My Wishlists</h2>
                     <p>Wishlists: {this.props.myWishlists.length}</p>
                   </hgroup>
                 </div>
@@ -205,7 +205,7 @@ class WishlistIndex extends React.Component {
               <section className="wishlist-index-heading content-wrapper">
                 <div className="wishlist-index-heading-content">
                   <hgroup>
-                    <h2 style={styles.headline}>Your Friends&#8217; Wishlists</h2>
+                    <h2 style={styles.headline}>My Friends&#8217;s Wishlists</h2>
                     <p>Wishlists: {this.props.friendsWishlists.length}</p>
                   </hgroup>
                 </div>

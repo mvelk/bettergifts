@@ -30,6 +30,41 @@ class FriendsIndex extends React.Component {
     this.props.fetchPendingRequests(this.props.currentUser.id);
   }
 
+  friendsListDisplay() {
+    if (this.props.friends.length > 0) {
+      return (
+        <section className="friends-index-body content-wrapper">
+          <div className="friends-index-content-container">
+            {this.props.friends.map((friend, idx) => (
+              <FriendsIndexItem
+                friend={friend}
+                unfriend={this.props.unfriend}
+                blockFriend={this.props.blockFriend}
+                key={idx} />
+            ))}
+          </div>
+
+        </section>
+      );
+    } else {
+      return (
+        <section className="wishlist-index-items content-wrapper">
+          <div className="greeting">
+            <h2 className="greeting-heading">It's lonely in here.</h2>
+            <p className="greeting-subheading">You haven't connected with any friends yet.</p>
+            <p className="greeting-subheading">Don't worry -- it's easy.</p>
+            <RaisedButton
+              label="Find Friends"
+              icon={<i className="material-icons md-light">person_add</i>}
+              secondary={true}
+              onTouchTap={ this.props.openUserSearchFormModal }
+            />
+          </div>
+        </section>
+      );
+    }
+  }
+
   render() {
 
     return (
@@ -55,18 +90,7 @@ class FriendsIndex extends React.Component {
             </section>
           </div>
 
-            <section className="friends-index-body content-wrapper">
-              <div className="friends-index-content-container">
-                {this.props.friends.map((friend, idx) => (
-                  <FriendsIndexItem
-                    friend={friend}
-                    unfriend={this.props.unfriend}
-                    blockFriend={this.props.blockFriend}
-                    key={idx} />
-                ))}
-              </div>
-
-            </section>
+          {this.friendsListDisplay()}
 
             <FriendsSearchForm
               searchForFriends={this.props.searchForFriends}

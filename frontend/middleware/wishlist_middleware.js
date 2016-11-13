@@ -10,6 +10,8 @@ import { receiveMyWishlist,
          CREATE_NEW_WISHLIST,
          DELETE_WISHLIST  } from '../actions/wishlist_actions';
 
+import { hashHistory } from 'react-router';
+
 import { closeWishlistFormModal } from '../actions/modals_actions';
 
 import { fetchAllMyWishlists,
@@ -38,6 +40,7 @@ export default ({dispatch}) => next => action => {
   };
   const successCallback5 = (wishlist) => {
     dispatch(removeWishlist(wishlist));
+    hashHistory.push('/wishlists/0');
   };
 
   switch(action.type) {

@@ -28,7 +28,6 @@ import {
   unfriend } from '../util/friends_api_util';
 
   export default ({dispatch}) => next => action => {
-    console.log(action);
     const errorsCallback = (err) => {
       console.log(err.responseJSON);
     };
@@ -39,6 +38,7 @@ import {
       dispatch(receiveUserSearchResults(users));
     };
     const receiveFriendsCallback = (friends) => {
+      console.log(friends);
       dispatch(receiveFriendsList(friends));
     };
     const receivePendingRequestsCallback = (pendingFriends) => {
@@ -61,7 +61,7 @@ import {
       dispatch(removeFriend(friendId));
     };
     const fetchFriendsListCallback = () => {
-      dispatch(fetchFriends());
+      dispatch(fetchFriends(window.currentUser.id));
     };
 
     switch(action.type) {

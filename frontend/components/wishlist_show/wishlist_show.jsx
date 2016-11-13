@@ -44,7 +44,7 @@ class WishlistShow extends React.Component {
             label="Delete Wishlist"
             icon={<i className="material-icons md-light">delete</i>}
             primary={true}
-            onTouchTap={ () => alert("you clicked me") }
+            onTouchTap={ () => this.props.deleteWishlist(this.props.wishlistDetail.id) }
           />
           <RaisedButton
             label="Find More Products"

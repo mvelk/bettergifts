@@ -13,7 +13,6 @@ export default ({dispatch}) => next => action => {
   const closeModalCallback = () => {
     dispatch(closeWishlistItemFormModal());
   };
-  console.log(action);
   switch(action.type) {
     case SEARCH_PRODUCTS_BY_KEYWORD:
       searchProductsByKeyword(action.keywords, searchSuccessCallback, errorCallback);

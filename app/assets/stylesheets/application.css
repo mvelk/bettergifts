@@ -49,6 +49,8 @@
  	line-height: 1;
   font-family: "Roboto", sans-serif;
   background-color: #F5F5F5;
+  background: url("http://res.cloudinary.com/dkpumd3gf/image/upload/o_50/v1478930650/asanoha-400px_bxxqu6.png");
+  background-repeat: repeat;
  }
 
  h1, h2, h3, h4, h5, h6 {
@@ -86,11 +88,14 @@
    justify-content: space-between;
    align-items: center;
    height: 50px;
-   background-color: #2196f3;
+   z-index: 5;
+   background-color: transparent;
    padding: 0px 10px 0 10px;
+   position: relative;
  }
 
  .app-header h1 {
+   padding-top: 7px;
    font-size: 24px;
  }
 
@@ -162,12 +167,25 @@
 
 .hero-section {
   width: 100%;
-  height: 700px;
-  background-image: url("http://res.cloudinary.com/dkpumd3gf/image/upload/c_scale,h_1160,w_1920/v1478119480/gift-photo_hwwamf.jpg");
+  height: 100vh;
+  background-image: url("http://res.cloudinary.com/dkpumd3gf/image/upload/c_scale,w_1920/v1478999490/gift-giving_ipckx8_zyqqms.jpg");
   background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  top: -50px;
+  z-index: 1;
+  margin-bottom: -50px;
+}
+
+.darken {
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(shoes.jpg);
 }
 
 .hero-section-content {

@@ -11,7 +11,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <NavContainer />
+        <NavContainer location={this.props.location} />
         <SideNavContainer />
         <SessionFormContainer />
         {this.props.children}
