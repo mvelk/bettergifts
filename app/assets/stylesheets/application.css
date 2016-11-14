@@ -543,11 +543,13 @@
 
 .greeting-heading {
   font-size: 36px;
+  margin-bottom: 28px;
 }
 
 .greeting-subheading {
   font-family: 'Roboto', sans-serif;
   font-size: 22px;
+  margin-bottom: 20px;
 }
 
 .pink {

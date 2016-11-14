@@ -25,7 +25,7 @@ export default ({dispatch}) => next => action => {
       logout(logoutSuccessCallback);
       return next(action);
     case SIGNUP:
-      signup(action.user, logoutSuccessCallback, errorCallback);
+      signup(action.user, loginSuccessCallback, errorCallback);
       return next(action);
     default:
       return next(action);
