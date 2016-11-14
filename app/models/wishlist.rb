@@ -40,6 +40,7 @@ class Wishlist < ApplicationRecord
   def ensure_image_url
     text_content = self.title
     text_content += self.description
+    text_content = text_content.downcase
     if (self.image_url == '')
       if /birthday|bday/.match(text_content)
         birthday_images = [
@@ -60,6 +61,7 @@ class Wishlist < ApplicationRecord
           'http://res.cloudinary.com/dkpumd3gf/image/upload/c_scale,w_794/v1478936899/gift-giving_ipckx8.jpg',
           'http://res.cloudinary.com/dkpumd3gf/image/upload/v1478937148/plate-holiday-love-holidays_qzbw9g.jpg'
         ]
+        self.image_url = anniversary_images.sample
       elsif /wedding|marry|married|the\sknot/.match(text_content)
         marriage_images = [
           'http://res.cloudinary.com/dkpumd3gf/image/upload/c_scale,w_726/v1478937312/pexels-photo-132759_gwgrun.jpg',

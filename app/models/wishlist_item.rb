@@ -19,6 +19,10 @@ class WishlistItem < ApplicationRecord
   primary_key: :id,
   foreign_key: :wishlist_id
 
+  has_one :wisher,
+  through: :wishlist,
+  source: :wisher
+
   belongs_to :product,
   class_name: :Product,
   primary_key: :id,

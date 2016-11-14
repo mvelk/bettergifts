@@ -5,6 +5,7 @@ import WishlistReducer from './wishlist_reducer';
 import WishlistDetailReducer from './wishlist_detail_reducer';
 import ProductsReducer from './products_reducer';
 import FriendsReducer from './friends_reducer';
+import PurchasesReducer from './purchases_reducer';
 
 export default combineReducers({
   session: SessionReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
   wishlists: WishlistReducer,
   wishlistDetail: WishlistDetailReducer,
   products: ProductsReducer,
-  friends: FriendsReducer
+  friends: FriendsReducer,
+  purchases: PurchasesReducer
 });

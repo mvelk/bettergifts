@@ -1,3 +1,1 @@
-json.set! past_purchase.id do
-  json.extract! past_purchase, :product
-end
+json.extract! purchase, :id, :comment, :product, :wisher, :wishlist

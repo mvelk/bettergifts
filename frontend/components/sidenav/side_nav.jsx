@@ -35,7 +35,7 @@ const Nav = ({currentUser, sideDrawerOpen, closeSideDrawer, openSideDrawer}) => 
         <MenuItem leftIcon={<i className="material-icons">list</i>} primaryText="Friends Wishlists" onTouchTap={ handleClick("/wishlists/1") } />
         <MenuItem leftIcon={<i className="material-icons">event</i>} primaryText="Upcoming Events" onTouchTap={ handleClick("/wishlists/2") } />
         <MenuItem leftIcon={<i className="material-icons">search</i>} primaryText="Find Products" onTouchTap={ handleClick("/products") } />
-        <MenuItem leftIcon={<i className="material-icons">shopping cart</i>} primaryText="Past Purchases" onTouchTap={ handleClick("/past-purchases") } />
+        <MenuItem leftIcon={<i className="material-icons">shopping_cart</i>} primaryText="Purchases" onTouchTap={ handleClick("/purchases") } />
         <MenuItem leftIcon={<i className="material-icons">people</i>} primaryText="Manage Friends" onTouchTap={ handleClick("/friends") } />
         <Divider />
         <MenuItem primaryText="Facebook" onTouchTap={ closeSideDrawer } />

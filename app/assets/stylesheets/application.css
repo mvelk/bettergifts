@@ -63,8 +63,8 @@
  }
  p {
    font-size: 18px;
-   line-height: 1.5;
-   margin: 1em 0;
+   line-height: 1.2em;
+   margin: 0.25em 0;
  }
 
  ol, ul {
@@ -362,6 +362,7 @@
 
 .wishlist-index-item-container:hover {
   box-shadow: 5px 10px 20px rgba(0,0,0,0.19), 2px 6px 6px rgba(0,0,0,0.23);
+  cursor: pointer;
 }
 
 .index-item-card {

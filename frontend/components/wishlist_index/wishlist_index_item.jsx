@@ -24,7 +24,10 @@ export default ({wishlist, type}) => {
     }
   };
   return (
-    <div className='wishlist-index-item-container'>
+    <div
+      className='wishlist-index-item-container'
+      onTouchTap={ () => hashHistory.push(`/wishlist/${wishlist.id}`) } >
+      
       <div className="index-item-image" style={styles.itemImage} />
       <div className="index-item-card">
         {wisherDetails()}

@@ -26,7 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
       wishlists: { myWishlists: [], friendsWishlists: [], upcomingWishlists: [], errors: {} },
       wishlistDetail: { items: [] },
       products: [],
-      friends: { friends: [], pendingRequests: [], friendStatus: {}, userSearchResults: [] }
+      friends: { friends: [], pendingRequests: [], friendStatus: {}, userSearchResults: [] },
+      purchases: { pastPurchases: [], committedPurchases: [], receivedGifts: [] }
     };
   } else {
     preloadedState = {
@@ -35,7 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
       wishlists: { myWishlists: [], friendsWishlists: [], upcomingWishlists: [], errors: {} },
       wishlistDetail: { items: [] },
       products: [],
-      friends: { friends: [], pendingRequests: [], friendStatus: {}, userSearchResults: [] }
+      friends: { friends: [], pendingRequests: [], friendStatus: {}, userSearchResults: [] },
+      purchases: { pastPurchases: [], committedPurchases: [], receivedGifts: [] }
     };
   }
   store = configureStore(preloadedState);

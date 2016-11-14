@@ -135,7 +135,7 @@ class SessionForm extends React.Component {
 
 						<div className="buttonwrapper">
               <RaisedButton
-                label="Use guest login"
+                label="Use demo login"
                 fullWidth={true}
                 secondary={true}
                 onTouchTap={ () => this.props.login( {user: { username: "demo-login", password: "password123"} } ) }

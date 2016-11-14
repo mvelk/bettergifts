@@ -4,11 +4,13 @@ import WishlistMiddleware from './wishlist_middleware';
 import WishlistDetailMiddleware from './wishlist_detail_middleware';
 import ProductMiddleware from './product_middleware';
 import FriendsMiddleware from './friends_middleware';
+import PurchasesMiddleware from './purchases_middleware';
 
 export default applyMiddleware(
   SessionMiddleware,
   WishlistMiddleware,
   ProductMiddleware,
   FriendsMiddleware,
-  WishlistDetailMiddleware
+  WishlistDetailMiddleware,
+  PurchasesMiddleware
 );

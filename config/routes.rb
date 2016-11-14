@@ -23,7 +23,8 @@ Rails.application.routes.draw do
 
     get '/past-purchases/:user_id' => 'purchases#past_purchases'
     get '/committed-purchases/:user_id' => 'purchases#future_purchases'
-    get '/past-gifts/:user_id' => 'purchases#past-gifts'
+    get '/past-gifts/:user_id' => 'purchases#past_gifts'
+    get '/received-gifts/:user_id' => 'purchases#received_gifts'
 
   end
 end
