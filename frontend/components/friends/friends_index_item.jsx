@@ -37,7 +37,7 @@ class FriendsIndexItem extends React.Component {
 
   render() {
     return(
-      <Paper style={{marginTop: '10', marginRight: '10'}} zDepth={2}>
+      <Paper className="friends-index-paper" zDepth={2}>
         <div className="friends-index-item" >
           <div className="friends-index-item-content">
             <Avatar size={50} src={this.props.friend.image_url} style={styles.avatar} />

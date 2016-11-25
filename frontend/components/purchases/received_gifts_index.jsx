@@ -9,7 +9,6 @@ class ReceivedGiftsIndex extends React.Component {
   }
 
   render () {
-    debugger;
     return (
       <div className="wishlist-item-card-container">
         <Paper>

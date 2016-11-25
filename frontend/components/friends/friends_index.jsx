@@ -97,6 +97,7 @@ class FriendsIndex extends React.Component {
               userSearchResults={this.props.userSearchResults}
               userSearchModalOpen={this.props.userSearchModalOpen}
               addFriend={this.props.addFriend}
+              acceptFriendRequest={this.props.acceptFriendRequest}
               closeUserSearchFormModal={this.props.closeUserSearchFormModal}
               clearUserSearchResults={this.props.clearUserSearchResults}
               />

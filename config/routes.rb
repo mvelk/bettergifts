@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     get '/friends-wishlists' => 'wishlists#friends_index'
     get '/upcoming-wishlists' => 'wishlists#upcoming_index'
     post '/product-search' => 'product_search#keyword_search'
-
+    get '/recommended-products' => 'product_search#recommended_products'
     patch '/commit-item-purchase' => 'wishlist_items#commit_purchase'
     patch '/cancel-item-purchase' => 'wishlist_items#cancel_purchase'
 

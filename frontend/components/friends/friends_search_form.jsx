@@ -37,12 +37,87 @@ class FriendsSearchForm extends React.Component {
     return (e) => {
       console.log(userId);
       this.props.addFriend(userId);
+			this.props.searchForFriends(this.state.queryString);
+    };
+  }
+	_handleAcceptFriendRequest(userId) {
+    return (e) => {
+      console.log(userId);
+      this.props.acceptFriendRequest(userId);
+			this.props.searchForFriends(this.state.queryString);
     };
   }
 
 	handleSubmit(e) {
 		e.preventDefault();
     this.props.searchForFriends(this.state.queryString);
+	}
+
+	friendButton(user) {
+		switch(user.friend_status) {
+			case -1:
+				return (
+					<RaisedButton
+						label="Add Friend"
+						style={{height:'24'}}
+						labelStyle={{fontSize:'12'}}
+						icon={<i className="material-icons md-light md-18">person_add</i>}
+						primary={true}
+						onTouchTap={ this._handleAddFriend(user.id) }
+						/>
+				);
+			case 0:
+				if (user.action_user_id == user.id) {
+					return (
+						<RaisedButton
+							label="Confirm Friend"
+							style={{height:'24'}}
+							labelStyle={{fontSize:'12'}}
+							icon={<i className="material-icons md-light md-18">person_add</i>}
+							secondary={true}
+							onTouchTap={ this._handleAcceptFriendRequest(user.id) }
+							/>
+					);
+				} else {
+					return (
+						<RaisedButton
+							label="Pending"
+							style={{height:'24'}}
+							labelStyle={{fontSize:'12'}}
+							icon={<i className="material-icons md-light md-18">person_outline</i>}
+							disabled={true}
+							/>
+					);
+				}
+			case 1:
+				return (
+					`Friends since ${user.updated_at}`
+				);
+			case 2:
+				if (user.action_user_id == user.id) {
+					return (
+						<RaisedButton
+							label="Pending"
+							style={{height:'24'}}
+							labelStyle={{fontSize:'12'}}
+							icon={<i className="material-icons md-light md-18">person_outline</i>}
+							disabled={true}
+							/>
+					);
+				} else {
+					return (
+						<RaisedButton
+							label="Add Friend"
+							style={{height:'24'}}
+							labelStyle={{fontSize:'12'}}
+							icon={<i className="material-icons md-light md-18">person_add</i>}
+							primary={true}
+							onTouchTap={ this._handleAddFriend(user.id) }
+							/>
+					);
+				}
+		}
+
 	}
 
 	render() {
@@ -52,8 +127,8 @@ class FriendsSearchForm extends React.Component {
 
     const actions = [];
     const customContentStyle = {
-      width: '30%',
-			minWidth: '360'
+      width: '35%',
+			minWidth: '450'
     };
 
 		return (
@@ -82,24 +157,15 @@ class FriendsSearchForm extends React.Component {
           </form>
           <div className="user-search-results">
             {this.props.userSearchResults.map((user, idx) => (
-              <div className="user-search-result">
+							<div key={user.id} className="user-search-result">
                 <div className="user-search-result-info">
-                  <Avatar size={35} src={user.image_url} style={{marginRight: 20}} />
+                  <Avatar size={50} src={user.image_url} style={{marginRight: 20}} />
 									<div className="user-search-result-text">
 										<span style={{color: 'black'}}>{user.first_name + ' ' + user.last_name}</span><br />
 										{user.username}
 									</div>
                 </div>
-
-                  <RaisedButton
-                    label="Add Friend"
-                    style={{height:'24'}}
-                    labelStyle={{fontSize:'12'}}
-                    icon={<i className="material-icons md-light md-18">person_add</i>}
-                    primary={true}
-                    onTouchTap={ this._handleAddFriend(user.id) }
-                    />
-
+									{this.friendButton(user)}
               </div>
             ))}
           </div>

@@ -32,6 +32,7 @@ gem 'bcrypt'
 gem 'annotate'
 gem 'vacuum'
 gem 'excon-rails'
+gem 'figaro'
 
 group :production do
   gem 'newrelic_rpm'

@@ -6,7 +6,7 @@ import { fetchAllMyWishlists } from '../../actions/wishlist_actions';
 const mapStateToProps = (state) => ({
   currentUser: state.session.currentUser,
   myWishlists: state.wishlists.myWishlists,
-  products: state.products,
+  products: state.products.product_search_results > 0 ? state.products.product_search_results : state.products.recommended_products,
   wishlistItemModalOpen: state.modals.wishlistItem
 });
 

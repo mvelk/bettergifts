@@ -146,6 +146,7 @@
 .form-product-image {
   max-width: 100%;
   height: auto;
+  max-height: 350px;
 }
 
 .buttonwrapper {
@@ -153,10 +154,43 @@
   display: flex;
   justify-content: space-between;
 }
-.buttonwrapper {
-  margin: 15px 0px 0px 0px;
+.wishlist-item-buttonwrapper {
+  margin: 30px 0px 0px 0px;
+}
+
+.wishlist-item-form-flexer {
   display: flex;
-  justify-content: space-between;
+}
+
+.wishlist-item-image {
+  width: 50%;
+  padding: 25px;
+  padding-bottom: 0;
+}
+
+.wishlist-form-box {
+
+}
+
+.wishlist-item-title {
+  margin-top: 15px;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  color: rgba(0,0,0,0.7);
+  line-height: 24px;
+}
+
+.wishlist-item-form-fields {
+  width: 50%;
+  display: flex;
+  padding: 25px;
+  padding-bottom: 0;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.wishlist-item-header {
+  padding: 0 25px;
 }
 
 .wishlist-item-card-container {
@@ -502,6 +536,10 @@
 .friends-index-content-container {
   padding: 25px;
   padding-bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start
 }
 
 .pending-request-item {
@@ -704,8 +742,21 @@ div#columns small a {
   }
 }
 
+.friends-index-paper {
+  margin-bottom: 10px;
+  margin-right: 1%;
+  width: 48%;
+  min-width: 400px;
+}
+
+@media only screen and (max-width: 900px) {
+  .friends-index-paper {
+    width: 100%;
+  }
+}
+
 .friends-index-item h4 {
-  font-size: 24px;
+  font-size: 22px;
   color: black;
   font-family: "Roboto Slab", sans-serif;
 }

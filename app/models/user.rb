@@ -21,6 +21,16 @@ class User < ApplicationRecord
   validates :username, length: { minimum: 1 }
   validates :email, format: /@/
 
+  has_many :relationships1,
+  class_name: :Friendship,
+  primary_key: :id,
+  foreign_key: :user_one_id
+
+  has_many :relationships2,
+  class_name: :Friendship,
+  primary_key: :id,
+  foreign_key: :user_two_id
+
   has_many :own_wishlists,
   class_name: :Wishlist,
   primary_key: :id,

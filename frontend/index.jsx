@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
       modals: { auth: false, side: false, wishlist: false, wishlistItem: false, userSearch: false },
       wishlists: { myWishlists: [], friendsWishlists: [], upcomingWishlists: [], errors: {} },
       wishlistDetail: { items: [] },
-      products: [],
+      products: { product_search_results: [], recommended_products: []},
       friends: { friends: [], pendingRequests: [], friendStatus: {}, userSearchResults: [] },
       purchases: { pastPurchases: [], committedPurchases: [], receivedGifts: [] }
     };
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
       modals: { auth: false, side: false, wishlist: false, wishlistItem: false, userSearch: false },
       wishlists: { myWishlists: [], friendsWishlists: [], upcomingWishlists: [], errors: {} },
       wishlistDetail: { items: [] },
-      products: [],
+      products: { product_search_results: [], recommended_products: []},
       friends: { friends: [], pendingRequests: [], friendStatus: {}, userSearchResults: [] },
       purchases: { pastPurchases: [], committedPurchases: [], receivedGifts: [] }
     };

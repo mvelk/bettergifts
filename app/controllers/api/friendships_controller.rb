@@ -36,7 +36,6 @@ class Api::FriendshipsController < ApplicationController
         # error does not tell user request was rejected
         if existing_friendship.action_user_id == action_user_id
           render json: 'cannot add friend when request still pending', status: 400
-
         else
         # otherwise, reset friendship request to pending
         # set action_user_id to new requestor
@@ -104,8 +103,9 @@ class Api::FriendshipsController < ApplicationController
 
   def search
     query_string = params[:query_string]
-    search_results = User.where('first_name LIKE ? OR last_name LIKE ? OR email LIKE ? OR username LIKE ?', "%#{query_string}%", "%#{query_string}%", "%#{query_string}%", "%#{query_string}%")
-    render json: search_results
+    @search_results = User.where('first_name LIKE ? OR last_name LIKE ? OR email LIKE ? OR username LIKE ?', "%#{query_string}%", "%#{query_string}%", "%#{query_string}%", "%#{query_string}%")
+    @current_user_relationships1 = current_user.relationships1
+    @current_user_relationships2 = current_user.relationships2
   end
 
   # show

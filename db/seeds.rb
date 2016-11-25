@@ -5,25 +5,87 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+ladies_images = [
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479683155/233H_r6crs9.jpg",
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479629029/pexels-photo-47554_iew8nm.jpg",
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479629057/pexels-photo-157023_b3yspb.jpg",
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479629163/pexels-photo-25845_tei8jg.jpg",
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479684190/headshot_t0iwu7.jpg",
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479683267/maurice_mf7el6.jpg",
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479683428/images_vcjjmm.jpg",
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479683365/ErinLeeper_BryanWhitely.jpg.300x1200_q90_upscale_me5aes.jpg",
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479683505/cute-girl-picture-019_rbngnf.jpg",
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/e_auto_contrast/v1479683580/Desktop-cute-girl-images_vatgja.jpg",
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479683607/girl-hair-hair-color-hair-dye-Favim.com-2909358_yn6rbq.jpg",
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479683713/6912247-cute-girl-backgrounds_axpnjv.jpg",
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479683769/1441536938_MC_-_Headshot_1_wnl3nd.jpg",
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479625386/Cute-Girl-In-HQ-Pict-For-Background-5I0-768x480_y8anjp.jpg",
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479683850/cute-girl-grey-hair-makeup-Favim.com-3873602_fksh3o.jpg",
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479683905/24413490902_06bd3d7044_h_ljsito.jpg",
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479683935/680b168275862e47f05c04a36fd934d2_deandp.jpg",
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479683976/Beautiful_woman_of_Mahhabalipuram_India_qbhqbs.jpg"
+]
 
-User.create({ username: "demo-login", email: "demo-account@lavabit.com", password: "password123"})
-User.create({ username: "winston", email: "ilovecorgis@gmail.com", password: "password123"})
-User.create({ username: "micah", email: "ilovehugs@gmail.com", password: "password123"})
-User.create({ username: "mickey", email: "iloveespresso@gmail.com", password: "password123"})
+gents_images = [
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479628986/pexels-photo-119705_colg8l.jpg",
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479629103/man-crazy-funny-dude-45882_y5zwbi.jpg",
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479683336/1679ed2d901f5c09f903a89d0e0e30ab_m7ao6g.jpg",
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479683297/fstoppers_the_project_dani_diamond_6-710x474_zcqbtd.jpg",
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479669016/hipster-hs-srgb_oi24uk.jpg",
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479683645/images_1_s4mdig.jpg",
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479683477/GH-headshot-garrett-hedlund-18588690-570-411_z82db4.jpg",
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479683394/ginger_hipster_headshot_nx1yu8.jpg",
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479683537/enhanced-24294-1409424852-12_ksrq9w.jpg",
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479683677/cc5114436b0e405d8991d86b0f6f5c7d_ernysm.jpg",
+  "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479683741/tumblr_nyndyeAryQ1r4r1hio1_1280_fhera7.jpg"
+]
 
+ladies_names = %w(Emma Sophia Ava Isabella Mia Abigail Emily Charlotte Janette Emily Evelyn Alice Liv Lauren Dianne Carol Grace Jane Katie Lisa Michelle)
+gents_names = %w(Liam Mason Jacob William Ethan James Alex Michael Ben Matt Aiden Luke Daniel Carter Jack Gabe Winston)
 
-Wishlist.create({ wisher_id: 2, title: "Christmas", event_date: Date.parse("5-10-2016"), description: "Xmas 2016 in St. Louis", image_url: "https://i.ytimg.com/vi/Sy1Qlxgo2ek/maxresdefault.jpg"})
-Wishlist.create({ wisher_id: 3, title: "Christmas", event_date: Date.parse("25-12-2016"), description: "Xmas 2016 in St. Louis", image_url: "https://i.ytimg.com/vi/Sy1Qlxgo2ek/maxresdefault.jpg"})
+statuses = [0, 1, 1, 1]
 
-Product.create({name: "Babolat Pure Drive Wimbledon", price: 199.00, short_desc: "An iconic racquet with a massive following in a sleek Wimbledon cosmetic celebrating the oldest gram slam. The Pure Drive delivers the kind of maneuverability, power, accuracy and spin that appeals to everyone from strong beginners to the professional ranks. Headsize: 100 in². String Pattern: 16x19. Standard Length.", full_desc: "One of the game's most versatile and popular racquets gets a Wimbledon makeover! Like its predecessor, this version of the Pure Drive offers the kind of power, precision and mobility that should appeal to everyone from strong beginners to the professional ranks. Although it compliments a truly impressive range of playing styles, the Pure Drive reserves its greatest charm for aggressive baseliners who like to dictate action with pace and spin. New to this version is FSI Technology. This feature not only lifts the sweetspot but also tightens the spaces between the upper cross strings to give players a more responsive contact zone. From the baseline the Pure Drive delivers a lethal combination of power and spin. The fast feel and predictable response on full swings lend themselves perfectly to the powerful angular whip of the modern forehand. At net the Pure Drive's speed and put-away power make it a true weapon for aggressive doubles players, a fact not lost on the many ATP and WTA players who have used the Pure Drive. Ultimately this update is a fine addition to one of the game's most versatile and user-friendly player's racquets.", image_url: "http://img.tennis-warehouse.com/watermark/rs.php?path=BPDW-1.jpg&nw=350"})
-Product.create({name: "Babolat Pure Drive French Open", price: 199.00, short_desc: "An iconic racquet with a massive following in a sleek Wimbledon cosmetic celebrating the oldest gram slam. The Pure Drive delivers the kind of maneuverability, power, accuracy and spin that appeals to everyone from strong beginners to the professional ranks. Headsize: 100 in². String Pattern: 16x19. Standard Length.", full_desc: "One of the game's most versatile and popular racquets gets a Wimbledon makeover! Like its predecessor, this version of the Pure Drive offers the kind of power, precision and mobility that should appeal to everyone from strong beginners to the professional ranks. Although it compliments a truly impressive range of playing styles, the Pure Drive reserves its greatest charm for aggressive baseliners who like to dictate action with pace and spin. New to this version is FSI Technology. This feature not only lifts the sweetspot but also tightens the spaces between the upper cross strings to give players a more responsive contact zone. From the baseline the Pure Drive delivers a lethal combination of power and spin. The fast feel and predictable response on full swings lend themselves perfectly to the powerful angular whip of the modern forehand. At net the Pure Drive's speed and put-away power make it a true weapon for aggressive doubles players, a fact not lost on the many ATP and WTA players who have used the Pure Drive. Ultimately this update is a fine addition to one of the game's most versatile and user-friendly player's racquets.", image_url: "http://img.tennis-warehouse.com/watermark/rs.php?path=BPDW-1.jpg&nw=350"})
-Product.create({name: "Babolat Pure Drive", price: 199.00, short_desc: "An iconic racquet with a massive following in a sleek Wimbledon cosmetic celebrating the oldest gram slam. The Pure Drive delivers the kind of maneuverability, power, accuracy and spin that appeals to everyone from strong beginners to the professional ranks. Headsize: 100 in². String Pattern: 16x19. Standard Length.", full_desc: "One of the game's most versatile and popular racquets gets a Wimbledon makeover! Like its predecessor, this version of the Pure Drive offers the kind of power, precision and mobility that should appeal to everyone from strong beginners to the professional ranks. Although it compliments a truly impressive range of playing styles, the Pure Drive reserves its greatest charm for aggressive baseliners who like to dictate action with pace and spin. New to this version is FSI Technology. This feature not only lifts the sweetspot but also tightens the spaces between the upper cross strings to give players a more responsive contact zone. From the baseline the Pure Drive delivers a lethal combination of power and spin. The fast feel and predictable response on full swings lend themselves perfectly to the powerful angular whip of the modern forehand. At net the Pure Drive's speed and put-away power make it a true weapon for aggressive doubles players, a fact not lost on the many ATP and WTA players who have used the Pure Drive. Ultimately this update is a fine addition to one of the game's most versatile and user-friendly player's racquets.", image_url: "http://img.tennis-warehouse.com/watermark/rs.php?path=BPDW-1.jpg&nw=350"})
+User.create(username: "demo-login",
+  email: "my-demo-acct@protonmail.com",
+  first_name: "Louie",
+  last_name: "Loschiavo",
+  password: "password123",
+  image_url: "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479628877/handsome-man-938x535_kdwujt.jpg")
 
-WishlistItem.create({wishlist_id: 1, product_id: 1, purchaser_id: 2})
-WishlistItem.create({wishlist_id: 1, product_id: 2, purchaser_id: 2})
-WishlistItem.create({wishlist_id: 1, product_id: 3, purchaser_id: 3})
+18.times do |num|
+  first_name = ladies_names[num]
+  last_name = Faker::Name.last_name
+  User.create(username: Faker::Internet.user_name("#{first_name} #{last_name}", %w(. _ -)),
+              first_name: first_name,
+              last_name: last_name,
+              email: Faker::Internet.email,
+              password: "pasword123",
+              image_url: ladies_images[num])
+  Friendship.create(user_one_id: 1,
+                    user_two_id: 2 + num,
+                    status: statuses.sample,
+                    action_user_id: 2 + num)
+end
 
-WishlistItem.create({wishlist_id: 2, product_id: 1})
+11.times do |num|
+  first_name = gents_names[num]
+  last_name = Faker::Name.last_name
+  User.create(username: Faker::Internet.user_name("#{first_name} #{last_name}", %w(. _ -)),
+              first_name: first_name,
+              last_name: last_name,
+              email: Faker::Internet.email,
+              password: "pasword123",
+              image_url: gents_images[num])
+  Friendship.create(user_one_id: 1,
+                    user_two_id: 20 + num,
+                    status: statuses.sample,
+                    action_user_id: 20 + num)
+end
 
-sleep(2)
-Friendship.create({user_one_id: 2, user_two_id: 3, status: 1, action_user_id: 2})
+Wishlist.create(wisher_id: 2, title: "Christmas 2016", event_date: Date.parse("25-12-2016"), description: "Xmas in Jackson Hole! Can't wait.", image_url: 'http://res.cloudinary.com/dkpumd3gf/image/upload/c_scale,w_727/v1478937138/pexels-photo_gh95it.jpg')
+Wishlist.create(wisher_id: 3, title: "Our Anniversary", event_date: Faker::Time.between(14.days.from_now, 90.days.from_now, :all), description: "Our fifth anniversary! XOXO", image_url: 'http://res.cloudinary.com/dkpumd3gf/image/upload/c_scale,h_516,w_790/v1478979668/wedding_qrnpoj.jpg')
+Wishlist.create(wisher_id: 3, title: "Valentine's Day", event_date: Date.parse("14-2-2017"), description: "Don't forget like last year! :)", image_url: 'http://res.cloudinary.com/dkpumd3gf/image/upload/c_scale,w_809/v1478981685/grad3_hddl9e.jpg')
+Wishlist.create(wisher_id: 4, title: "It's a girl!!", event_date: Faker::Time.between(14.days.from_now, 90.days.from_now, :all), description: "Anna's Baby Shower", image_url: 'http://res.cloudinary.com/dkpumd3gf/image/upload/c_scale,w_724/v1479685601/cute_baby_hat_cap-7680x4320_gr6drt.jpg')
+Wishlist.create(wisher_id: 5, title: "Jason's Graduation", event_date: Faker::Time.between(14.days.from_now, 90.days.from_now, :all), description: "Celebrate Jason's graduation from U Chicago", image_url: 'http://res.cloudinary.com/dkpumd3gf/image/upload/c_scale,w_809/v1478981685/grad3_hddl9e.jpg')
+Wishlist.create(wisher_id: 6, title: "Xmas 2016", event_date: Faker::Time.between(14.days.from_now, 90.days.from_now, :all), description: "To better gifts this year!", image_url: 'http://res.cloudinary.com/dkpumd3gf/image/upload/c_scale,w_712/v1478937069/christmas-santa-claus-fig-decoration_d7ouej.jpg')
+Wishlist.create(wisher_id: 7, title: "Louie's Sixth Birthday", event_date: Faker::Time.between(14.days.from_now, 90.days.from_now, :all), description: "That's 44 in dog years", image_url: "http://res.cloudinary.com/dkpumd3gf/image/upload/v1479622175/yorkie-puppy-sale-2-570x340_uhynjt.jpg")

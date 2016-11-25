@@ -16,6 +16,7 @@ class WishlistItemForm extends React.Component {
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.handleChange = this.handleChange.bind(this);
+		this.handleClose = this.handleClose.bind(this);
 	}
 
 	update(field) {
@@ -26,6 +27,15 @@ class WishlistItemForm extends React.Component {
 
 	handleChange(e, index, value) {
 		this.setState({wishlistIdx: value, wishlist: this.props.myWishlists[value]});
+	}
+
+	handleClose(e) {
+		this.props.closeWishlistItemFormModal();
+		this.setState({
+			wishlist: {},
+			wishlistIdx: null,
+			comment: ""
+		});
 	}
 
 	handleSubmit(e) {
@@ -46,8 +56,8 @@ class WishlistItemForm extends React.Component {
 
     const actions = [];
     const customContentStyle = {
-      width: '30%',
-			minWidth: '560'
+      width: '60%',
+			minWidth: '600'
     };
 		if (this.props.product) {
 			const menuItems = this.props.myWishlists.map((wishlist, idx) => (
@@ -60,43 +70,46 @@ class WishlistItemForm extends React.Component {
                 actions={actions}
                 open={this.props.wishlistItemModalOpen}
 								autoScrollBodyContent={true}
-                onRequestClose={this.props.closeWishlistItemFormModal}
+                onRequestClose={this.handleClose}
                 contentStyle={customContentStyle}>
 
-          <form onSubmit={this.handleSubmit} className="login-form-box">
-
+          <form onSubmit={this.handleSubmit} className="wishlist-form-box">
+						<div className="wishlist-item-header">
             <h2 className="form-header">Create New Wishlist Item</h2>
+							<h3 className="wishlist-item-title">{this.props.product.itemAttributes.title} &nbsp;
+							<span className="price">{this.props.product.itemAttributes.price.FormattedPrice}</span></h3>
+						</div>
+						<div className="wishlist-item-form-flexer">
 
-						<img src={this.props.product.largeImage['URL']} className="form-product-image" />
-						<figcaption>
-						  {this.props.product.itemAttributes.title} &nbsp;
-						  <span className="price">{this.props.product.itemAttributes.price.FormattedPrice}</span>
-						</figcaption>
+							<div className="wishlist-item-image">
+								<img src={this.props.product.largeImage['URL']} className="form-product-image" />
+							</div>
+							<div className="wishlist-item-form-fields">
 
-						<SelectField
-		          floatingLabelText="Wishlists"
-		          value={this.state.wishlistIdx}
-		          onChange={this.handleChange}
-							fullWidth={true}
-		        >
-							{menuItems}
-	        	</SelectField>
-
-  						<TextField
-                value={this.state.comment}
-  							onChange={this.update("comment")}
-                floatingLabelText="Comment"
-                fullWidth={true}
-              />
-
-            <div className="buttonwrapper">
-              <RaisedButton
-                type="submit"
-                label="Add Item to Wishlist"
-                fullWidth={true}
-                primary={true}
-              />
-            </div>
+								<SelectField
+				          floatingLabelText="Wishlists"
+				          value={this.state.wishlistIdx}
+				          onChange={this.handleChange}
+									fullWidth={true}
+				        >
+									{menuItems}
+			        	</SelectField>
+	  						<TextField
+	                value={this.state.comment}
+	  							onChange={this.update("comment")}
+	                floatingLabelText="Comment"
+	                fullWidth={true}
+	              />
+							<div className="wishlist-item-buttonwrapper">
+		              <RaisedButton
+		                type="submit"
+		                label="Add Item to Wishlist"
+		                fullWidth={true}
+		                primary={true}
+		              />
+		            </div>
+							</div>
+						</div>
 
           </form>
         </Dialog>
