@@ -9,6 +9,6 @@
 # production:
 #   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
-aws_access_key_id: AKIAJTFZ3GQQQUBZCU6A
-aws_secret_access_key: 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
-associate_tag: bettergifts-io-20
+AWS_ACCESS_KEY_ID: "AKIAJTFZ3GQQQUBZCU6A"
+AWS_SECRET_ACCESS_KEY: "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"
+ASSOCIATE_TAG: "bettergifts-io-20"

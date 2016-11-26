@@ -277,6 +277,7 @@
 
 .splash-row h3 {
   margin-top: 0;
+  margin-bottom: 0;
 }
 
 .splash-section-content {
@@ -284,11 +285,51 @@
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
 }
 .splash-section-content-text {
   max-width: 600px;
+}
+
+.splashy-copy {
+  margin: 50px 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.splashy-copy li {
+  text-align: center;
+  display: block;
+  width: 200px;
+  margin: 0 50px;
+}
+
+.animate-me.slide-left {
+  opacity: 0;
+  -moz-transition: all 500ms linear;
+  -webkit-transition: all 500ms linear;
+  -o-transition: all 500ms linear;
+  transition: all 500ms linear;
+  -moz-transform: translate3d(-100px, 0px, 0px);
+  -webkit-transform: translate3d(-100px, 0px, 0px);
+  -o-transform: translate(-100px, 0px);
+  -ms-transform: translate(-100px, 0px);
+  transform: translate3d(-100px, 0px, 0px);
+}
+
+.animate-me.slide-left.visible {
+  opacity: 1;
+  -moz-transform: translate3d(0px, 0px, 0px);
+  -webkit-transform: translate3d(0px, 0px, 0px);
+  -o-transform: translate(0px, 0px);
+  -ms-transform: translate(0px, 0px);
+  transform: translate3d(0px, 0px, 0px);
+}
+
+.splashy-copy p {
+  line-height: 1.5;
 }
 
 .splash-section-content-text.left {
@@ -779,6 +820,10 @@ div#columns small a {
 .material-icons.md-24 { font-size: 24px; }
 .material-icons.md-36 { font-size: 36px; }
 .material-icons.md-48 { font-size: 48px; }
+.material-icons.yuge {
+  font-size: 60px;
+  margin-bottom: 15px;
+}
 
 /* Rules for using icons as black on a light background. */
 .material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }

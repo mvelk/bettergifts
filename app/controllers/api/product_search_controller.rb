@@ -4,9 +4,9 @@ class Api::ProductSearchController < ApplicationController
   def keyword_search
     request = Vacuum.new
     request.configure(
-      aws_access_key_id: env['AWS_ACCESS_KEY_ID'],
-      aws_secret_access_key: env['AWS_SECRET_ACCESS_KEY'],
-      associate_tag: env['ASSOCIATE_TAG']
+      aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+      aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+      associate_tag: ENV['ASSOCIATE_TAG']
     )
     response_group = %w(ItemAttributes Images).join(',')
 
@@ -28,17 +28,19 @@ class Api::ProductSearchController < ApplicationController
       }
     )
     parsed_response = response.to_h
+
     @response_collection = parsed_response['ItemSearchResponse']['Items'][0]['Item']
       .concat(parsed_response['ItemSearchResponse']['Items'][1]['Item'])
+
     render :search_results
   end
 
   def recommended_products
     request = Vacuum.new
     request.configure(
-      aws_access_key_id: env['AWS_ACCESS_KEY_ID'],
-      aws_secret_access_key: env['AWS_SECRET_ACCESS_KEY'],
-      associate_tag: env['ASSOCIATE_TAG']
+      aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+      aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+      associate_tag: ENV['ASSOCIATE_TAG']
     )
     response_group = %w(ItemAttributes Images).join(',')
     recent_desired_product_ids = current_user.desired_products.order(created_at: :desc).limit(5).map(&:asin_id)

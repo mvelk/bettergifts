@@ -47,7 +47,13 @@ class ProductGallery extends React.Component {
         marginBottom: 10,
       }
     };
-    const items = this.props.products.map((product, idx) => {
+    let products;
+    if (this.props.searchResults.length > 0) {
+      products = this.props.searchResults;
+    } else {
+      products = this.props.recommendedProducts;
+    }
+    const items = products.map((product, idx) => {
       if (!product.largeImage || !product.itemAttributes.price ) { return ''; }
       return (
       <figure key={idx}>
