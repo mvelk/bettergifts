@@ -1,24 +1,34 @@
 # BetterGifts
 
-[BetterGifts live][bettergifts]
-
+[BetterGifts][bettergifts] is a full-stack web app inspired by years of re-gifted Christmas presents and forgotten birthdays.  It runs Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Redux architectural framework on the frontend.
 [bettergifts]: http://bettergifts.herokuapp.com
 
-BetterGifts is a full-stack web app inspired by years of re-gifted Christmas presents and forgotten birthdays.  It runs Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Redux architectural framework on the frontend.
 
 ## Features & Implementation
 
- BetterGifts transforms special occasions from awkward to awesome by ensuring friends and family know exactly what you want while avoiding duplicate gifts and maintaining the element of surprise.
+BetterGifts transforms special occasions from awkward to awesome by ensuring friends and family know exactly what you want while avoiding duplicate gifts and maintaining the element of surprise.
 
 ### Wishlist Creation
 
+Create wishlists for birthdays, anniversaries, graduations, holidays and more.
+
+Wishlists are automatically shared with your friends so there's no need to share links manually.
+
 ### Wishlist Item Creation
 
+Add products to your wishlists and comment to let your friends know what you were thinking.
+
 ### Product Search
+
+![Main View](/product-search.png)
 
 Pulls from Amazon's 200+ million item product database using the AWS Product Advertising API. Saves items to local product database only when users save them to a wishlist.
 
 ### Friends
+
+![Main View](/friends.png)
+
+Gift giving is social by nature. Bettergifts makes finding and managing your friends simple with live search and a clean friends dashboard.
 
 ## Future Directions for the Project
 
