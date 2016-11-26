@@ -1,76 +1,37 @@
 # BetterGifts
 
-[Heroku link][heroku]
+[BetterGifts live][bettergifts]
 
-[Trello link][trello]
+[bettergifts]: http://bettergifts.herokuapp.com
 
-[heroku]: https://bettergifts.herokuapp.com/
-[trello]: https://trello.com/b/1Al9frRt/bettergifts
+BetterGifts is a full-stack web app inspired by years of re-gifted Christmas presents and forgotten birthdays.  It runs Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Redux architectural framework on the frontend.
 
-## Minimum Viable Product
+## Features & Implementation
 
-BetterGifts is a web application built using Ruby on Rails and React/Redux.  By the end of Week 9, this app will, at a minimum, satisfy the
-following criteria with smooth, bug-free navigation, adequate seed data and
-sufficient CSS styling:
+ BetterGifts transforms special occasions from awkward to awesome by ensuring friends and family know exactly what you want while avoiding duplicate gifts and maintaining the element of surprise.
 
-- [ ] Hosting on Heroku
-- [ ] New account creation, login, and guest/demo login
-- [ ] Wishlist creation
-- [ ] Product browsing, adding to List
-- [ ] Searching product catalog
-- [ ] Selecting gifts
-- [ ] Infinite scroll
-- [ ] Production README
+### Wishlist Creation
 
-## Design Docs
-* [View Wireframes][wireframes]
-* [React Components][components]
-* [API endpoints][api-endpoints]
-* [DB schema][schema]
-* [Sample State][sample-state]
+### Wishlist Item Creation
 
-[wireframes]: docs/wireframes
-[components]: docs/component-hierarchy.md
-[sample-state]: docs/sample-state.md
-[api-endpoints]: docs/api-endpoints.md
-[schema]: docs/schema.md
+### Product Search
 
-## Implementation Timeline
+Pulls from Amazon's 200+ million item product database using the AWS Product Advertising API. Saves items to local product database only when users save them to a wishlist.
 
-### Phase 1: Backend setup and Front End User Authentication (2 days)
+### Friends
 
-**Objective:** Functioning rails project with front-end Authentication
+## Future Directions for the Project
 
-### Phase 2: Wishlists Model, API, and components (2 days)
+There's more in store for BetterGifts! Future features will include:
 
-**Objective:** Wishlists can be created, read, edited and destroyed through
-the API.
+### Email Reminders
 
-### Phase 3: Products (2 day)
+While BetterGifts users can currently keep track of upcoming events and gifts to buy in the app, that's not always the best place to keep in touch with them. A future iteration of the app will use SendGrid to push email reminders in advance of upcoming wishlist events that users have subscribed to.
 
-**Objective:** Products can be created, read, edited and destroyed through
-the API.
+### Gift Recommendations
 
-### Phase 3: Wishlist Items (1 day)
+I also plan to add a gift recommendation engine based on items added to past wishlists. This functionality will take advantage of the robust item similarity queries provided by Amazon's Product Advertising API.
 
-**Objective:** Products can be added to Wishlists as Wishlist that can be created, read, edited and destroyed through the API.
+### Add to Cart
 
-### Phase 4: Events (1 days)
-
-**Objective:** Wishlists can be associated with events that can be created, edited or destroyed through the API.
-
-### Phase 5: Allow Complex Styling of Products, Wishlists and Events (1 days, W2 Th 6pm)
-
-**objective:** Include reviews, tags, improve layout (Masonry?).
-
-### Phase 6: - Pagination / infinite scroll for Products/Wishlist Items Index (1 day, W2 F 6pm)
-
-**objective:** Add infinite scroll to Products and Wishlist Items Index
-
-### Bonus Features (TBD)
-- [ ] Filter products by category, price, and description with autocomplete.
-- [ ] Email reminders for upcoming events
-- [ ] Connect to Amazon Product Advertising API for products data.
-- [ ] Multiple sessions
-- [ ] Gift recommendations
-- [ ] OAuth integration
+In future, users will be able to push items directly to their Amazon shopping cart without leaving the app. This feature will allow potential monetization of the product, as Amazon provides referral revenue for all products purchased this way.
