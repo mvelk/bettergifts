@@ -13,7 +13,8 @@ class ProductGallery extends React.Component {
 		super(props);
 		this.state = {
 			keywords: "",
-      product: null
+      product: null,
+      searching: false
 		};
 		this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -48,18 +49,19 @@ class ProductGallery extends React.Component {
         marginBottom: 10,
       }
     };
+    let title;
     let products;
     if (this.props.searchResults.length > 0) {
       products = this.props.searchResults;
+      title = "Search Results";
     } else {
       products = this.props.recommendedProducts;
+      title = "Recommended for You";
     }
     const items = products.map((product, idx) => {
       if (!product.largeImage) {
-        console.log("no image!");
         return '';
       } else if (!product.itemAttributes.price) {
-        console.log("no price!");
         return '';
       }
       return (
@@ -67,7 +69,7 @@ class ProductGallery extends React.Component {
       <img src={product.largeImage['URL']} />
       <figcaption>
         {product.itemAttributes.title} &nbsp;
-        <span className="price">{product.itemAttributes.price.FormattedPrice}</span>
+        <span className="price">{product.itemAttributes.price}</span>
       </figcaption>
 
         <RaisedButton
@@ -104,13 +106,16 @@ class ProductGallery extends React.Component {
           wishlistItemModalOpen={this.props.wishlistItemModalOpen}
           addProductToDB={this.props.addProductToDB} />
 
-        <div id="columns" className="columns_num">
-          <ReactCSSTransitionGroup
-            transitionName="carousel"
-             transitionEnterTimeout={300}
-             transitionLeaveTimeout={300}>
-            {items}
-           </ReactCSSTransitionGroup>
+        <div >
+          <h2 className="search-results-title">{title}</h2>
+          <div id="columns" className="columns_num">
+            <ReactCSSTransitionGroup
+              transitionName="carousel"
+               transitionEnterTimeout={300}
+               transitionLeaveTimeout={300}>
+              {items}
+             </ReactCSSTransitionGroup>
+          </div>
         </div>
 
       </div>

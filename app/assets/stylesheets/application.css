@@ -268,7 +268,9 @@
 .splash-row {
   padding: 80px 0;
   width: 100%;
-  background: #BBDEFB;
+  background: #BBDEFB; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #BBDEFB , #83b5df); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #BBDEFB , #83b5df); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .splash-row:nth-child(even) {
@@ -660,10 +662,10 @@
   	-moz-column-gap: 10px;
   	-webkit-column-gap: 10px;
   	column-gap: 10px;
-    width: 90%;
+    width: 100%;
     min-width: 1000px;
   	max-width: 1200px;
-  	margin: 50px auto;
+  	margin: 25px auto;
   }
   .columns_num{
     -webkit-column-count:4;
@@ -677,10 +679,10 @@
   	-moz-column-gap: 10px;
   	-webkit-column-gap: 10px;
   	column-gap: 10px;
-    width: 90%;
+    width: 100%;
     min-width: 650px;
   	max-width: 1100px;
-  	margin: 50px auto;
+  	margin: 25px auto;
   }
   .columns_num {
     -webkit-column-count:3;
@@ -694,10 +696,10 @@
   	-moz-column-gap: 10px;
   	-webkit-column-gap: 10px;
   	column-gap: 10px;
-    width: 90%;
+    width: 100%;
     min-width: 400px;
   	max-width: 754px;
-  	margin: 50px auto;
+  	margin: 25px auto;
   }
   .columns_num{
     -webkit-column-count:2;
@@ -713,7 +715,7 @@
   	column-gap: 10px;
     width: 100%;
   	max-width: 450px;
-  	margin: 50px auto;
+  	margin: 25px auto;
   }
   .columns_num{
     -webkit-column-count:1;
@@ -765,6 +767,14 @@ div#columns small a {
   color: #ff4081;
 }
 
+.align-left-top {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+
 @media all and (max-width: 1200px) {
   .content-wrapper {
     padding-left: 20px;
@@ -788,6 +798,11 @@ div#columns small a {
   margin-right: 1%;
   width: 48%;
   min-width: 400px;
+}
+
+.search-results-title {
+  font-size: 24px;
+  padding-top: 16px;
 }
 
 @media only screen and (max-width: 900px) {
