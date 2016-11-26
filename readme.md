@@ -38,9 +38,9 @@ There's more in store for BetterGifts! Future features will include:
 
 While BetterGifts users can currently keep track of upcoming events and gifts to buy in the app, that's not always the best place to keep in touch with them. A future iteration of the app will use SendGrid to push email reminders in advance of upcoming wishlist events that users have subscribed to.
 
-### Gift Recommendations
+### ~~Gift Recommendations~~ *Completed*
 
-I also plan to add a gift recommendation engine based on items added to past wishlists. This functionality will take advantage of the robust item similarity queries provided by Amazon's Product Advertising API.
+~~I also plan to add a gift recommendation engine based on items added to past wishlists. This functionality will take advantage of the robust item similarity queries provided by Amazon's Product Advertising API.~~
 
 ### Add to Cart
 
