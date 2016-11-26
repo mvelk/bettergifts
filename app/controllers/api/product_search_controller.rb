@@ -8,30 +8,34 @@ class Api::ProductSearchController < ApplicationController
       aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
       associate_tag: ENV['ASSOCIATE_TAG']
     )
-    response_group = %w(ItemAttributes Images).join(',')
+    response_group = %w(ItemAttributes Images OfferSummary).join(',')
 
     # note Amazon Product Advertising API default behavior is to order
     # by best sellers
-    if params[:item_pages]
-      item_page1, item_page2, item_page3, item_page4 = params[:item_pages]
-    else
-      item_page1, item_page2, item_page3, item_page4 = 1, 2, 3, 4
-    end
 
-    response = request.item_search(
-      query: {
-        'ItemSearch.Shared.SearchIndex'   => 'All',
-        'ItemSearch.Shared.Keywords'      => params[:query][:keywords],
-        'ItemSearch.Shared.ResponseGroup' => response_group,
-        'ItemSearch.1.ItemPage'           => item_page1,
-        'ItemSearch.2.ItemPage'           => item_page2
+    @response_collection = []
+    @keywords = params[:query][:keywords]
+    @search_num = params[:query][:search_num].to_i
+    @min_price = params[:query][:min_price]
+    @max_price = params[:query][:max_price]
+    @category = params[:query][:category]
+    page_range = @search_num == 5 ? [5] : [@search_num, @search_num + 1]
+    page_range.each do |item_page|
+      query_object = {
+        'Operation'            => 'ItemSearch',
+        'SearchIndex'          => 'All',
+        'Keywords'             => @keywords,
+        'ResponseGroup'        => response_group,
+        'ItemPage'             => item_page
       }
-    )
-    parsed_response = response.to_h
-
-    @response_collection = parsed_response['ItemSearchResponse']['Items'][0]['Item']
-      .concat(parsed_response['ItemSearchResponse']['Items'][1]['Item'])
-
+      query_object['MinimumPrice'] = @min_price if @min_price && @min_price != ""
+      query_object['MaximumPrice'] = @max_price if @max_price && @max_price != ""
+      query_object['SearchIndex'] = @category if @category && @category != ""
+      response = request.item_search(query: query_object, persistent: true)
+      parsed_response = response.to_h
+      @response_collection += parsed_response['ItemSearchResponse']['Items']['Item']
+    end
+    @search_num += 2
     render :search_results
   end
 
@@ -42,29 +46,25 @@ class Api::ProductSearchController < ApplicationController
       aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
       associate_tag: ENV['ASSOCIATE_TAG']
     )
-    response_group = %w(ItemAttributes Images).join(',')
+    response_group = %w(ItemAttributes Images OfferSummary).join(',')
     recent_desired_product_ids = current_user.desired_products.order(created_at: :desc).limit(5).map(&:asin_id)
     query = {
       "ItemId" => recent_desired_product_ids.join(','),
       'ItemSearch.Shared.ResponseGroup' => response_group,
       "SimilarityType" => "Random"
     }
-    # query = { "ItemId" => recent_desired_product_ids.first }
-    # recent_desired_products.each_with_index do |product, idx|
-    #   query["ItemId"] = product.asin_id
-    # end
 
     response = request.similarity_lookup(
       query: query
     )
     parsed_response = response.to_h
     @response_collection = parsed_response['SimilarityLookupResponse']['Items']['Item']
-    render :search_results
+    render :recommended_products
   end
 
   private
 
   def product_search_params
-    params.require(:query).permit(:keywords, :max_price, :min_price)
+    params.require(:query).permit(:keywords, :max_price, :min_price, :category, :search_num)
   end
 end

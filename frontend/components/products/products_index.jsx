@@ -37,7 +37,8 @@ class ProductGallery extends React.Component {
 
   handleSubmit(e) {
 		e.preventDefault();
-		this.props.searchProductsByKeyword(this.state.keywords);
+    //TODO: Add minPrice, maxPrice and category to search call.
+		this.props.searchProductsByKeyword(this.state.keywords, 1);
 	}
 
   render() {
@@ -54,7 +55,13 @@ class ProductGallery extends React.Component {
       products = this.props.recommendedProducts;
     }
     const items = products.map((product, idx) => {
-      if (!product.largeImage || !product.itemAttributes.price ) { return ''; }
+      if (!product.largeImage) {
+        console.log("no image!");
+        return '';
+      } else if (!product.itemAttributes.price) {
+        console.log("no price!");
+        return '';
+      }
       return (
       <figure key={idx}>
       <img src={product.largeImage['URL']} />

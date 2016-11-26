@@ -9,7 +9,7 @@ json.array! @response_collection do |response|
     json.color response['ItemAttributes']['Color']
     json.feature response['ItemAttributes']['Feature']
     json.itemDimensions response['ItemAttributes']['ItemDimensions']
-    json.price response['ItemAttributes']['ListPrice']
+    json.price response['OfferSummary']['LowestNewPrice']['FormattedPrice']
     json.manufacturer response['ItemAttributes']['Manufacturer']
     json.manufacturer_part_num response['ItemAttributes']['MPN']
   end

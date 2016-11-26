@@ -12,7 +12,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  searchProductsByKeyword: (keywords) => dispatch(searchProductsByKeyword(keywords)),
+  searchProductsByKeyword: (keywords, searchNum, minPrice, maxPrice, category) => dispatch(searchProductsByKeyword(keywords, searchNum, minPrice, maxPrice, category)),
   addProductToDB: (product, wishlistItem) => dispatch(addProductToDB(product, wishlistItem)),
   openWishlistItemFormModal: () => dispatch(openWishlistItemFormModal()),
   closeWishlistItemFormModal: () => dispatch(closeWishlistItemFormModal()),

@@ -1,8 +1,8 @@
-export const searchProductsByKeyword = (keywords, success, error) => {
+export const searchProductsByKeyword = (keywords, search_num, min_price, max_price, category, success, error) => {
   $.ajax({
     method: 'post',
     url: '/api/product-search',
-    data: { query: { keywords } },
+    data: { query: { keywords, search_num, min_price, max_price, category } },
     success,
     error
   });
